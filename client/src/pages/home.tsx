@@ -5,16 +5,16 @@ import { Card } from "@/components/ui/card";
 import {
   ArrowRight,
   Building2,
-  CheckCircle2,
-  ClipboardList,
   Home as HomeIcon,
   MapPin,
   Monitor,
   Phone,
   Shield,
+  Star,
   Stethoscope,
   Users,
 } from "lucide-react";
+import { SiGoogle } from "react-icons/si";
 
 const trustItems = [
   { icon: Shield, label: "HCPC Registered Physios" },
@@ -112,52 +112,66 @@ export default function Home() {
       description="Back, neck and joint pain specialists. HCPC registered physiotherapists providing evidence-based assessment, hands-on treatment, and clear rehabilitation plans."
     >
       <section
-        className="relative py-16 lg:py-24 bg-muted"
+        className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
         data-testid="section-hero"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6"
-                data-testid="text-hero-title"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          poster="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/5473762/5473762-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div className="absolute inset-0 bg-slate-900/60" />
+        
+        <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <p className="text-sm uppercase tracking-widest text-primary mb-4 font-medium">
+            Agility Physio
+          </p>
+          <h1
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
+            data-testid="text-hero-title"
+          >
+            Patients First <span className="text-primary">Expert Care</span>
+          </h1>
+          <p
+            className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto"
+            data-testid="text-hero-subtitle"
+          >
+            Our highly trained physiotherapists help you restore function, reduce pain, and get back to doing what you love.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Link href="/clinics">
+              <Button size="lg" className="text-base px-8" data-testid="button-hero-find-clinic">
+                Find a Clinic
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className="text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
+                data-testid="button-hero-book"
               >
-                Musculoskeletal Physiotherapy & Rehabilitation
-              </h1>
-              <p
-                className="text-lg text-muted-foreground mb-8 leading-relaxed"
-                data-testid="text-hero-subtitle"
-              >
-                Back, neck and joint pain. Evidence-based assessment, hands-on treatment, and a clear rehab plan.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="text-base w-full sm:w-auto" data-testid="button-hero-book">
-                    Book Appointment
-                  </Button>
-                </Link>
-                <a href="tel:02012345678">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-base w-full sm:w-auto"
-                    data-testid="button-hero-call"
-                  >
-                    <Phone className="w-4 h-4 mr-2" />
-                    Call Us
-                  </Button>
-                </a>
-              </div>
+                Book Appointment
+              </Button>
+            </Link>
+          </div>
+          
+          <div className="flex items-center justify-center gap-3" data-testid="google-reviews-badge">
+            <SiGoogle className="w-8 h-8 text-white" />
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-primary fill-primary" />
+              ))}
             </div>
-            <div className="relative hidden lg:block">
-              <div className="aspect-[4/3] rounded-lg overflow-hidden bg-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80"
-                  alt="Clinical physiotherapy treatment session"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+            <span className="text-white font-medium">Over 200 Reviews</span>
           </div>
         </div>
       </section>
@@ -334,13 +348,7 @@ export default function Home() {
               >
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <svg
-                      key={i}
-                      className="w-4 h-4 text-primary fill-current"
-                      viewBox="0 0 20 20"
-                    >
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
+                    <Star key={i} className="w-4 h-4 text-primary fill-primary" />
                   ))}
                 </div>
                 <blockquote className="text-sm text-foreground mb-4 leading-relaxed">
