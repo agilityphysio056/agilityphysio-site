@@ -1,0 +1,87 @@
+We have a first draft of the Agility Physio website. Now revise it to match this plan:
+
+Goal:
+- National MSK physiotherapy brand website (not a single clinic site)
+- Clinical, calm, professional tone (NHS/private MSK vibe)
+- Keep existing logo and brand name “Agility Physio”
+- NOT gym/fitness. Avoid motivational buzzwords.
+
+Critical changes:
+1) Branding & tone
+- Remove phrases like “Unlock your potential”, “thrive”, “performance”
+- Replace with patient-focused MSK language: assessment, diagnosis, pain relief, rehabilitation, recovery plans
+- Ensure copy speaks to common MSK problems (back/neck/joint pain, sciatica, post-op rehab)
+
+2) Visual design
+- White + light grey as primary backgrounds
+- Logo yellow used ONLY for accents (primary buttons, small highlights) — do not use large yellow blocks
+- Optional secondary: soft blue/teal for links or subtle section headers
+- Reduce heavy black backgrounds, strong shadows, flashy animations
+- Use clean typography (Inter or Open Sans) and generous spacing
+
+3) Navigation (top)
+Use this exact menu:
+Home | Conditions | Services | Clinics | Fees & Insurance | About | Contact | Book Now
+- “Book Now” is a standout button
+
+4) Homepage structure (implement this order)
+A) Hero:
+- H1: “Musculoskeletal Physiotherapy & Rehabilitation”
+- Sub: “Back, neck and joint pain. Evidence-based assessment, hands-on treatment, and a clear rehab plan.”
+- CTA buttons: “Book Appointment” + “Call Us”
+- Hero image: clinical treatment / clinic setting (no gym/lifestyle)
+
+B) Trust bar (3 items):
+- HCPC Registered Physios
+- Evidence-based MSK care
+- Clinic, Home Visits & Virtual
+
+C) Conditions grid (8 cards):
+Back Pain, Neck Pain, Shoulder Pain, Knee Pain, Hip Pain, Sciatica, Sports Injuries, Post-Op Rehab
+Each card links to /conditions/<slug>
+
+D) Services (3 cards):
+Clinic Physiotherapy, Home Visit Physiotherapy, Virtual Physiotherapy
+Each links to /services/<slug>
+
+E) “How it works” (3 steps):
+Assess → Treat → Rehab Plan
+
+F) Reviews/testimonials section (clean, not huge)
+
+G) Clinics preview:
+Show Stanmore + Stockwell cards linking to /clinics/stanmore and /clinics/stockwell
+Include “View all clinics” link to /clinics
+
+H) Final CTA block:
+“Book your appointment” + contact info
+
+5) Clinics section (scalable SEO)
+- Create /clinics directory page listing clinics
+- Create two clinic pages now:
+  /clinics/stanmore
+  /clinics/stockwell
+Each clinic page MUST include:
+- H1: “Physiotherapy in <Location>”
+- 600–800 words localised SEO copy (template-based, not repetitive spam)
+- Address, map embed placeholder, opening hours
+- Transport/parking section
+- Services at this clinic
+- CTA: “Book at <Location>”
+
+6) Conditions pages (templates)
+Create a condition page template at /conditions/<slug> with:
+- What it is, symptoms, how physio helps, what to expect, red flags (brief), FAQ, CTA
+- Each condition page links to clinic pages (“Get treatment in Stanmore/Stockwell”)
+
+7) Performance & SEO basics
+- Ensure correct semantic headings (one H1 per page)
+- Add meta title + meta description per page (placeholders ok)
+- Add schema placeholders for LocalBusiness on clinic pages
+- Ensure mobile-first layout and fast loading
+
+Deliverables:
+- Updated layout + components
+- Updated copy for homepage and key pages
+- Clean, consistent styling
+- Scalable routing structure for adding future clinics easily

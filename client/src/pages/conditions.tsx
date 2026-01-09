@@ -1,118 +1,52 @@
+import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Phone, ArrowRight } from "lucide-react";
 
-const conditionCategories = [
-  {
-    title: "Back & Spine",
-    conditions: [
-      {
-        name: "Lower Back Pain",
-        description: "Assessment and treatment for acute and chronic lower back pain, including disc problems and muscle strains.",
-      },
-      {
-        name: "Sciatica",
-        description: "Treatment for radiating leg pain caused by nerve compression, including manual therapy and targeted exercises.",
-      },
-      {
-        name: "Neck Pain",
-        description: "Relief for cervical pain and stiffness, including treatment for whiplash and postural-related issues.",
-      },
-      {
-        name: "Disc Herniation",
-        description: "Conservative management of disc bulges and herniations with evidence-based rehabilitation protocols.",
-      },
-    ],
-  },
-  {
-    title: "Upper Limb",
-    conditions: [
-      {
-        name: "Shoulder Pain",
-        description: "Treatment for rotator cuff injuries, impingement, and shoulder instability.",
-      },
-      {
-        name: "Frozen Shoulder",
-        description: "Specialised rehabilitation for adhesive capsulitis to restore range of motion and reduce pain.",
-      },
-      {
-        name: "Tennis Elbow",
-        description: "Effective treatment for lateral epicondylitis including manual therapy and progressive loading.",
-      },
-      {
-        name: "Golfer's Elbow",
-        description: "Treatment for medial epicondylitis with targeted rehabilitation exercises.",
-      },
-    ],
-  },
-  {
-    title: "Lower Limb",
-    conditions: [
-      {
-        name: "Knee Pain",
-        description: "Assessment and treatment for patellofemoral pain, meniscal injuries, and osteoarthritis.",
-      },
-      {
-        name: "ACL Injuries",
-        description: "Pre and post-operative rehabilitation for anterior cruciate ligament injuries.",
-      },
-      {
-        name: "Hip Pain",
-        description: "Treatment for hip impingement, bursitis, and osteoarthritis.",
-      },
-      {
-        name: "Achilles Tendinopathy",
-        description: "Evidence-based treatment for Achilles pain including eccentric loading programmes.",
-      },
-      {
-        name: "Plantar Fasciitis",
-        description: "Effective treatment for heel pain with manual therapy and targeted exercises.",
-      },
-      {
-        name: "Ankle Sprains",
-        description: "Acute management and rehabilitation for ankle ligament injuries.",
-      },
-    ],
-  },
-  {
-    title: "Other Conditions",
-    conditions: [
-      {
-        name: "Muscle Strains",
-        description: "Treatment for acute and chronic muscle injuries with graded rehabilitation.",
-      },
-      {
-        name: "Post-Surgical Recovery",
-        description: "Comprehensive rehabilitation following orthopaedic surgery.",
-      },
-      {
-        name: "Postural Problems",
-        description: "Assessment and treatment for work-related postural issues and muscle imbalances.",
-      },
-      {
-        name: "Repetitive Strain Injury",
-        description: "Management of occupational overuse injuries with ergonomic advice.",
-      },
-    ],
-  },
+const conditions = [
+  { title: "Back Pain", slug: "back-pain", description: "Assessment and treatment for acute and chronic back conditions including disc problems and muscle strains." },
+  { title: "Neck Pain", slug: "neck-pain", description: "Relief from neck stiffness, whiplash, cervical spine issues, and associated headaches." },
+  { title: "Shoulder Pain", slug: "shoulder-pain", description: "Treatment for frozen shoulder, rotator cuff injuries, impingement, and shoulder instability." },
+  { title: "Knee Pain", slug: "knee-pain", description: "Rehabilitation for ligament injuries, meniscal problems, patellofemoral pain, and arthritis." },
+  { title: "Hip Pain", slug: "hip-pain", description: "Management of hip arthritis, bursitis, labral tears, and hip impingement." },
+  { title: "Sciatica", slug: "sciatica", description: "Targeted treatment for sciatic nerve pain, leg symptoms, and associated numbness or tingling." },
+  { title: "Sports Injuries", slug: "sports-injuries", description: "Return to sport programmes for muscle strains, ligament sprains, and overuse injuries." },
+  { title: "Post-Op Rehab", slug: "post-op-rehab", description: "Structured recovery following joint replacement, ACL reconstruction, and other orthopaedic surgery." },
+];
+
+const additionalConditions = [
+  "Disc herniation",
+  "Whiplash",
+  "Tennis elbow",
+  "Golfer's elbow",
+  "Achilles tendinopathy",
+  "Plantar fasciitis",
+  "Ankle sprains",
+  "Muscle strains",
+  "Postural problems",
+  "Repetitive strain injury",
+  "Arthritis",
+  "Headaches",
 ];
 
 export default function Conditions() {
   return (
-    <Layout>
+    <Layout
+      title="Conditions We Treat | Agility Physio"
+      description="Expert physiotherapy treatment for back pain, neck pain, sciatica, sports injuries, and post-operative rehabilitation. HCPC registered physiotherapists."
+    >
       <section className="py-16 lg:py-24 bg-muted" data-testid="section-conditions-hero">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1
-              className="text-4xl lg:text-5xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
               data-testid="text-conditions-page-title"
             >
               Conditions We Treat
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Our experienced physiotherapists treat a wide range of
-              musculoskeletal conditions. If you're unsure whether we can help
-              with your condition, please get in touch for a consultation.
+              Our HCPC registered physiotherapists specialise in the assessment and treatment of musculoskeletal conditions. Select a condition below to learn more about how we can help.
             </p>
           </div>
         </div>
@@ -120,28 +54,47 @@ export default function Conditions() {
 
       <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="space-y-16">
-            {conditionCategories.map((category, catIndex) => (
-              <div key={catIndex} data-testid={`section-category-${catIndex}`}>
-                <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-8">
-                  {category.title}
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {category.conditions.map((condition, condIndex) => (
-                    <Card
-                      key={condIndex}
-                      className="p-6 hover-elevate"
-                      data-testid={`card-condition-${catIndex}-${condIndex}`}
-                    >
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
-                        {condition.name}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {condition.description}
-                      </p>
-                    </Card>
-                  ))}
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {conditions.map((condition, index) => (
+              <Link key={condition.slug} href={`/conditions/${condition.slug}`}>
+                <Card
+                  className="p-5 hover-elevate cursor-pointer h-full"
+                  data-testid={`card-condition-${index}`}
+                >
+                  <h2 className="text-lg font-semibold text-foreground mb-2">
+                    {condition.title}
+                  </h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {condition.description}
+                  </p>
+                  <span className="text-sm font-medium text-secondary flex items-center gap-1">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20 bg-muted">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+              We Also Treat
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our physiotherapists have experience treating many other musculoskeletal conditions.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 max-w-4xl mx-auto">
+            {additionalConditions.map((condition, index) => (
+              <div
+                key={index}
+                className="text-sm text-foreground text-center py-3 px-4 bg-background rounded-md"
+              >
+                {condition}
               </div>
             ))}
           </div>
@@ -150,18 +103,24 @@ export default function Conditions() {
 
       <section className="py-16 lg:py-20 bg-secondary/10" data-testid="section-conditions-cta">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl font-bold text-foreground mb-4">
             Don't See Your Condition Listed?
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            We treat many other musculoskeletal conditions not listed here.
-            Contact us to discuss your specific needs.
+          <p className="text-muted-foreground mb-8">
+            We treat many other musculoskeletal conditions not listed here. Contact us to discuss your specific needs.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button data-testid="button-conditions-contact">Contact Us</Button>
-            <Button variant="outline" data-testid="button-conditions-book">
-              Book Assessment
-            </Button>
+            <Link href="/contact">
+              <Button size="lg" data-testid="button-conditions-contact">
+                Contact Us
+              </Button>
+            </Link>
+            <a href="tel:02012345678">
+              <Button size="lg" variant="outline" data-testid="button-conditions-call">
+                <Phone className="w-4 h-4 mr-2" />
+                020 1234 5678
+              </Button>
+            </a>
           </div>
         </div>
       </section>
