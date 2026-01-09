@@ -47,11 +47,11 @@ export function Header() {
             />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-6" data-testid="nav-desktop">
+          <nav className="hidden lg:flex items-center gap-4" data-testid="nav-desktop">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
-                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary ${
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
                     location === item.href ? "text-secondary" : "text-foreground"
                   }`}
                   data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
@@ -62,7 +62,7 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
             <a
               href="tel:02012345678"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -79,7 +79,7 @@ export function Header() {
           </div>
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild className="xl:hidden">
+            <SheetTrigger asChild className="lg:hidden">
               <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
                 <Menu className="w-5 h-5" />
               </Button>
