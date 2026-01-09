@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone } from "lucide-react";
+import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -39,15 +40,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-18">
           <Link href="/" data-testid="link-home-logo">
-            <div className="flex items-center gap-2 cursor-pointer">
-              <div className="w-9 h-9 bg-primary rounded-md flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-base">A</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-semibold text-foreground leading-tight">Agility</span>
-                <span className="text-xs text-muted-foreground leading-tight">Physio</span>
-              </div>
-            </div>
+            <img 
+              src={logoImg} 
+              alt="Agility Physio" 
+              className="h-10 w-auto cursor-pointer"
+            />
           </Link>
 
           <nav className="hidden xl:flex items-center gap-6" data-testid="nav-desktop">
@@ -90,12 +87,11 @@ export function Header() {
             <SheetContent side="right" className="w-full sm:w-80">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 bg-primary rounded-md flex items-center justify-center">
-                      <span className="text-primary-foreground font-bold text-base">A</span>
-                    </div>
-                    <span className="text-base font-semibold">Agility Physio</span>
-                  </div>
+                  <img 
+                    src={logoImg} 
+                    alt="Agility Physio" 
+                    className="h-10 w-auto"
+                  />
                 </div>
 
                 <nav className="flex flex-col gap-2">
