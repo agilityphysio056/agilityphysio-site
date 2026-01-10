@@ -72,21 +72,26 @@ const processSteps = [
   },
 ];
 
-const testimonials = [
+const googleReviews = [
   {
-    quote: "After months of back pain, I finally received a proper diagnosis and treatment plan. The team were thorough, professional, and genuinely caring.",
-    initials: "J.M.",
-    condition: "Lower Back Pain",
+    quote: "Uzma is very knowledgeable and explains the treatment clearly. After 8 sessions, the difference is brilliant. She has worked miracles in the weeks she has been treating me.",
+    location: "Stanmore",
   },
   {
-    quote: "Excellent post-surgery rehabilitation. Clear guidance at every stage and I'm now back to full mobility. Highly recommended.",
-    initials: "S.K.",
-    condition: "Knee Replacement Rehab",
+    quote: "Great and kind people. Amazing service 100% recommending. Professional yet friendly approach. The exercises they provided really helped with my recovery.",
+    location: "Harrow",
   },
   {
-    quote: "The home visit service was invaluable when I couldn't travel. Professional treatment and a clear recovery plan that actually worked.",
-    initials: "R.P.",
-    condition: "Hip Pain",
+    quote: "I was treated after a car accident with severe neck and shoulder pain. Within weeks I was 80%+ better with the massage and TENS machine treatments. First class service.",
+    location: "Edgware",
+  },
+  {
+    quote: "Excellent experience with the physiotherapists here. They took time to explain my condition and created a personalised rehabilitation plan that actually worked.",
+    location: "Wembley",
+  },
+  {
+    quote: "Helped me recover from a pulled calf muscle with their equipment-assisted treatment. The team is helpful with exercises beyond just the primary complaint. Highly recommended.",
+    location: "Pinner",
   },
 ];
 
@@ -356,49 +361,43 @@ export default function Home() {
       </section>
 
       <section
-        className="py-16 lg:py-20 bg-muted"
+        className="py-16 lg:py-20 bg-slate-900"
         data-testid="section-testimonials"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-widest text-primary mb-3 font-medium">
+              Testimonials
+            </p>
             <h2
-              className="text-2xl lg:text-3xl font-bold text-foreground mb-4"
+              className="text-2xl lg:text-3xl font-bold text-white mb-4"
               data-testid="text-testimonials-title"
             >
-              Patient Feedback
+              Patient Success Stories
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial, index) => (
-              <Card
+          <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
+            {googleReviews.map((review, index) => (
+              <div
                 key={index}
-                className="p-6 bg-background"
-                data-testid={`card-testimonial-${index}`}
+                className="flex-shrink-0 w-80 bg-white rounded-lg p-6"
+                data-testid={`card-review-${index}`}
               >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-                  ))}
+                <div className="flex items-center justify-between mb-4">
+                  <SiGoogle className="w-8 h-8 text-[#4285F4]" />
+                  <div className="flex gap-0.5">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-primary fill-primary" />
+                    ))}
+                  </div>
                 </div>
-                <blockquote className="text-sm text-foreground mb-4 leading-relaxed">
-                  "{testimonial.quote}"
+                <blockquote className="text-sm text-slate-700 mb-6 leading-relaxed min-h-[100px]">
+                  {review.quote}
                 </blockquote>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center">
-                    <span className="text-xs font-semibold text-secondary">
-                      {testimonial.initials}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="text-xs font-medium text-foreground">
-                      {testimonial.initials}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {testimonial.condition}
-                    </p>
-                  </div>
-                </div>
-              </Card>
+                <p className="text-sm font-medium text-slate-900">
+                  — Patient in {review.location}
+                </p>
+              </div>
             ))}
           </div>
         </div>
