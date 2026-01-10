@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,7 +9,9 @@ import {
   Home as HomeIcon,
   MapPin,
   Monitor,
+  Pause,
   Phone,
+  Play,
   Shield,
   Star,
   Stethoscope,
@@ -117,6 +120,105 @@ const clinics = [
   },
 ];
 
+function TestimonialsSection() {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    if (!isPlaying || !scrollRef.current) return;
+
+    const container = scrollRef.current;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+
+    const interval = setInterval(() => {
+      setScrollPosition((prev) => {
+        const newPos = prev + 1;
+        if (newPos >= maxScroll) {
+          return 0;
+        }
+        return newPos;
+      });
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = scrollPosition;
+    }
+  }, [scrollPosition]);
+
+  const duplicatedReviews = [...googleReviews, ...googleReviews];
+
+  return (
+    <section
+      className="py-16 lg:py-20 bg-slate-900"
+      data-testid="section-testimonials"
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between mb-12">
+          <div>
+            <p className="text-sm uppercase tracking-widest text-primary mb-3 font-medium">
+              Testimonials
+            </p>
+            <h2
+              className="text-2xl lg:text-3xl font-bold text-white"
+              data-testid="text-testimonials-title"
+            >
+              Patient Success Stories
+            </h2>
+          </div>
+          <Button
+            size="icon"
+            variant="outline"
+            onClick={() => setIsPlaying(!isPlaying)}
+            className="bg-white/10 border-white/30 text-white hover:bg-white/20"
+            data-testid="button-testimonial-toggle"
+          >
+            {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+          </Button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
+        >
+          {duplicatedReviews.map((review, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-80 bg-white p-6 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none border-2 border-primary/20"
+              data-testid={`card-review-${index}`}
+            >
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-primary fill-primary" />
+                  ))}
+                </div>
+                <GoogleLogo />
+              </div>
+              <blockquote className="text-sm text-slate-700 mb-6 leading-relaxed min-h-[120px]">
+                {review.quote}
+              </blockquote>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-px bg-slate-900" />
+                <p className="text-sm font-semibold text-slate-900">
+                  Patient in {review.location}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <Layout
@@ -215,10 +317,12 @@ export default function Home() {
       </section>
 
       <section
-        className="py-16 lg:py-20 bg-background"
+        className="relative py-16 lg:py-20 bg-background overflow-visible"
         data-testid="section-dont-stay-in-pain"
       >
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+        <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+        <div className="absolute top-20 right-10 w-32 h-32 bg-secondary/5 rounded-full blur-3xl hidden lg:block" />
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center relative">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
             Don't stay in pain.
           </h2>
@@ -244,10 +348,12 @@ export default function Home() {
       </section>
 
       <section
-        className="py-16 lg:py-20 bg-muted"
+        className="relative py-16 lg:py-20 bg-muted overflow-visible"
         data-testid="section-conditions"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="absolute -left-20 top-1/2 w-40 h-40 bg-secondary/5 rounded-full blur-3xl hidden lg:block" />
+        <div className="absolute -right-10 bottom-10 w-32 h-32 bg-primary/5 rounded-full blur-2xl hidden lg:block" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
           <div className="text-center mb-12">
             <h2
               className="text-2xl lg:text-3xl font-bold text-foreground mb-4"
@@ -263,10 +369,10 @@ export default function Home() {
             {conditions.map((condition, index) => (
               <Link key={condition.slug} href={`/conditions/${condition.slug}`}>
                 <Card
-                  className="p-4 lg:p-5 hover-elevate cursor-pointer h-full"
+                  className="p-4 lg:p-5 hover-elevate cursor-pointer h-full group transition-transform hover:-translate-y-1"
                   data-testid={`card-condition-${index}`}
                 >
-                  <h3 className="text-base font-semibold text-foreground mb-2">
+                  <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {condition.title}
                   </h3>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -288,16 +394,25 @@ export default function Home() {
       </section>
 
       <section
-        className="py-16 lg:py-20 bg-muted"
+        className="relative py-16 lg:py-20 bg-background overflow-hidden"
         data-testid="section-services"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-muted to-transparent" />
+        <div className="absolute -right-20 top-1/3 w-48 h-48 bg-primary/5 rounded-full blur-3xl hidden lg:block" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
           <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-widest text-secondary mb-3 font-medium">
+              Our Services
+            </p>
             <h2
               className="text-2xl lg:text-3xl font-bold text-foreground mb-4"
               data-testid="text-services-title"
             >
-              How We Can Help
+              Physio services and treatments designed{" "}
+              <span className="relative">
+                around you
+                <span className="absolute bottom-0 left-0 right-0 h-2 bg-primary/20 -z-10 transform translate-y-1" />
+              </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Flexible treatment options to suit your needs and circumstances.
@@ -307,18 +422,22 @@ export default function Home() {
             {services.map((service, index) => (
               <Link key={service.slug} href={`/services/${service.slug}`}>
                 <Card
-                  className="p-6 hover-elevate cursor-pointer h-full bg-background"
+                  className="p-6 hover-elevate cursor-pointer h-full bg-card group transition-all hover:-translate-y-2 hover:shadow-lg relative overflow-hidden"
                   data-testid={`card-service-${index}`}
                 >
-                  <div className="w-12 h-12 rounded-md bg-secondary/10 flex items-center justify-center mb-4">
-                    <service.icon className="w-6 h-6 text-secondary" />
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                  <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 group-hover:bg-secondary group-hover:text-white transition-colors">
+                    <service.icon className="w-7 h-7 text-secondary group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                  <h3 className="text-lg font-semibold text-foreground mb-3">
                     {service.title}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
+                  <div className="mt-4 flex items-center text-secondary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more <ArrowRight className="w-4 h-4 ml-1" />
+                  </div>
                 </Card>
               </Link>
             ))}
@@ -367,48 +486,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        className="py-16 lg:py-20 bg-slate-900"
-        data-testid="section-testimonials"
-      >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-widest text-primary mb-3 font-medium">
-              Testimonials
-            </p>
-            <h2
-              className="text-2xl lg:text-3xl font-bold text-white mb-4"
-              data-testid="text-testimonials-title"
-            >
-              Patient Success Stories
-            </h2>
-          </div>
-          <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide">
-            {googleReviews.map((review, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-80 bg-white rounded-lg p-6"
-                data-testid={`card-review-${index}`}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <GoogleLogo />
-                  <div className="flex gap-0.5">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-                    ))}
-                  </div>
-                </div>
-                <blockquote className="text-sm text-slate-700 mb-6 leading-relaxed min-h-[100px]">
-                  {review.quote}
-                </blockquote>
-                <p className="text-sm font-medium text-slate-900">
-                  — Patient in {review.location}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TestimonialsSection />
 
       <section
         className="py-16 lg:py-20 bg-background"
