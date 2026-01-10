@@ -28,11 +28,11 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           <div className="lg:col-span-2">
-            <div className="mb-4">
+            <div className="mb-4 inline-block bg-white/90 rounded-md px-2 py-1">
               <img 
                 src={logoImg} 
                 alt="Agility Physio" 
-                className="h-10 w-auto rounded mix-blend-screen brightness-110"
+                className="h-8 w-auto mix-blend-multiply"
               />
             </div>
             <p className="text-sm opacity-80 leading-relaxed mb-6 max-w-sm">
