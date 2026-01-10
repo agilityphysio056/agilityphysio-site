@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Phone } from "lucide-react";
-import logoImg from "@assets/logo-transparent_1768085412273.png";
+import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -43,7 +43,7 @@ export function Header() {
             <img 
               src={logoImg} 
               alt="Agility Physio" 
-              className="h-10 w-auto cursor-pointer"
+              className="h-10 w-auto cursor-pointer mix-blend-multiply"
             />
           </Link>
 
@@ -90,7 +90,7 @@ export function Header() {
                   <img 
                     src={logoImg} 
                     alt="Agility Physio" 
-                    className="h-10 w-auto"
+                    className="h-10 w-auto mix-blend-multiply"
                   />
                 </div>
 
