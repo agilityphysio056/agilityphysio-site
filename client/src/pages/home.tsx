@@ -301,7 +301,7 @@ export default function Home() {
                 key={index}
                 className="flex items-center gap-3 justify-center"
               >
-                <div className="w-10 h-10 rounded-md bg-secondary/10 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-secondary/10 flex items-center justify-center">
                   <item.icon className="w-5 h-5 text-secondary" />
                 </div>
                 <span
@@ -368,8 +368,8 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
             {conditions.map((condition, index) => (
               <Link key={condition.slug} href={`/conditions/${condition.slug}`}>
-                <Card
-                  className="p-4 lg:p-5 hover-elevate cursor-pointer h-full group transition-transform hover:-translate-y-1"
+                <div
+                  className="p-4 lg:p-5 bg-card border border-border cursor-pointer h-full group transition-all hover:-translate-y-1 hover:shadow-md rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none"
                   data-testid={`card-condition-${index}`}
                 >
                   <h3 className="text-base font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
@@ -378,7 +378,7 @@ export default function Home() {
                   <p className="text-xs text-muted-foreground leading-relaxed">
                     {condition.description}
                   </p>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>
@@ -421,12 +421,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {services.map((service, index) => (
               <Link key={service.slug} href={`/services/${service.slug}`}>
-                <Card
-                  className="p-6 hover-elevate cursor-pointer h-full bg-card group transition-all hover:-translate-y-2 hover:shadow-lg relative overflow-hidden"
+                <div
+                  className="p-6 cursor-pointer h-full bg-card border border-border group transition-all hover:-translate-y-2 hover:shadow-lg relative overflow-hidden rounded-tl-3xl rounded-br-3xl rounded-tr-none rounded-bl-none"
                   data-testid={`card-service-${index}`}
                 >
                   <div className="absolute top-0 right-0 w-20 h-20 bg-secondary/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                  <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center mb-5 group-hover:bg-secondary group-hover:text-white transition-colors">
+                  <div className="w-14 h-14 rounded-tl-xl rounded-br-xl rounded-tr-none rounded-bl-none bg-secondary/10 flex items-center justify-center mb-5 group-hover:bg-secondary group-hover:text-white transition-colors">
                     <service.icon className="w-7 h-7 text-secondary group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">
@@ -438,7 +438,7 @@ export default function Home() {
                   <div className="mt-4 flex items-center text-secondary font-medium text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                     Learn more <ArrowRight className="w-4 h-4 ml-1" />
                   </div>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>
@@ -465,11 +465,11 @@ export default function Home() {
             {processSteps.map((item, index) => (
               <div
                 key={index}
-                className="relative text-center"
+                className="relative text-center group"
                 data-testid={`card-process-${index}`}
               >
-                <div className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-4">
-                  <span className="text-xl font-bold">{item.step}</span>
+                <div className="w-16 h-16 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none bg-primary text-primary-foreground flex items-center justify-center mx-auto mb-5 group-hover:scale-105 transition-transform">
+                  <span className="text-2xl font-bold">{item.step}</span>
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">
                   {item.title}
@@ -478,7 +478,7 @@ export default function Home() {
                   {item.description}
                 </p>
                 {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-7 left-[60%] w-[80%] h-px bg-border" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-[80%] h-px bg-border" />
                 )}
               </div>
             ))}
@@ -507,16 +507,16 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
             {clinics.map((clinic, index) => (
               <Link key={clinic.slug} href={`/clinics/${clinic.slug}`}>
-                <Card
-                  className="p-6 hover-elevate cursor-pointer"
+                <div
+                  className="p-6 bg-card border border-border cursor-pointer group transition-all hover:-translate-y-1 hover:shadow-md rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none"
                   data-testid={`card-clinic-${index}`}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-md bg-secondary/10 flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-secondary" />
+                    <div className="w-12 h-12 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors">
+                      <MapPin className="w-5 h-5 text-secondary group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-semibold text-foreground mb-1">
+                      <h3 className="text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
                         {clinic.name}
                       </h3>
                       <p className="text-sm text-muted-foreground mb-2">
@@ -527,7 +527,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </Card>
+                </div>
               </Link>
             ))}
           </div>
