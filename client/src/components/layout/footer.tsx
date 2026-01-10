@@ -32,7 +32,7 @@ export function Footer() {
               <img 
                 src={logoImg} 
                 alt="Agility Physio" 
-                className="h-10 w-auto bg-white rounded p-1"
+                className="h-10 w-auto rounded mix-blend-screen brightness-110"
               />
             </div>
             <p className="text-sm opacity-80 leading-relaxed mb-6 max-w-sm">
