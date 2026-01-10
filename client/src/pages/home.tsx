@@ -204,6 +204,35 @@ export default function Home() {
 
       <section
         className="py-16 lg:py-20 bg-background"
+        data-testid="section-dont-stay-in-pain"
+      >
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
+            Don't stay in pain.
+          </h2>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            Our experienced physios work with you to treat the whole body through hands on treatment, advice and creating personalised rehabilitation plans right for you. If you are experiencing neck, back, shoulder, knee or joint pain, or have suffered an injury through sports or accident that has impacted your function or quality of life, our physiotherapists can help you.
+          </p>
+          <p className="font-semibold text-foreground mb-8">
+            Why wait. Call us today or book online for a fast appointment
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button size="lg" className="text-base px-8" data-testid="button-pain-book">
+                Book Online
+              </Button>
+            </Link>
+            <Link href="/contact">
+              <Button size="lg" variant="secondary" className="text-base px-8" data-testid="button-pain-contact">
+                Contact Us
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="py-16 lg:py-20 bg-muted"
         data-testid="section-conditions"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

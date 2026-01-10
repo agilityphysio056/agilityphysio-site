@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
 import { Header } from "./header";
 import { Footer } from "./footer";
 
@@ -31,6 +32,19 @@ export function Layout({ children, title, description }: LayoutProps) {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
+      
+      <Link href="/contact">
+        <div
+          className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:block cursor-pointer"
+          data-testid="sticky-book-online"
+        >
+          <div className="bg-primary text-primary-foreground px-3 py-4 rounded-l-md shadow-lg hover:bg-primary/90 transition-colors">
+            <span className="text-sm font-semibold [writing-mode:vertical-rl] rotate-180">
+              Book Online
+            </span>
+          </div>
+        </div>
+      </Link>
     </div>
   );
 }
