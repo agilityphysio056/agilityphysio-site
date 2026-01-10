@@ -43,7 +43,7 @@ export function Header() {
             <img 
               src={logoImg} 
               alt="Agility Physio" 
-              className="h-10 w-auto cursor-pointer"
+              className="h-10 w-auto cursor-pointer mix-blend-multiply"
             />
           </Link>
 
@@ -90,7 +90,7 @@ export function Header() {
                   <img 
                     src={logoImg} 
                     alt="Agility Physio" 
-                    className="h-10 w-auto"
+                    className="h-10 w-auto mix-blend-multiply"
                   />
                 </div>
 
