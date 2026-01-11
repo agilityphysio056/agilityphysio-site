@@ -278,7 +278,7 @@ export default function Home() {
             </Link>
           </div>
           
-          <div className="flex items-center justify-center gap-3" data-testid="google-reviews-badge">
+          <div className="flex items-center justify-center gap-3 mb-16" data-testid="google-reviews-badge">
             <GoogleLogo />
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -289,8 +289,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 bg-secondary/90 py-4" data-testid="section-insurance-logos">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+        <div className="absolute bottom-6 left-6 right-6 md:left-12 md:right-12 lg:left-24 lg:right-24" data-testid="section-insurance-logos">
+          <div className="bg-secondary py-4 px-6 md:px-10 rounded-tl-2xl rounded-br-2xl">
             <div className="flex items-center justify-center gap-6 md:gap-10 lg:gap-12 flex-wrap">
               <img 
                 src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
