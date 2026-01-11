@@ -17,7 +17,6 @@ import {
   Stethoscope,
   Users,
 } from "lucide-react";
-import stanmoreClinicImage from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161475667.jpeg";
 const GoogleLogo = () => (
   <svg viewBox="0 0 24 24" className="w-8 h-8">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -230,11 +229,19 @@ export default function Home() {
         className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
         data-testid="section-hero"
       >
-        <img
-          src={stanmoreClinicImage}
-          alt="Stanmore Business and Innovation Centre - Agility Physio clinic location"
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover"
-        />
+          poster="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80"
+        >
+          <source
+            src="https://videos.pexels.com/video-files/5473762/5473762-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-slate-900/60" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
