@@ -288,6 +288,61 @@ export default function Home() {
             <span className="text-white font-medium">Over 200 Reviews</span>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 bg-secondary/90 py-4" data-testid="section-insurance-logos">
+          <div className="max-w-6xl mx-auto px-6 lg:px-8">
+            <div className="flex items-center justify-center gap-6 md:gap-10 lg:gap-12 flex-wrap">
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
+                alt="AXA" 
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-axa"
+              />
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:54/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/EXCEPTION_Aviva-primary-logo-white_RGB_14939-1.png" 
+                alt="Aviva" 
+                className="h-6 md:h-7 w-auto object-contain opacity-90"
+                data-testid="logo-aviva"
+              />
+              <img 
+                src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Bupa_logo.svg" 
+                alt="Bupa" 
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-bupa"
+              />
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:100/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Nuffield.png" 
+                alt="Nuffield Health" 
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-nuffield"
+              />
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/simplyhealth-wob.png" 
+                alt="Simplyhealth" 
+                className="h-6 md:h-8 w-auto object-contain opacity-90"
+                data-testid="logo-simplyhealth"
+              />
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:162/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/vitality-logo-1.png" 
+                alt="Vitality" 
+                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-vitality"
+              />
+              <img 
+                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/WH_Logo_RGB_nostrap1-copy-1-300x79-1.png" 
+                alt="Westfield Health" 
+                className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-westfield"
+              />
+              <img 
+                src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/wpa.svg" 
+                alt="WPA" 
+                className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
+                data-testid="logo-wpa"
+              />
+            </div>
+          </div>
+        </div>
       </section>
 
       <section
