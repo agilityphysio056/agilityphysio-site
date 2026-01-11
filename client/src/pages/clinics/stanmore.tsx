@@ -131,7 +131,7 @@ export default function StanmoreClinic() {
                     <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Address</p>
-                      <p className="text-sm text-muted-foreground">123 High Street<br />Stanmore<br />HA7 4XY</p>
+                      <p className="text-sm text-muted-foreground">Agility Physio LTD<br />Stanmore Business and Innovation Centre<br />Howard Road<br />HA7 1GB</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

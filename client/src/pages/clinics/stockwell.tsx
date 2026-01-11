@@ -131,7 +131,7 @@ export default function StockwellClinic() {
                     <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Address</p>
-                      <p className="text-sm text-muted-foreground">45 Clapham Road<br />Stockwell<br />SW9 0HP</p>
+                      <p className="text-sm text-muted-foreground">Agility Physio<br />Pulse Pharmacy<br />310 Clapham Road<br />Stockwell<br />SW9 9AE</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">

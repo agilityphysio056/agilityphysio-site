@@ -109,13 +109,13 @@ const clinics = [
   {
     name: "Stanmore",
     slug: "stanmore",
-    address: "123 High Street, Stanmore, HA7 4XY",
+    address: "Stanmore Business and Innovation Centre, Howard Road, HA7 1GB",
     description: "Our flagship clinic in North London with full facilities.",
   },
   {
     name: "Stockwell",
     slug: "stockwell",
-    address: "45 Clapham Road, Stockwell, SW9 0HP",
+    address: "Pulse Pharmacy, 310 Clapham Road, Stockwell, SW9 9AE",
     description: "Modern clinic in South London with excellent transport links.",
   },
 ];
