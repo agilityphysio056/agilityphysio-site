@@ -2,17 +2,27 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Phone } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, Phone, ChevronDown, MapPin } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Conditions", href: "/conditions" },
   { label: "Services", href: "/services" },
-  { label: "Clinics", href: "/clinics" },
   { label: "Fees & Insurance", href: "/fees" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+];
+
+const clinicLocations = [
+  { name: "Stanmore", href: "/clinics/stanmore", area: "North London" },
+  { name: "Stockwell", href: "/clinics/stockwell", area: "South London" },
 ];
 
 export function Header() {
@@ -48,7 +58,47 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-4" data-testid="nav-desktop">
-            {navItems.map((item) => (
+            {navItems.slice(0, 3).map((item) => (
+              <Link key={item.href} href={item.href}>
+                <span
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
+                    location === item.href ? "text-secondary" : "text-foreground"
+                  }`}
+                  data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                >
+                  {item.label}
+                </span>
+              </Link>
+            ))}
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                    location.startsWith("/clinics") ? "text-secondary" : "text-foreground"
+                  }`}
+                  data-testid="link-clinics-dropdown"
+                >
+                  Clinics
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-56">
+                {clinicLocations.map((clinic) => (
+                  <Link key={clinic.href} href={clinic.href}>
+                    <DropdownMenuItem className="cursor-pointer" data-testid={`link-clinic-${clinic.name.toLowerCase()}`}>
+                      <MapPin className="w-4 h-4 mr-2 text-secondary" />
+                      <div>
+                        <div className="font-medium">{clinic.name}</div>
+                        <div className="text-xs text-muted-foreground">{clinic.area}</div>
+                      </div>
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
+            {navItems.slice(3).map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
@@ -95,7 +145,42 @@ export function Header() {
                 </div>
 
                 <nav className="flex flex-col gap-2">
-                  {navItems.map((item) => (
+                  {navItems.slice(0, 3).map((item) => (
+                    <Link key={item.href} href={item.href}>
+                      <span
+                        className={`block text-base font-medium py-2 cursor-pointer ${
+                          location === item.href ? "text-secondary" : "text-foreground"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        data-testid={`mobile-link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                      >
+                        {item.label}
+                      </span>
+                    </Link>
+                  ))}
+                  
+                  <div className="py-2">
+                    <span className="block text-base font-medium text-foreground mb-2">Clinics</span>
+                    <div className="pl-4 space-y-1">
+                      {clinicLocations.map((clinic) => (
+                        <Link key={clinic.href} href={clinic.href}>
+                          <span
+                            className={`flex items-center gap-2 text-sm py-1.5 cursor-pointer ${
+                              location === clinic.href ? "text-secondary" : "text-muted-foreground"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            data-testid={`mobile-link-clinic-${clinic.name.toLowerCase()}`}
+                          >
+                            <MapPin className="w-4 h-4" />
+                            {clinic.name}
+                            <span className="text-xs">({clinic.area})</span>
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {navItems.slice(3).map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
                         className={`block text-base font-medium py-2 cursor-pointer ${

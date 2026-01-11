@@ -124,7 +124,7 @@ export default function StockwellClinic() {
             </div>
 
             <div className="space-y-6">
-              <Card className="p-6">
+              <div className="p-6 bg-card border border-border rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
                 <h3 className="text-lg font-semibold text-foreground mb-4">Clinic Details</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -149,9 +149,9 @@ export default function StockwellClinic() {
                     </div>
                   </div>
                 </div>
-              </Card>
+              </div>
 
-              <Card className="p-6">
+              <div className="p-6 bg-card border border-border rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
                 <h3 className="text-lg font-semibold text-foreground mb-4">Getting Here</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -169,12 +169,12 @@ export default function StockwellClinic() {
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 aspect-video bg-muted rounded-md flex items-center justify-center">
+                <div className="mt-4 aspect-video bg-muted rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none flex items-center justify-center">
                   <p className="text-sm text-muted-foreground">Map placeholder</p>
                 </div>
-              </Card>
+              </div>
 
-              <Card className="p-6">
+              <div className="p-6 bg-card border border-border rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
                 <h3 className="text-lg font-semibold text-foreground mb-4">Services at This Clinic</h3>
                 <div className="space-y-2">
                   {services.map((service, index) => (
@@ -184,7 +184,7 @@ export default function StockwellClinic() {
                     </div>
                   ))}
                 </div>
-              </Card>
+              </div>
             </div>
           </div>
         </div>
