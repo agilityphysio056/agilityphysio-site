@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Building2, Home, Monitor, Phone, ArrowRight } from "lucide-react";
+import { Building2, Home, Monitor, Phone, ArrowRight, MapPin } from "lucide-react";
 
 const services = [
   {
@@ -81,6 +81,44 @@ export default function Services() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 lg:py-20 bg-secondary/10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <Card className="p-8 lg:p-12 border-secondary/30">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <MapPin className="w-5 h-5 text-secondary" />
+                  <span className="text-sm font-medium text-secondary">West Midlands Coverage</span>
+                </div>
+                <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+                  Home Physiotherapy in the West Midlands
+                </h2>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  We deliver professional home physiotherapy services across Birmingham, Solihull, West Bromwich, Smethwick, Halesowen, Dudley, Redditch, Bromsgrove, and Oldbury.
+                </p>
+                <Link href="/services/home-physio-west-midlands">
+                  <Button>
+                    Learn More
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="bg-muted p-6 rounded-tl-2xl rounded-br-2xl">
+                <h3 className="font-semibold text-foreground mb-4">Coverage Areas Include:</h3>
+                <div className="grid grid-cols-2 gap-2">
+                  {["Birmingham", "Solihull", "West Bromwich", "Smethwick", "Halesowen", "Dudley", "Redditch", "Bromsgrove"].map((area) => (
+                    <div key={area} className="text-sm text-muted-foreground flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                      {area}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
       </section>
 
