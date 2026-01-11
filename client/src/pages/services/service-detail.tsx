@@ -156,10 +156,10 @@ export default function ServiceDetail() {
                   Book Now
                 </Button>
               </Link>
-              <a href="tel:02012345678">
+              <a href="tel:02030929976">
                 <Button size="lg" variant="outline">
                   <Phone className="w-4 h-4 mr-2" />
-                  020 1234 5678
+                  0203 092 9976
                 </Button>
               </a>
             </div>
@@ -254,9 +254,9 @@ export default function ServiceDetail() {
                 <p className="text-sm text-muted-foreground mb-4">
                   Our team is happy to help with any questions about this service.
                 </p>
-                <a href="tel:02012345678" className="flex items-center gap-2 text-sm text-foreground hover:text-secondary">
+                <a href="tel:02030929976" className="flex items-center gap-2 text-sm text-foreground hover:text-secondary">
                   <Phone className="w-4 h-4" />
-                  020 1234 5678
+                  0203 092 9976
                 </a>
               </Card>
             </div>
@@ -276,10 +276,10 @@ export default function ServiceDetail() {
             <Link href="/contact">
               <Button size="lg">Book Now</Button>
             </Link>
-            <a href="tel:02012345678">
+            <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />
-                020 1234 5678
+                0203 092 9976
               </Button>
             </a>
           </div>

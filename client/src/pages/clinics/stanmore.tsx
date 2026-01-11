@@ -38,10 +38,10 @@ export default function StanmoreClinic() {
                   Book at Stanmore
                 </Button>
               </Link>
-              <a href="tel:02012345678">
+              <a href="tel:02030929976">
                 <Button size="lg" variant="outline">
                   <Phone className="w-4 h-4 mr-2" />
-                  020 1234 5678
+                  0203 092 9976
                 </Button>
               </a>
             </div>
@@ -138,7 +138,7 @@ export default function StanmoreClinic() {
                     <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Phone</p>
-                      <a href="tel:02012345678" className="text-sm text-muted-foreground hover:text-secondary">020 1234 5678</a>
+                      <a href="tel:02030929976" className="text-sm text-muted-foreground hover:text-secondary">0203 092 9976</a>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
@@ -204,10 +204,10 @@ export default function StanmoreClinic() {
                 Book at Stanmore
               </Button>
             </Link>
-            <a href="tel:02012345678">
+            <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />
-                020 1234 5678
+                0203 092 9976
               </Button>
             </a>
           </div>

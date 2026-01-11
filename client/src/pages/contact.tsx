@@ -192,10 +192,10 @@ export default function Contact() {
                     <div>
                       <p className="font-medium text-foreground">Phone</p>
                       <a
-                        href="tel:+442012345678"
+                        href="tel:02030929976"
                         className="text-sm text-muted-foreground hover:text-secondary"
                       >
-                        020 1234 5678
+                        0203 092 9976
                       </a>
                     </div>
                   </div>

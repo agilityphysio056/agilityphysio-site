@@ -161,10 +161,10 @@ export default function Services() {
             <Link href="/contact">
               <Button size="lg">Book Appointment</Button>
             </Link>
-            <a href="tel:02012345678">
+            <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />
-                020 1234 5678
+                0203 092 9976
               </Button>
             </a>
           </div>

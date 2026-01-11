@@ -114,12 +114,12 @@ export function Header() {
 
           <div className="hidden lg:flex items-center gap-2">
             <a
-              href="tel:02012345678"
+              href="tel:02030929976"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-phone"
             >
               <Phone className="w-4 h-4" />
-              <span>020 1234 5678</span>
+              <span>0203 092 9976</span>
             </a>
             <Link href="/contact">
               <Button data-testid="button-book-now">
@@ -197,12 +197,12 @@ export function Header() {
 
                 <div className="mt-auto pt-8 space-y-4">
                   <a
-                    href="tel:02012345678"
+                    href="tel:02030929976"
                     className="flex items-center gap-2 text-muted-foreground"
                     data-testid="mobile-link-phone"
                   >
                     <Phone className="w-5 h-5" />
-                    <span>020 1234 5678</span>
+                    <span>0203 092 9976</span>
                   </a>
                   <Link href="/contact">
                     <Button className="w-full" data-testid="mobile-button-book" onClick={() => setIsMobileMenuOpen(false)}>
