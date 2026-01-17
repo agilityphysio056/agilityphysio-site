@@ -346,7 +346,7 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-background py-8 border-b border-border"
+        className="bg-secondary py-6"
         data-testid="section-trust-bar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -356,11 +356,11 @@ export default function Home() {
                 key={index}
                 className="flex items-center gap-3 justify-center"
               >
-                <div className="w-10 h-10 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-secondary/10 flex items-center justify-center">
-                  <item.icon className="w-5 h-5 text-secondary" />
+                <div className="w-10 h-10 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-white/20 flex items-center justify-center">
+                  <item.icon className="w-5 h-5 text-white" />
                 </div>
                 <span
-                  className="text-sm font-medium text-foreground"
+                  className="text-sm font-medium text-white"
                   data-testid={`text-trust-${index}`}
                 >
                   {item.label}
