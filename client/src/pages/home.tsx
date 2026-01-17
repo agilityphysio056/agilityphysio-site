@@ -334,7 +334,7 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-secondary/90 py-4 border-t border-white/10"
+        className="bg-secondary/70 py-4"
         data-testid="section-trust-bar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
