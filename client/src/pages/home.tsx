@@ -312,12 +312,6 @@ export default function Home() {
               data-testid="logo-bupa"
             />
             <img 
-              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:100/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Nuffield.png" 
-              alt="Nuffield Health" 
-              className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
-              data-testid="logo-nuffield"
-            />
-            <img 
               src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/simplyhealth-wob.png" 
               alt="Simplyhealth" 
               className="h-6 md:h-8 w-auto object-contain opacity-90"
@@ -328,12 +322,6 @@ export default function Home() {
               alt="Vitality" 
               className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
               data-testid="logo-vitality"
-            />
-            <img 
-              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/WH_Logo_RGB_nostrap1-copy-1-300x79-1.png" 
-              alt="Westfield Health" 
-              className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
-              data-testid="logo-westfield"
             />
             <img 
               src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/wpa.svg" 
