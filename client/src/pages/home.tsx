@@ -290,8 +290,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-secondary py-5" data-testid="section-insurance-logos">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="py-4 px-6 lg:px-12" data-testid="section-insurance-logos">
+        <div className="max-w-6xl mx-auto bg-secondary py-5 px-6 lg:px-10 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
           <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 flex-wrap">
             <img 
               src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
