@@ -278,85 +278,85 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </section>
 
-        <div className="absolute bottom-6 left-6 right-6 md:left-12 md:right-12 lg:left-24 lg:right-24" data-testid="section-insurance-logos">
-          <div className="bg-secondary py-4 px-6 md:px-10 rounded-tl-2xl rounded-br-2xl">
-            <div className="flex items-center justify-center gap-6 md:gap-10 lg:gap-12 flex-wrap">
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
-                alt="AXA" 
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-axa"
-              />
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:54/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/EXCEPTION_Aviva-primary-logo-white_RGB_14939-1.png" 
-                alt="Aviva" 
-                className="h-6 md:h-7 w-auto object-contain opacity-90"
-                data-testid="logo-aviva"
-              />
-              <div className="flex items-center gap-2 px-3" data-testid="google-reviews-badge">
-                <GoogleLogo />
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-                  ))}
-                </div>
-                <span className="text-white text-sm font-medium whitespace-nowrap">Over 200 Reviews</span>
+      <section className="bg-secondary py-5" data-testid="section-insurance-logos">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 flex-wrap">
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
+              alt="AXA" 
+              className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-axa"
+            />
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:54/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/EXCEPTION_Aviva-primary-logo-white_RGB_14939-1.png" 
+              alt="Aviva" 
+              className="h-6 md:h-7 w-auto object-contain opacity-90"
+              data-testid="logo-aviva"
+            />
+            <div className="flex items-center gap-2" data-testid="google-reviews-badge">
+              <GoogleLogo />
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 text-primary fill-primary" />
+                ))}
               </div>
-              <img 
-                src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Bupa_logo.svg" 
-                alt="Bupa" 
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-bupa"
-              />
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:100/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Nuffield.png" 
-                alt="Nuffield Health" 
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-nuffield"
-              />
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/simplyhealth-wob.png" 
-                alt="Simplyhealth" 
-                className="h-6 md:h-8 w-auto object-contain opacity-90"
-                data-testid="logo-simplyhealth"
-              />
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:162/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/vitality-logo-1.png" 
-                alt="Vitality" 
-                className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-vitality"
-              />
-              <img 
-                src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/WH_Logo_RGB_nostrap1-copy-1-300x79-1.png" 
-                alt="Westfield Health" 
-                className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-westfield"
-              />
-              <img 
-                src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/wpa.svg" 
-                alt="WPA" 
-                className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
-                data-testid="logo-wpa"
-              />
+              <span className="text-white text-sm font-medium whitespace-nowrap">Over 200 Reviews</span>
             </div>
+            <img 
+              src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Bupa_logo.svg" 
+              alt="Bupa" 
+              className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-bupa"
+            />
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:100/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Nuffield.png" 
+              alt="Nuffield Health" 
+              className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-nuffield"
+            />
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/simplyhealth-wob.png" 
+              alt="Simplyhealth" 
+              className="h-6 md:h-8 w-auto object-contain opacity-90"
+              data-testid="logo-simplyhealth"
+            />
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:162/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/vitality-logo-1.png" 
+              alt="Vitality" 
+              className="h-8 md:h-10 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-vitality"
+            />
+            <img 
+              src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:300/h:79/q:75/f:best/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/WH_Logo_RGB_nostrap1-copy-1-300x79-1.png" 
+              alt="Westfield Health" 
+              className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-westfield"
+            />
+            <img 
+              src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/wpa.svg" 
+              alt="WPA" 
+              className="h-6 md:h-7 w-auto object-contain brightness-0 invert opacity-90"
+              data-testid="logo-wpa"
+            />
           </div>
         </div>
       </section>
 
       <section
-        className="bg-secondary py-6"
+        className="bg-secondary/90 py-4 border-t border-white/10"
         data-testid="section-trust-bar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {trustItems.map((item, index) => (
               <div
                 key={index}
                 className="flex items-center gap-3 justify-center"
               >
-                <div className="w-10 h-10 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-white/20 flex items-center justify-center">
-                  <item.icon className="w-5 h-5 text-white" />
+                <div className="w-8 h-8 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-white/20 flex items-center justify-center">
+                  <item.icon className="w-4 h-4 text-white" />
                 </div>
                 <span
                   className="text-sm font-medium text-white"
