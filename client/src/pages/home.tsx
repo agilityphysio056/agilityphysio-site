@@ -277,6 +277,16 @@ export default function Home() {
               </Button>
             </Link>
           </div>
+          
+          <div className="flex items-center justify-center gap-3 mt-8" data-testid="google-reviews-badge">
+            <GoogleLogo />
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-primary fill-primary" />
+              ))}
+            </div>
+            <span className="text-white font-medium">Over 200 Reviews</span>
+          </div>
         </div>
       </section>
 
@@ -295,15 +305,6 @@ export default function Home() {
               className="h-6 md:h-7 w-auto object-contain opacity-90"
               data-testid="logo-aviva"
             />
-            <div className="flex items-center gap-2" data-testid="google-reviews-badge">
-              <GoogleLogo />
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-primary fill-primary" />
-                ))}
-              </div>
-              <span className="text-white text-sm font-medium whitespace-nowrap">Over 200 Reviews</span>
-            </div>
             <img 
               src="https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/Bupa_logo.svg" 
               alt="Bupa" 
