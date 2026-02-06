@@ -57,6 +57,7 @@ const conditionsData: Record<string, {
     title: "Neck Pain",
     description: "Neck pain is a common condition that can significantly impact daily activities, work, and sleep quality.",
     heroDescription: "Neck pain can affect your ability to work, sleep and carry out daily activities comfortably. At our Stanmore and Stockwell clinics, we provide evidence-based neck pain physiotherapy to reduce pain, restore movement and prevent recurrence.",
+    seoNote: "Patients across Stanmore and Stockwell trust our physiotherapists for professional neck pain treatment and rehabilitation.",
     metaDescription: "Specialist physiotherapy for neck pain and stiffness. HCPC registered physiotherapists treating cervical spine conditions, whiplash, and associated headaches.",
     whatIsIt: "Neck pain can arise from various causes including muscle strain, poor posture, degenerative conditions, or injury such as whiplash. The neck (cervical spine) is highly mobile and supports the head, making it vulnerable to strain and dysfunction.",
     symptoms: [
