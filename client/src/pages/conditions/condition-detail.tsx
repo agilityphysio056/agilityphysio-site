@@ -8,6 +8,7 @@ const conditionsData: Record<string, {
   title: string;
   description: string;
   heroDescription?: string;
+  seoNote?: string;
   metaDescription: string;
   whatIsIt: string;
   symptoms: string[];
@@ -20,6 +21,7 @@ const conditionsData: Record<string, {
     title: "Back Pain",
     description: "Back pain is one of the most common musculoskeletal conditions, affecting up to 80% of people at some point in their lives.",
     heroDescription: "Back pain is one of the most common causes of reduced mobility and discomfort. At our Stanmore and Stockwell clinics, we provide evidence-based physiotherapy treatment to reduce pain, restore movement and prevent recurrence.",
+    seoNote: "Patients across Stanmore and Stockwell trust our clinic for professional back pain physiotherapy and rehabilitation.",
     metaDescription: "Expert physiotherapy treatment for back pain. HCPC registered physiotherapists providing assessment, diagnosis, and rehabilitation for acute and chronic back conditions.",
     whatIsIt: "Back pain can range from a dull, constant ache to a sudden, sharp pain. It may be caused by muscle strain, disc problems, joint dysfunction, or postural issues. While most back pain resolves within a few weeks, some cases become chronic and require specialist treatment.",
     symptoms: [
@@ -46,9 +48,9 @@ const conditionsData: Record<string, {
       "History of cancer with new onset back pain",
     ],
     faqs: [
-      { question: "How long will it take to recover?", answer: "Recovery time varies depending on the cause and severity of your back pain. Most acute episodes improve within 4-6 weeks with appropriate treatment. Chronic conditions may require longer-term management." },
-      { question: "Should I rest or stay active?", answer: "Gentle activity is generally better than bed rest for most types of back pain. Your physiotherapist will advise you on appropriate activity levels and exercises." },
-      { question: "Will I need imaging like an MRI?", answer: "In most cases, imaging is not necessary for back pain. Your physiotherapist can often diagnose and treat your condition based on clinical assessment. If imaging is needed, we can refer you appropriately." },
+      { question: "How long does back pain take to recover?", answer: "Recovery time varies depending on the cause and severity of your back pain. Most acute episodes improve within 4-6 weeks with appropriate treatment. Chronic conditions may require longer-term management." },
+      { question: "Should I rest or stay active with back pain?", answer: "Gentle activity is generally better than bed rest for most types of back pain. Your physiotherapist will advise you on appropriate activity levels and exercises." },
+      { question: "Will I need an MRI for back pain?", answer: "In most cases, imaging is not necessary for back pain. Your physiotherapist can often diagnose and treat your condition based on clinical assessment. If imaging is needed, we can refer you appropriately." },
     ],
   },
   "neck-pain": {
@@ -373,6 +375,12 @@ export default function ConditionDetail() {
                   ))}
                 </ul>
               </div>
+
+              {condition.seoNote && (
+                <p className="text-muted-foreground leading-relaxed">
+                  {condition.seoNote}
+                </p>
+              )}
 
               <div>
                 <h2 className="text-2xl font-bold text-foreground mb-4">
