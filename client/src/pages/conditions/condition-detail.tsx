@@ -175,7 +175,7 @@ const conditionsData: Record<string, {
       "Reduced range of movement",
       "Clicking or catching sensations",
     ],
-    howPhysioHelps: "Physiotherapy is highly effective for hip conditions, with exercise being particularly important. Treatment combines manual therapy to improve joint mobility with targeted exercises to strengthen hip and core muscles. Your physiotherapist will also address any contributing factors such as movement patterns or activity levels.",
+    howPhysioHelps: "Physiotherapy is highly effective for treating hip conditions such as osteoarthritis, bursitis, labral irritation and muscle strains. Our physiotherapists carry out a detailed assessment to identify the underlying cause of your symptoms. Treatment may include manual therapy, targeted strengthening of the hip and core muscles, mobility work and progressive rehabilitation to restore function safely.",
     whatToExpect: [
       "Comprehensive assessment including movement analysis",
       "Manual therapy to reduce pain and improve mobility",
