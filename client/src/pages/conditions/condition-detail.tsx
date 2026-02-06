@@ -67,7 +67,7 @@ const conditionsData: Record<string, {
       "Muscle tension and trigger points",
       "Pins and needles or numbness in the arms or hands",
     ],
-    howPhysioHelps: "Physiotherapy effectively treats neck pain through a combination of manual therapy, exercise, and education. Treatment aims to reduce pain, restore mobility, strengthen supporting muscles, and address contributing factors such as posture and ergonomics.",
+    howPhysioHelps: "Physiotherapy is highly effective for treating both acute and chronic neck pain. Our physiotherapists carry out a detailed assessment to identify contributing factors such as posture, muscle imbalance and joint restriction. Treatment may include manual therapy, targeted exercises, mobility work and ergonomic advice to support long-term recovery.",
     whatToExpect: [
       "Detailed assessment of your neck, posture, and contributing factors",
       "Manual therapy including mobilisation and soft tissue techniques",
