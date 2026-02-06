@@ -30,7 +30,7 @@ const conditionsData: Record<string, {
       "Difficulty standing, sitting, or walking for long periods",
       "Pain that worsens with certain movements or positions",
     ],
-    howPhysioHelps: "Physiotherapy is highly effective for treating back pain. Your physiotherapist will conduct a thorough assessment to identify the underlying cause of your symptoms. Treatment typically includes manual therapy to reduce pain and improve mobility, targeted exercises to strengthen supporting muscles, and advice on posture and movement patterns to prevent recurrence.",
+    howPhysioHelps: "Physiotherapy is highly effective for treating both acute and chronic back pain. Our physiotherapists carry out a detailed assessment to identify the root cause of your symptoms. Treatment may include manual therapy, targeted strengthening exercises, posture correction and personalised rehabilitation to support long-term recovery.",
     whatToExpect: [
       "Comprehensive assessment to identify the cause of your pain",
       "Hands-on treatment including joint mobilisation and soft tissue work",
