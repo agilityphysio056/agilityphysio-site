@@ -237,6 +237,7 @@ const conditionsData: Record<string, {
     title: "Sports Injuries",
     description: "Sports injuries range from acute trauma to overuse conditions, and proper rehabilitation is essential for safe return to activity.",
     heroDescription: "Sports injuries can affect performance, mobility and your ability to train or compete. At our Stanmore and Stockwell clinics, we provide evidence-based sports injury physiotherapy to reduce pain, restore strength and support a safe return to activity.",
+    seoNote: "Athletes and active individuals in Stanmore and Stockwell trust us for expert sports injury physiotherapy and rehabilitation.",
     metaDescription: "Expert sports physiotherapy for all activity levels. Treatment for muscle strains, ligament injuries, and return-to-sport rehabilitation. HCPC registered physiotherapists.",
     whatIsIt: "Sports injuries can affect muscles, tendons, ligaments, or joints. They may result from acute trauma (such as a sprain or strain) or from repetitive overuse. Common sports injuries include hamstring strains, ACL injuries, tennis elbow, and Achilles tendinopathy.",
     symptoms: [
