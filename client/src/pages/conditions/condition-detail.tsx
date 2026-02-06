@@ -164,6 +164,7 @@ const conditionsData: Record<string, {
   "hip-pain": {
     title: "Hip Pain",
     description: "Hip pain can significantly impact mobility and quality of life, affecting activities from walking to sitting.",
+    heroDescription: "Hip pain can affect your ability to walk, sit comfortably and stay active. At our Stanmore and Stockwell clinics, we provide evidence-based hip pain physiotherapy to reduce pain, improve mobility and support long-term recovery.",
     metaDescription: "Expert physiotherapy for hip pain including arthritis, bursitis, and muscle strains. HCPC registered physiotherapists providing assessment and treatment.",
     whatIsIt: "Hip pain can originate from the joint itself, surrounding muscles and tendons, or be referred from the lower back. Common causes include osteoarthritis, trochanteric bursitis, labral tears, muscle strains, and hip impingement. Accurate diagnosis is key to effective treatment.",
     symptoms: [
