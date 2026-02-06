@@ -7,6 +7,7 @@ import { CheckCircle2, Phone, AlertTriangle } from "lucide-react";
 const conditionsData: Record<string, {
   title: string;
   description: string;
+  heroDescription?: string;
   metaDescription: string;
   whatIsIt: string;
   symptoms: string[];
@@ -18,6 +19,7 @@ const conditionsData: Record<string, {
   "back-pain": {
     title: "Back Pain",
     description: "Back pain is one of the most common musculoskeletal conditions, affecting up to 80% of people at some point in their lives.",
+    heroDescription: "Back pain is one of the most common causes of reduced mobility and discomfort. At our Stanmore and Stockwell clinics, we provide evidence-based physiotherapy treatment to reduce pain, restore movement and prevent recurrence.",
     metaDescription: "Expert physiotherapy treatment for back pain. HCPC registered physiotherapists providing assessment, diagnosis, and rehabilitation for acute and chronic back conditions.",
     whatIsIt: "Back pain can range from a dull, constant ache to a sudden, sharp pain. It may be caused by muscle strain, disc problems, joint dysfunction, or postural issues. While most back pain resolves within a few weeks, some cases become chronic and require specialist treatment.",
     symptoms: [
@@ -326,7 +328,7 @@ export default function ConditionDetail() {
               {condition.title} Treatment in Stanmore & Stockwell
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-              {condition.description}
+              {condition.heroDescription || condition.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
