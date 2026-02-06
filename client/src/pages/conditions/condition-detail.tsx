@@ -103,7 +103,7 @@ const conditionsData: Record<string, {
       "Clicking or catching sensations",
       "Pain that radiates down the arm",
     ],
-    howPhysioHelps: "Physiotherapy is often the first-line treatment for shoulder conditions. Treatment focuses on reducing pain, restoring mobility, and strengthening the rotator cuff and surrounding muscles. Your physiotherapist will identify the specific cause of your symptoms and develop a targeted treatment plan.",
+    howPhysioHelps: "Physiotherapy is highly effective for treating conditions such as rotator cuff injuries, frozen shoulder and shoulder impingement. Our physiotherapists carry out a detailed assessment to identify the underlying cause of your symptoms. Treatment may include manual therapy, mobility exercises, progressive strengthening and personalised rehabilitation to restore full shoulder function.",
     whatToExpect: [
       "Comprehensive shoulder assessment and diagnosis",
       "Manual therapy to improve joint mobility and reduce pain",
