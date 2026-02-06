@@ -139,7 +139,7 @@ const conditionsData: Record<string, {
       "Locking or catching sensations",
       "Difficulty straightening or fully bending the knee",
     ],
-    howPhysioHelps: "Physiotherapy addresses the underlying cause of knee pain through targeted exercises, manual therapy, and load management. Treatment aims to reduce pain, restore function, and prevent recurrence. For conditions like osteoarthritis, exercise-based therapy is often the most effective treatment.",
+    howPhysioHelps: "Physiotherapy is highly effective for treating knee conditions such as ligament injuries, meniscal tears, patellofemoral pain and osteoarthritis. Our physiotherapists carry out a detailed assessment to identify the underlying cause of your symptoms. Treatment may include manual therapy, targeted strengthening, load management strategies and progressive rehabilitation to support long-term recovery.",
     whatToExpect: [
       "Thorough assessment of the knee and contributing factors",
       "Treatment to reduce pain and swelling",
