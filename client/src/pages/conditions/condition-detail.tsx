@@ -323,7 +323,7 @@ export default function ConditionDetail() {
               className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
               data-testid="text-condition-title"
             >
-              {condition.title}
+              {condition.title} Treatment in Stanmore & Stockwell
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed mb-6">
               {condition.description}
