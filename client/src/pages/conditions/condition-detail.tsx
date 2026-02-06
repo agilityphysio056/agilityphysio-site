@@ -211,7 +211,7 @@ const conditionsData: Record<string, {
       "Sharp, shooting pain when standing or walking",
       "Burning or electric shock sensations",
     ],
-    howPhysioHelps: "Physiotherapy is a key treatment for sciatica, often helping to avoid the need for surgery. Treatment aims to reduce nerve compression, decrease inflammation, and restore normal movement. Your physiotherapist will use a combination of manual therapy, specific exercises, and education to manage your symptoms and prevent recurrence.",
+    howPhysioHelps: "Physiotherapy is highly effective for managing sciatica and reducing pressure on the sciatic nerve. Our physiotherapists carry out a detailed assessment to identify whether your symptoms are caused by disc irritation, spinal stiffness or muscular tension. Treatment may include manual therapy, nerve mobilisation techniques, targeted exercises and progressive rehabilitation to improve mobility and reduce recurrence.",
     whatToExpect: [
       "Assessment to determine the cause of nerve irritation",
       "Manual therapy to reduce muscle tension and improve spinal mobility",
