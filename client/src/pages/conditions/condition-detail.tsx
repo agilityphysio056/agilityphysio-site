@@ -247,7 +247,7 @@ const conditionsData: Record<string, {
       "Instability or joint giving way",
       "Stiffness and reduced range of movement",
     ],
-    howPhysioHelps: "Sports physiotherapy goes beyond basic injury treatment to ensure you return to your activity safely and at full performance. Treatment addresses the injured tissue while also correcting any underlying factors that contributed to the injury. We develop sport-specific rehabilitation programmes to get you back to doing what you love.",
+    howPhysioHelps: "Physiotherapy plays a key role in the effective management of sports injuries. Our physiotherapists carry out a detailed assessment to identify the injured tissue and contributing factors such as muscle imbalance, poor biomechanics or training errors. Treatment may include manual therapy, progressive strengthening, sport-specific rehabilitation and structured return-to-play programmes.",
     whatToExpect: [
       "Accurate diagnosis of your injury",
       "Immediate management to reduce pain and swelling",
