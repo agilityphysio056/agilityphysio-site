@@ -200,6 +200,7 @@ const conditionsData: Record<string, {
   "sciatica": {
     title: "Sciatica",
     description: "Sciatica refers to pain that radiates along the path of the sciatic nerve, typically affecting one side of the body.",
+    heroDescription: "Sciatica can cause sharp, radiating pain from the lower back into the leg, affecting mobility and daily activities. At our Stanmore and Stockwell clinics, we provide evidence-based sciatica physiotherapy to reduce nerve irritation, relieve pain and support long-term recovery.",
     metaDescription: "Specialist physiotherapy for sciatica and sciatic nerve pain. Evidence-based treatment for leg pain, numbness, and tingling. HCPC registered physiotherapists.",
     whatIsIt: "Sciatica describes pain that travels from the lower back down through the buttock and into the leg, following the path of the sciatic nerve. It's often caused by a herniated disc, spinal stenosis, or piriformis syndrome. The symptoms can range from mild discomfort to severe, debilitating pain.",
     symptoms: [
