@@ -5,21 +5,18 @@ import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone } from "lucide-react";
 
 const clinicPrices = [
-  { service: "Initial Assessment (60 mins)", price: "£85" },
-  { service: "Follow-up Appointment (45 mins)", price: "£65" },
-  { service: "Follow-up Appointment (30 mins)", price: "£50" },
-  { service: "Extended Session (75 mins)", price: "£100" },
+  { service: "Initial Assessment (30 minutes)", price: "£50" },
+  { service: "Follow-up Appointment (30 minutes)", price: "£45" },
 ];
 
 const homeVisitPrices = [
-  { service: "Initial Assessment (60 mins)", price: "£120" },
-  { service: "Follow-up Appointment (45 mins)", price: "£95" },
-  { service: "Follow-up Appointment (30 mins)", price: "£75" },
+  { service: "Initial Assessment (45 minutes)", price: "£70" },
+  { service: "Follow-up Appointment (45 minutes)", price: "£65" },
 ];
 
 const virtualPrices = [
-  { service: "Initial Consultation (45 mins)", price: "£60" },
-  { service: "Follow-up Consultation (30 mins)", price: "£45" },
+  { service: "Initial Consultation (30 minutes)", price: "£40" },
+  { service: "Follow-up Consultation (30 minutes)", price: "£35" },
 ];
 
 const insurers = [
@@ -58,7 +55,7 @@ export default function Fees() {
       <section className="py-16 lg:py-20 bg-background">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            <Card className="p-6" data-testid="card-clinic-prices">
+            <Card className="p-6 flex flex-col" data-testid="card-clinic-prices">
               <h2 className="text-xl font-bold text-foreground mb-2">
                 Clinic Appointments
               </h2>
@@ -73,12 +70,12 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block mt-6">
+              <Link href="/contact" className="block mt-auto pt-6">
                 <Button className="w-full">Book Clinic Appointment</Button>
               </Link>
             </Card>
 
-            <Card className="p-6" data-testid="card-home-visit-prices">
+            <Card className="p-6 flex flex-col" data-testid="card-home-visit-prices">
               <h2 className="text-xl font-bold text-foreground mb-2">
                 Home Visits
               </h2>
@@ -93,15 +90,12 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <p className="text-xs text-muted-foreground mt-4">
-                Prices may vary depending on location. Please contact us for a quote.
-              </p>
-              <Link href="/contact" className="block mt-6">
+              <Link href="/contact" className="block mt-auto pt-6">
                 <Button className="w-full">Book Home Visit</Button>
               </Link>
             </Card>
 
-            <Card className="p-6" data-testid="card-virtual-prices">
+            <Card className="p-6 flex flex-col" data-testid="card-virtual-prices">
               <h2 className="text-xl font-bold text-foreground mb-2">
                 Virtual Appointments
               </h2>
@@ -116,7 +110,7 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block mt-6">
+              <Link href="/contact" className="block mt-auto pt-6">
                 <Button className="w-full">Book Virtual Appointment</Button>
               </Link>
             </Card>
