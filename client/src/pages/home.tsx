@@ -369,8 +369,11 @@ export default function Home() {
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-6">
             Don't stay in pain.
           </h2>
+          <p className="text-muted-foreground leading-relaxed mb-4">
+            Our experienced physiotherapists in Stanmore and Stockwell provide evidence-based treatment for back pain, neck pain, shoulder pain, knee pain and sports injuries. We combine hands-on therapy, expert advice and personalised rehabilitation plans to restore movement, reduce pain and improve your quality of life.
+          </p>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Our experienced physios work with you to treat the whole body through hands on treatment, advice and creating personalised rehabilitation plans right for you. If you are experiencing neck, back, shoulder, knee or joint pain, or have suffered an injury through sports or accident that has impacted your function or quality of life, our physiotherapists can help you.
+            Whether your pain is caused by work, sport or everyday activity, our clinics in Stanmore and Stockwell are here to help you recover safely and effectively.
           </p>
           <p className="font-semibold text-foreground mb-8">
             Why wait. Call us today or book online for a fast appointment
