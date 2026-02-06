@@ -93,6 +93,7 @@ const conditionsData: Record<string, {
     title: "Shoulder Pain",
     description: "The shoulder is the most mobile joint in the body, making it susceptible to a range of conditions that can cause pain and limit function.",
     heroDescription: "Shoulder pain can affect your ability to lift, reach and carry out daily activities comfortably. At our Stanmore and Stockwell clinics, we provide evidence-based shoulder pain physiotherapy to reduce pain, restore mobility and support long-term recovery.",
+    seoNote: "Patients across Stanmore and Stockwell trust our physiotherapists for professional shoulder pain treatment and rehabilitation.",
     metaDescription: "Expert physiotherapy for shoulder pain including frozen shoulder, rotator cuff injuries, and impingement. HCPC registered physiotherapists in London.",
     whatIsIt: "Shoulder pain can result from various conditions including rotator cuff injuries, frozen shoulder (adhesive capsulitis), impingement syndrome, or arthritis. The complex structure of the shoulder allows for wide range of movement but also makes it prone to injury.",
     symptoms: [
