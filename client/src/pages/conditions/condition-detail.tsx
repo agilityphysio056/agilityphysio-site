@@ -128,6 +128,7 @@ const conditionsData: Record<string, {
   "knee-pain": {
     title: "Knee Pain",
     description: "Knee pain affects people of all ages and activity levels, from sports injuries to age-related wear and tear.",
+    heroDescription: "Knee pain can affect your ability to walk, climb stairs and stay active. At our Stanmore and Stockwell clinics, we provide evidence-based knee pain physiotherapy to reduce pain, improve strength and restore function safely.",
     metaDescription: "Specialist physiotherapy for knee pain and injuries. Treatment for ligament injuries, osteoarthritis, and post-surgical rehabilitation. HCPC registered physiotherapists.",
     whatIsIt: "The knee is a complex joint that bears significant load during daily activities. Knee pain can result from ligament injuries, meniscal tears, patellofemoral problems, tendinopathies, or osteoarthritis. Understanding the specific cause is essential for effective treatment.",
     symptoms: [
