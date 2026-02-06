@@ -272,6 +272,7 @@ const conditionsData: Record<string, {
   "post-op-rehab": {
     title: "Post-Operative Rehabilitation",
     description: "Structured physiotherapy following surgery is essential for optimal recovery and return to normal function.",
+    heroDescription: "Post-operative rehabilitation is essential for a safe and effective recovery after surgery. At our Stanmore and Stockwell clinics, we provide structured post-operative physiotherapy to reduce pain, restore strength and help you return to normal activities confidently.",
     metaDescription: "Specialist post-surgical physiotherapy following joint replacement, ACL reconstruction, and orthopaedic procedures. HCPC registered physiotherapists.",
     whatIsIt: "Post-operative rehabilitation refers to the structured physiotherapy programme that follows surgical procedures. This may include joint replacements (hip, knee, shoulder), ligament reconstructions (ACL), spinal surgery, or other orthopaedic operations. Proper rehabilitation is crucial for achieving the best possible outcome from surgery.",
     symptoms: [
