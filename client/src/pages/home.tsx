@@ -252,7 +252,7 @@ export default function Home() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             data-testid="text-hero-title"
           >
-            <span className="text-primary">Expert</span> Physiotherapy in Stanmore & Stockwell
+            Patients First <span className="text-primary">Expert Care</span>
           </h1>
           <p
             className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto"
