@@ -283,7 +283,7 @@ const conditionsData: Record<string, {
       "Changes in walking pattern",
       "Scar tissue restrictions",
     ],
-    howPhysioHelps: "Post-operative physiotherapy follows protocols designed to optimize healing while progressively restoring function. Your physiotherapist works alongside your surgeon to ensure your rehabilitation progresses appropriately. We guide you through each stage of recovery, from early mobilisation to return to normal activities.",
+    howPhysioHelps: "Post-operative physiotherapy follows structured protocols designed to optimise healing and restore function safely. Our physiotherapists work closely with your surgical team where required and guide you through each phase of recovery \u2014 from early mobilisation and swelling control to progressive strengthening and return to full activity.",
     whatToExpect: [
       "Early focus on pain management and reducing swelling",
       "Progressive range of movement exercises",
