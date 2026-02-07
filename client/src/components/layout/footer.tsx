@@ -1,6 +1,9 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
+import hcpcLogo from "@assets/hcpc-registered_1770502955561.png";
+import cspLogo from "@assets/csp_1770502966293.png";
+import charteredCrestLogo from "@assets/chartered-physio-crest_1770502966292.png";
 
 const services = [
   { label: "Clinic Physiotherapy", href: "/services/clinic-physiotherapy" },
@@ -101,6 +104,32 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-12 pt-8">
+          <div className="mb-8">
+            <h3 className="font-semibold mb-4 text-sm" data-testid="text-accreditation-heading">Professional Accreditation</h3>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+              <img
+                src={hcpcLogo}
+                alt="HCPC Registered"
+                loading="lazy"
+                className="h-8 sm:h-9 w-auto object-contain"
+                data-testid="footer-logo-hcpc"
+              />
+              <img
+                src={cspLogo}
+                alt="Chartered Society of Physiotherapy"
+                loading="lazy"
+                className="h-8 sm:h-9 w-auto object-contain"
+                data-testid="footer-logo-csp"
+              />
+              <img
+                src={charteredCrestLogo}
+                alt="Chartered Physiotherapist"
+                loading="lazy"
+                className="h-8 sm:h-9 w-auto object-contain"
+                data-testid="footer-logo-chartered-crest"
+              />
+            </div>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-wrap items-center gap-6">
               <div className="flex items-center gap-2">

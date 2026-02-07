@@ -17,6 +17,10 @@ import {
   Stethoscope,
   Users,
 } from "lucide-react";
+import hcpcLogo from "@assets/hcpc-registered_1770502955561.png";
+import cspLogo from "@assets/csp_1770502966293.png";
+import charteredCrestLogo from "@assets/chartered-physio-crest_1770502966292.png";
+
 const GoogleLogo = () => (
   <svg viewBox="0 0 24 24" className="w-8 h-8">
     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -290,7 +294,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="-mt-10 relative z-20 px-6 lg:px-12 pb-4" data-testid="section-insurance-logos">
+      <section className="bg-[#F4F6FA] py-6 lg:py-8" data-testid="section-accreditation">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-[#1F2A44] text-center mb-4 uppercase tracking-wider">Professional Accreditation</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+            <img
+              src={hcpcLogo}
+              alt="HCPC Registered"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-hcpc"
+            />
+            <img
+              src={cspLogo}
+              alt="Chartered Society of Physiotherapy"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-csp"
+            />
+            <img
+              src={charteredCrestLogo}
+              alt="Chartered Physiotherapist"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-chartered-crest"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-20 px-6 lg:px-12 pb-4" data-testid="section-insurance-logos">
         <div className="max-w-6xl mx-auto bg-[#1F2A44] py-5 px-6 lg:px-10 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none shadow-lg">
           <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 flex-wrap">
             <img 
