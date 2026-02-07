@@ -73,7 +73,7 @@ export default function Services() {
                   ))}
                 </ul>
                 <Link href={`/services/${service.slug}`} className="block mt-auto">
-                  <Button variant="outline" className="w-full">
+                  <Button className="w-full">
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
