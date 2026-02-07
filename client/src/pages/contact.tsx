@@ -56,7 +56,7 @@ function LondonMap() {
     }).addTo(map);
 
     const dotIcon = L.divIcon({
-      html: `<div style="width:20px;height:20px;background:#F2B705;border:3px solid #1F2A44;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
+      html: `<div style="width:20px;height:20px;background:#F2B705;border:3px solid #1F2A44;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);transition:transform 0.2s ease;cursor:pointer;" onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'"></div>`,
       iconSize: [20, 20],
       iconAnchor: [10, 10],
       popupAnchor: [0, -14],
