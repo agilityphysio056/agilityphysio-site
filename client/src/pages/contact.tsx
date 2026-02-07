@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -16,6 +16,79 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import heroContactImage from "../assets/images/hero-contact.jpg";
+import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+const LOCATIONS = [
+  {
+    name: "Stanmore Clinic",
+    lat: 51.6154,
+    lng: -0.3120,
+    address: "Stanmore, Greater London",
+  },
+  {
+    name: "Stockwell Clinic",
+    lat: 51.4720,
+    lng: -0.1228,
+    address: "Stockwell, South London",
+  },
+];
+
+function LondonMap() {
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
+
+  useEffect(() => {
+    if (!mapRef.current || mapInstanceRef.current) return;
+
+    const map = L.map(mapRef.current, {
+      center: [51.52, -0.18],
+      zoom: 11,
+      scrollWheelZoom: false,
+      zoomControl: true,
+    });
+
+    mapInstanceRef.current = map;
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    const logoIcon = L.icon({
+      iconUrl: logoImg,
+      iconSize: [48, 48],
+      iconAnchor: [24, 48],
+      popupAnchor: [0, -48],
+      className: "rounded-md shadow-lg",
+    });
+
+    LOCATIONS.forEach((loc) => {
+      L.marker([loc.lat, loc.lng], { icon: logoIcon })
+        .addTo(map)
+        .bindPopup(
+          `<div style="text-align:center;font-family:Inter,sans-serif;"><strong style="font-size:14px;color:#1F2A44;">${loc.name}</strong><br/><span style="font-size:12px;color:#666;">${loc.address}</span></div>`
+        );
+    });
+
+    const bounds = L.latLngBounds(LOCATIONS.map((loc) => [loc.lat, loc.lng] as [number, number]));
+    map.fitBounds(bounds, { padding: [60, 60] });
+
+    return () => {
+      map.remove();
+      mapInstanceRef.current = null;
+    };
+  }, []);
+
+  return (
+    <div
+      ref={mapRef}
+      className="h-[450px] w-full"
+      data-testid="map-london"
+    />
+  );
+}
 
 export default function Contact() {
   const { toast } = useToast();
@@ -272,15 +345,7 @@ export default function Contact() {
       </section>
 
       <section className="bg-muted" data-testid="section-map">
-        <div className="h-[400px] bg-slate-200 dark:bg-slate-800 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="w-12 h-12 text-secondary mx-auto mb-4" />
-            <p className="text-muted-foreground">
-              Interactive map would be displayed here
-            </p>
-            <p className="text-sm text-muted-foreground">Stanmore, Greater London</p>
-          </div>
-        </div>
+        <LondonMap />
       </section>
     </Layout>
   );
