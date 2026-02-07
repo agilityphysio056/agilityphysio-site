@@ -294,36 +294,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#F4F6FA] py-6 lg:py-8" data-testid="section-accreditation">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <p className="text-xs font-medium text-[#1F2A44] text-center mb-4 uppercase tracking-wider">Professional Accreditation</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-            <img
-              src={hcpcLogo}
-              alt="HCPC Registered"
-              loading="lazy"
-              className="h-10 sm:h-[52px] w-auto object-contain"
-              data-testid="logo-hcpc"
-            />
-            <img
-              src={cspLogo}
-              alt="Chartered Society of Physiotherapy"
-              loading="lazy"
-              className="h-10 sm:h-[52px] w-auto object-contain"
-              data-testid="logo-csp"
-            />
-            <img
-              src={charteredCrestLogo}
-              alt="Chartered Physiotherapist"
-              loading="lazy"
-              className="h-10 sm:h-[52px] w-auto object-contain"
-              data-testid="logo-chartered-crest"
-            />
-          </div>
-        </div>
-      </section>
-
-      <section className="relative z-20 px-6 lg:px-12 pb-4" data-testid="section-insurance-logos">
+      <section className="-mt-10 relative z-20 px-6 lg:px-12 pb-4" data-testid="section-insurance-logos">
         <div className="max-w-6xl mx-auto bg-[#1F2A44] py-5 px-6 lg:px-10 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none shadow-lg">
           <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 flex-wrap">
             <img 
@@ -422,6 +393,35 @@ export default function Home() {
                 Contact Us
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#F4F6FA] py-6 lg:py-8" data-testid="section-accreditation">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <p className="text-xs font-medium text-[#1F2A44] text-center mb-4 uppercase tracking-wider">Professional Accreditation</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
+            <img
+              src={hcpcLogo}
+              alt="HCPC Registered"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-hcpc"
+            />
+            <img
+              src={cspLogo}
+              alt="Chartered Society of Physiotherapy"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-csp"
+            />
+            <img
+              src={charteredCrestLogo}
+              alt="Chartered Physiotherapist"
+              loading="lazy"
+              className="h-10 sm:h-[52px] w-auto object-contain"
+              data-testid="logo-chartered-crest"
+            />
           </div>
         </div>
       </section>
