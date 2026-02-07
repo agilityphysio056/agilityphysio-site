@@ -16,7 +16,6 @@ import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import heroContactImage from "../assets/images/hero-contact.jpg";
-import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -56,16 +55,16 @@ function LondonMap() {
       maxZoom: 19,
     }).addTo(map);
 
-    const logoIcon = L.icon({
-      iconUrl: logoImg,
-      iconSize: [48, 48],
-      iconAnchor: [24, 48],
-      popupAnchor: [0, -48],
-      className: "rounded-md shadow-lg",
+    const dotIcon = L.divIcon({
+      html: `<div style="width:20px;height:20px;background:#F2B705;border:3px solid #1F2A44;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
+      iconSize: [20, 20],
+      iconAnchor: [10, 10],
+      popupAnchor: [0, -14],
+      className: "",
     });
 
     LOCATIONS.forEach((loc) => {
-      L.marker([loc.lat, loc.lng], { icon: logoIcon })
+      L.marker([loc.lat, loc.lng], { icon: dotIcon })
         .addTo(map)
         .bindPopup(
           `<div style="text-align:center;font-family:Inter,sans-serif;"><strong style="font-size:14px;color:#1F2A44;">${loc.name}</strong><br/><span style="font-size:12px;color:#666;">${loc.address}</span></div>`
