@@ -25,12 +25,14 @@ const LOCATIONS = [
     lat: 51.6154,
     lng: -0.3120,
     address: "Stanmore, Greater London",
+    href: "/clinics/stanmore",
   },
   {
     name: "Stockwell Clinic",
     lat: 51.4720,
     lng: -0.1228,
     address: "Stockwell, South London",
+    href: "/clinics/stockwell",
   },
 ];
 
@@ -67,8 +69,11 @@ function LondonMap() {
       L.marker([loc.lat, loc.lng], { icon: dotIcon })
         .addTo(map)
         .bindPopup(
-          `<div style="text-align:center;font-family:Inter,sans-serif;"><strong style="font-size:14px;color:#1F2A44;">${loc.name}</strong><br/><span style="font-size:12px;color:#666;">${loc.address}</span></div>`
-        );
+          `<div style="text-align:center;font-family:Inter,sans-serif;"><a href="${loc.href}" style="text-decoration:none;"><strong style="font-size:14px;color:#1F2A44;">${loc.name}</strong></a><br/><span style="font-size:12px;color:#666;">${loc.address}</span></div>`
+        )
+        .on("click", () => {
+          window.location.href = loc.href;
+        });
     });
 
     const bounds = L.latLngBounds(LOCATIONS.map((loc) => [loc.lat, loc.lng] as [number, number]));
