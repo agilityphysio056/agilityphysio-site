@@ -1,0 +1,153 @@
+We need to redesign and rewrite the existing Why Choose Us page to match a subtle, clinical, rehabilitation-focused brand style (NOT gym/flashy, NOT salesy, NOT repetitive SEO stuffing). The brand is Agility Physio and the page must be scalable for multiple clinic locations.
+
+Page Requirements (High Priority)
+
+Keep the page layout consistent with the current website design system (same header/footer, spacing, typography).
+
+Replace the entire old content with a new clean clinical structure.
+
+Do NOT mention any individual clinician names (no “Meet Abdul / Uzma” etc).
+
+Avoid repetitive headings like “Why choose us / why patients choose us / why it works” etc.
+
+Use calm, evidence-led language. No hype words like “advanced”, “best”, “fastest”, “state of the art” unless strictly necessary.
+
+Make it multi-location friendly: do not hardcode only “Stanmore” in the main messaging. If location is mentioned, use “our clinics in Stanmore and Stockwell” and ensure it can scale later.
+
+✅ SEO & Copy Style Rules
+
+One clear H1 only.
+
+Use concise paragraphs (max 2–3 lines).
+
+Use H2s for sections; optional H3 for subpoints.
+
+Include keywords naturally (physiotherapy, musculoskeletal, rehabilitation, back pain, neck pain, sports injuries, post-operative rehab, Stanmore, Stockwell) but do NOT stuff.
+
+Tone: clinical, professional, calm.
+
+✅ New Page Structure (Implement Exactly)
+1) Hero Section
+
+H1: Our Approach to Physiotherapy Care
+Subheading (1–2 lines):
+Evidence-based musculoskeletal physiotherapy and rehabilitation focused on clear diagnosis, structured recovery plans and measurable progress.
+
+CTAs:
+Primary button: Book Assessment
+Secondary button: Call 0203 092 9976
+
+(Optional small trust line under CTA): HCPC Registered Physiotherapists • Clinic, Home Visits & Virtual
+
+2) Section: Clinical Standards
+
+H2: Clinical Standards You Can Rely On
+Use a 2-column or 3-column grid with short bullets/cards:
+
+HCPC Registered Physiotherapists
+
+Evidence-Based MSK Care
+
+Structured Assessment & Treatment Planning
+
+Clear Rehab Plans and Home Exercise Guidance
+
+Progress Tracking and Regular Reviews
+
+Consistent Standards Across Clinics
+
+3) Section: Conditions We Commonly Treat
+
+H2: Conditions We Commonly Treat
+Display as a clean list or cards (no long paragraphs):
+
+Back Pain & Sciatica
+
+Neck Pain & Headache-Related Symptoms
+
+Shoulder Pain (rotator cuff, impingement, frozen shoulder)
+
+Knee Pain (tendinopathy, OA, ligament-related)
+
+Sports Injuries & Return-to-Sport Rehab
+
+Post-Operative Rehabilitation
+
+Add one short line below list:
+If you’re unsure what’s causing your symptoms, we can assess and guide you to the most appropriate plan.
+
+4) Section: How Care Works (3 Steps)
+
+H2: How Your Care Works
+Use 3 simple steps (icons optional):
+
+Assess — thorough history, examination and working diagnosis
+
+Treat — hands-on care where appropriate + tailored exercises
+
+Rehabilitate — progressive plan, education and prevention strategies
+
+Keep each step 1–2 lines.
+
+5) Section: Treatment Methods (Keep It Subtle)
+
+H2: Treatment Methods (Used When Appropriate)
+Short bullets only:
+
+Manual therapy and joint mobilisation (where indicated)
+
+Progressive exercise rehabilitation
+
+Education, pacing and self-management strategies
+
+Ergonomics / posture advice relevant to your daily activities
+
+Return-to-activity and performance rehabilitation
+
+Modalities such as TENS/heat may be used as supportive options (not the core treatment)
+
+Avoid “advanced techniques” marketing.
+
+6) Section: Locations (Multi-site friendly)
+
+H2: Our Clinics
+One short paragraph:
+
+We currently offer appointments at our clinics in Stanmore and Stockwell, with clinic-based care, home visits and virtual appointments available.
+
+Add two location cards (reuse existing clinic card component if already built):
+
+Stanmore, North London
+
+Stockwell, South London
+
+Include a “View Clinics” button.
+
+7) Section: Reviews / Social Proof (Calm)
+
+H2: Patient Feedback
+One line: We’re proud of the feedback we receive and continuously improve our service standards.
+Then reuse the existing review slider component.
+
+8) Final CTA Section
+
+H2: Ready to Get Started?
+Short line: Book an assessment and we’ll guide you through a clear plan to support your recovery.
+
+Buttons: Book Assessment + Call
+
+✅ Technical Notes
+
+Reuse existing components if possible (Hero, Cards, Buttons, Review slider, Clinic cards).
+
+Ensure spacing is consistent with other pages.
+
+Ensure mobile responsiveness remains intact.
+
+Update meta tags for this page:
+
+Title: “Our Approach to Physiotherapy Care | Agility Physio”
+
+Meta description: “Evidence-based musculoskeletal physiotherapy and rehabilitation across our clinics in Stanmore and Stockwell. Clear assessment, structured rehab plans and measurable progress.”
+
+Implement this redesign now and replace the old page content fully.
