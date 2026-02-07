@@ -54,7 +54,7 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={service.slug} className="p-6 lg:p-8" data-testid={`card-service-${index}`}>
+              <Card key={service.slug} className="p-6 lg:p-8 flex flex-col" data-testid={`card-service-${index}`}>
                 <div className="w-14 h-14 rounded-md bg-secondary/10 flex items-center justify-center mb-6">
                   <service.icon className="w-7 h-7 text-secondary" />
                 </div>
@@ -72,7 +72,7 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-                <Link href={`/services/${service.slug}`}>
+                <Link href={`/services/${service.slug}`} className="block mt-auto">
                   <Button variant="outline" className="w-full">
                     Learn More
                     <ArrowRight className="w-4 h-4 ml-2" />
