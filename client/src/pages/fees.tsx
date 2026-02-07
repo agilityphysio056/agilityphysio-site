@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone } from "lucide-react";
+import heroFeesImage from "../assets/images/hero-fees.jpg";
 
 const clinicPrices = [
   { service: "Initial Assessment (30 minutes)", price: "£50" },
@@ -36,16 +37,22 @@ export default function Fees() {
       title="Fees & Insurance | Agility Physio"
       description="Transparent physiotherapy pricing. Self-pay rates for clinic, home visit, and virtual appointments. We work with major health insurers including Bupa, AXA, and Aviva."
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-fees-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-fees-hero">
+        <img
+          src={heroFeesImage}
+          alt="Professional healthcare clinic reception"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-fees-page-title"
             >
               Fees & Insurance
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               We believe in transparent pricing. Below you'll find our self-pay rates and information about using your health insurance.
             </p>
           </div>

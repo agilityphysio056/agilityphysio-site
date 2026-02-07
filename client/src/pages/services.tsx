@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Building2, Home, Monitor, Phone, ArrowRight, MapPin } from "lucide-react";
+import heroServicesImage from "../assets/images/hero-services.jpg";
 
 const services = [
   {
@@ -34,16 +35,22 @@ export default function Services() {
       title="Our Services | Agility Physio"
       description="Flexible physiotherapy services including clinic appointments, home visits, and virtual consultations. HCPC registered physiotherapists."
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-services-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-services-hero">
+        <img
+          src={heroServicesImage}
+          alt="Professional physiotherapy treatment room"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-services-page-title"
             >
               Our Physiotherapy Services
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               We offer flexible treatment options to suit your needs and circumstances. Whether you prefer to visit our clinic, have us come to you, or consult online, we provide the same high standard of care.
             </p>
           </div>

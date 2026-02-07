@@ -18,6 +18,7 @@ import {
   Stethoscope,
   Users,
 } from "lucide-react";
+import heroAboutImage from "../assets/images/hero-about.jpg";
 
 const GoogleLogo = () => (
   <svg viewBox="0 0 24 24" className="w-8 h-8">
@@ -216,16 +217,22 @@ export default function About() {
       title="Our Approach to Physiotherapy Care | Agility Physio"
       description="Evidence-based musculoskeletal physiotherapy and rehabilitation across our clinics in Stanmore and Stockwell. Clear assessment, structured rehab plans and measurable progress."
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-about-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-about-hero">
+        <img
+          src={heroAboutImage}
+          alt="Professional physiotherapy team"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-about-page-title"
             >
               Our Approach to Physiotherapy Care
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            <p className="text-lg text-white/90 leading-relaxed mb-8">
               Evidence-based musculoskeletal physiotherapy and rehabilitation focused on clear diagnosis, structured recovery plans and measurable progress.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -235,13 +242,13 @@ export default function About() {
                 </Button>
               </Link>
               <a href="tel:02030929976">
-                <Button size="lg" variant="outline" data-testid="button-about-call">
+                <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white" data-testid="button-about-call">
                   <Phone className="w-4 h-4 mr-2" />
                   0203 092 9976
                 </Button>
               </a>
             </div>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-white/70">
               HCPC Registered Physiotherapists &bull; Clinic, Home Visits & Virtual
             </p>
           </div>

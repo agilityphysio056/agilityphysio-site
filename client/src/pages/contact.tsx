@@ -15,6 +15,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import heroContactImage from "../assets/images/hero-contact.jpg";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -59,16 +60,22 @@ export default function Contact() {
 
   return (
     <Layout>
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-contact-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-contact-hero">
+        <img
+          src={heroContactImage}
+          alt="Healthcare professional consulting with patient"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-4xl lg:text-5xl font-bold text-foreground mb-6"
+              className="text-4xl lg:text-5xl font-bold text-white mb-6"
               data-testid="text-contact-page-title"
             >
               Contact Us
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               Have a question or ready to book an appointment? Get in touch and
               our team will respond within 24 hours.
             </p>

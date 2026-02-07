@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone, AlertTriangle } from "lucide-react";
+import heroConditionDetailImage from "../../assets/images/hero-condition-detail.jpg";
 
 const conditionsData: Record<string, {
   title: string;
@@ -332,17 +333,23 @@ export default function ConditionDetail() {
       title={`${condition.title} Treatment | Agility Physio`}
       description={condition.metaDescription}
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-condition-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-condition-hero">
+        <img
+          src={heroConditionDetailImage}
+          alt="Physiotherapist treating a patient"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
-            <p className="text-sm font-medium text-secondary mb-2">Conditions We Treat</p>
+            <p className="text-sm font-medium text-primary mb-2">Conditions We Treat</p>
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-condition-title"
             >
               {condition.title} Treatment in Stanmore & Stockwell
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-lg text-white/90 leading-relaxed mb-6">
               {condition.heroDescription || condition.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -352,7 +359,7 @@ export default function ConditionDetail() {
                 </Button>
               </Link>
               <a href="tel:02030929976">
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white">
                   <Phone className="w-4 h-4 mr-2" />
                   0203 092 9976
                 </Button>

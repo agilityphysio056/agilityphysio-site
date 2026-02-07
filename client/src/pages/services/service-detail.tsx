@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone } from "lucide-react";
+import heroServiceDetailImage from "../../assets/images/hero-service-detail.jpg";
 
 const servicesData: Record<string, {
   title: string;
@@ -137,17 +138,23 @@ export default function ServiceDetail() {
       title={`${service.title} | Agility Physio`}
       description={service.metaDescription}
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-service-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-service-hero">
+        <img
+          src={heroServiceDetailImage}
+          alt="Physiotherapy exercise and rehabilitation session"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
-            <p className="text-sm font-medium text-secondary mb-2">Our Services</p>
+            <p className="text-sm font-medium text-primary mb-2">Our Services</p>
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-service-title"
             >
               {service.title}
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+            <p className="text-lg text-white/90 leading-relaxed mb-6">
               {service.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -157,7 +164,7 @@ export default function ServiceDetail() {
                 </Button>
               </Link>
               <a href="tel:02030929976">
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white">
                   <Phone className="w-4 h-4 mr-2" />
                   0203 092 9976
                 </Button>

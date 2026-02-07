@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Clock, MapPin, Phone } from "lucide-react";
+import heroClinicsImage from "../../assets/images/hero-clinics.jpg";
 
 const clinics = [
   {
@@ -29,16 +30,22 @@ export default function Clinics() {
       title="Our Clinics | Agility Physio"
       description="Find your nearest Agility Physio clinic. Locations in Stanmore and Stockwell, London. Book your physiotherapy appointment today."
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-clinics-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-clinics-hero">
+        <img
+          src={heroClinicsImage}
+          alt="Modern physiotherapy clinic facilities"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-clinics-page-title"
             >
               Our Clinic Locations
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               Agility Physio operates from convenient locations across London. All clinics are fully equipped for comprehensive musculoskeletal assessment and treatment.
             </p>
           </div>

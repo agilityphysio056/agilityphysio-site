@@ -3,6 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Phone, ArrowRight } from "lucide-react";
+import heroConditionsImage from "../assets/images/hero-conditions.jpg";
 
 const conditions = [
   { title: "Back Pain", slug: "back-pain", description: "Assessment and treatment for acute and chronic back conditions including disc problems and muscle strains." },
@@ -36,16 +37,22 @@ export default function Conditions() {
       title="Conditions We Treat | Agility Physio"
       description="Expert physiotherapy treatment for back pain, neck pain, sciatica, sports injuries, and post-operative rehabilitation. HCPC registered physiotherapists."
     >
-      <section className="py-16 lg:py-24 bg-muted" data-testid="section-conditions-hero">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-conditions-hero">
+        <img
+          src={heroConditionsImage}
+          alt="Physiotherapist assessing a patient"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <h1
-              className="text-3xl lg:text-4xl font-bold text-foreground mb-6"
+              className="text-3xl lg:text-4xl font-bold text-white mb-6"
               data-testid="text-conditions-page-title"
             >
               Conditions We Treat
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-white/90 leading-relaxed">
               Our HCPC registered physiotherapists specialise in the assessment and treatment of musculoskeletal conditions. Select a condition below to learn more about how we can help.
             </p>
           </div>
