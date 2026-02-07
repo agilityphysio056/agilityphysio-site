@@ -291,7 +291,7 @@ export default function Home() {
       </section>
 
       <section className="-mt-10 relative z-20 px-6 lg:px-12 pb-4" data-testid="section-insurance-logos">
-        <div className="max-w-6xl mx-auto bg-secondary py-5 px-6 lg:px-10 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none shadow-lg">
+        <div className="max-w-6xl mx-auto bg-[#1F2A44] py-5 px-6 lg:px-10 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none shadow-lg">
           <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-10 flex-wrap">
             <img 
               src="https://mlf4ooqm0yfc.i.optimole.com/cb:epmi.4239a/w:93/h:87/q:75/f:best/dpr:2/https://purephysiotherapy.co.uk/wp-content/uploads/2025/07/tc_logos_axa_big-1.png" 
@@ -334,7 +334,7 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-secondary/70 py-4"
+        className="bg-[#F4F6FA] py-4 border-b-2 border-[#F2B705]"
         data-testid="section-trust-bar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -344,11 +344,11 @@ export default function Home() {
                 key={index}
                 className="flex items-center gap-3 justify-center"
               >
-                <div className="w-8 h-8 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-white/20 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-[#1F2A44] flex items-center justify-center">
                   <item.icon className="w-4 h-4 text-white" />
                 </div>
                 <span
-                  className="text-sm font-medium text-white"
+                  className="text-sm font-medium text-[#1F2A44]"
                   data-testid={`text-trust-${index}`}
                 >
                   {item.label}
