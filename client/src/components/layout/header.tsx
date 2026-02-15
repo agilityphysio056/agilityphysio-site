@@ -30,6 +30,12 @@ const conditionPages = [
   { name: "Post-Op Rehab", href: "/conditions/post-op-rehab" },
 ];
 
+const servicePages = [
+  { name: "Clinic Physiotherapy", href: "/services/clinic-physiotherapy" },
+  { name: "Home Visit Physiotherapy", href: "/services/home-visit-physiotherapy" },
+  { name: "Virtual Physiotherapy", href: "/services/virtual-physiotherapy" },
+];
+
 const clinicLocations = [
   { name: "Stanmore", href: "/clinics/stanmore", area: "North London" },
   { name: "Stockwell", href: "/clinics/stockwell", area: "South London" },
@@ -107,18 +113,33 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {navItems.slice(1, 2).map((item) => (
-              <Link key={item.href} href={item.href}>
-                <span
-                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
-                    location === item.href ? "text-secondary" : "text-foreground"
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                    location.startsWith("/services") ? "text-secondary" : "text-foreground"
                   }`}
-                  data-testid={`link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  data-testid="link-services-dropdown"
                 >
-                  {item.label}
-                </span>
-              </Link>
-            ))}
+                  Services
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-56">
+                <Link href="/services">
+                  <DropdownMenuItem className="cursor-pointer font-medium" data-testid="link-services-all">
+                    All Services
+                  </DropdownMenuItem>
+                </Link>
+                {servicePages.map((service) => (
+                  <Link key={service.href} href={service.href}>
+                    <DropdownMenuItem className="cursor-pointer" data-testid={`link-service-${service.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                      {service.name}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -235,19 +256,34 @@ export function Header() {
                     </div>
                   </div>
 
-                  {navItems.slice(1, 2).map((item) => (
-                    <Link key={item.href} href={item.href}>
+                  <div className="py-2">
+                    <Link href="/services">
                       <span
-                        className={`block text-base font-medium py-2 cursor-pointer ${
-                          location === item.href ? "text-secondary" : "text-foreground"
+                        className={`block text-base font-medium mb-2 cursor-pointer ${
+                          location === "/services" ? "text-secondary" : "text-foreground"
                         }`}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        data-testid={`mobile-link-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
+                        data-testid="mobile-link-services"
                       >
-                        {item.label}
+                        Services
                       </span>
                     </Link>
-                  ))}
+                    <div className="pl-4 space-y-1">
+                      {servicePages.map((service) => (
+                        <Link key={service.href} href={service.href}>
+                          <span
+                            className={`block text-sm py-1.5 cursor-pointer ${
+                              location === service.href ? "text-secondary" : "text-muted-foreground"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            data-testid={`mobile-link-service-${service.name.toLowerCase().replace(/\s+/g, "-")}`}
+                          >
+                            {service.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                   
                   <div className="py-2">
                     <span className="block text-base font-medium text-foreground mb-2">Clinics</span>
