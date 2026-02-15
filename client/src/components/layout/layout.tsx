@@ -33,7 +33,7 @@ export function Layout({ children, title, description }: LayoutProps) {
       <main className="flex-1">{children}</main>
       <Footer />
       
-      <Link href="/contact">
+      <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
         <div
           className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:block cursor-pointer"
           data-testid="sticky-book-online"
@@ -44,7 +44,7 @@ export function Layout({ children, title, description }: LayoutProps) {
             </span>
           </div>
         </div>
-      </Link>
+      </a>
     </div>
   );
 }

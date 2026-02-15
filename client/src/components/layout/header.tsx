@@ -187,11 +187,11 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span>0203 092 9976</span>
             </a>
-            <Link href="/contact">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button data-testid="button-book-now">
                 Book Now
               </Button>
-            </Link>
+            </a>
           </div>
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -316,11 +316,11 @@ export function Header() {
                     <Phone className="w-5 h-5" />
                     <span>0203 092 9976</span>
                   </a>
-                  <Link href="/contact">
+                  <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
                     <Button className="w-full" data-testid="mobile-button-book" onClick={() => setIsMobileMenuOpen(false)}>
                       Book Now
                     </Button>
-                  </Link>
+                  </a>
                 </div>
               </div>
             </SheetContent>

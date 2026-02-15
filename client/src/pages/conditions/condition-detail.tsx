@@ -463,9 +463,9 @@ export default function ConditionDetail() {
                 <p className="text-sm text-muted-foreground mb-4">
                   Book an assessment with one of our experienced physiotherapists.
                 </p>
-                <Link href="/contact" className="block">
+                <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer" className="block">
                   <Button className="w-full">Book Now</Button>
-                </Link>
+                </a>
               </Card>
 
               <Card className="p-6">

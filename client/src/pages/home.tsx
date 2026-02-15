@@ -263,7 +263,7 @@ export default function Home() {
                 Find a Clinic
               </Button>
             </Link>
-            <Link href="/contact">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
@@ -272,7 +272,7 @@ export default function Home() {
               >
                 Book Appointment
               </Button>
-            </Link>
+            </a>
           </div>
           
           <div className="flex items-center justify-center gap-3 mt-8" data-testid="google-reviews-badge">
@@ -376,11 +376,11 @@ export default function Home() {
             Why wait. Call us today or book online for a fast appointment
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="text-base px-8" data-testid="button-pain-book">
                 Book Online
               </Button>
-            </Link>
+            </a>
             <Link href="/contact">
               <Button size="lg" variant="secondary" className="text-base px-8" data-testid="button-pain-contact">
                 Contact Us
@@ -629,11 +629,11 @@ export default function Home() {
             Take the first step towards recovery. Our team is ready to help you get back to doing what you love.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-cta-book">
                 Book Online
               </Button>
-            </Link>
+            </a>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-cta-call">
                 <Phone className="w-4 h-4 mr-2" />

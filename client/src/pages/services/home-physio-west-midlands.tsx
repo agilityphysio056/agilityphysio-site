@@ -318,11 +318,11 @@ export default function HomePhysioWestMidlands() {
             Experience professional physiotherapy in the comfort of your own home. Our expert team is ready to help you on your recovery journey.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-home-visit-cta">
                 Book Online
               </Button>
-            </Link>
+            </a>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-call-west-midlands">
                 <Phone className="w-4 h-4 mr-2" />
