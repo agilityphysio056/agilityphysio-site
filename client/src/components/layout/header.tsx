@@ -13,11 +13,21 @@ import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Conditions", href: "/conditions" },
   { label: "Services", href: "/services" },
   { label: "Fees & Insurance", href: "/fees" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+];
+
+const conditionPages = [
+  { name: "Back Pain", href: "/conditions/back-pain" },
+  { name: "Neck Pain", href: "/conditions/neck-pain" },
+  { name: "Shoulder Pain", href: "/conditions/shoulder-pain" },
+  { name: "Knee Pain", href: "/conditions/knee-pain" },
+  { name: "Hip Pain", href: "/conditions/hip-pain" },
+  { name: "Sciatica", href: "/conditions/sciatica" },
+  { name: "Sports Injuries", href: "/conditions/sports-injuries" },
+  { name: "Post-Op Rehab", href: "/conditions/post-op-rehab" },
 ];
 
 const clinicLocations = [
@@ -58,7 +68,46 @@ export function Header() {
           </Link>
 
           <nav className="hidden lg:flex items-center gap-4" data-testid="nav-desktop">
-            {navItems.slice(0, 3).map((item) => (
+            <Link href="/">
+              <span
+                className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
+                  location === "/" ? "text-secondary" : "text-foreground"
+                }`}
+                data-testid="link-home"
+              >
+                Home
+              </span>
+            </Link>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                    location.startsWith("/conditions") ? "text-secondary" : "text-foreground"
+                  }`}
+                  data-testid="link-conditions-dropdown"
+                >
+                  Conditions
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-52">
+                <Link href="/conditions">
+                  <DropdownMenuItem className="cursor-pointer font-medium" data-testid="link-conditions-all">
+                    All Conditions
+                  </DropdownMenuItem>
+                </Link>
+                {conditionPages.map((condition) => (
+                  <Link key={condition.href} href={condition.href}>
+                    <DropdownMenuItem className="cursor-pointer" data-testid={`link-condition-${condition.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                      {condition.name}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {navItems.slice(1, 2).map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
@@ -70,7 +119,7 @@ export function Header() {
                 </span>
               </Link>
             ))}
-            
+
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
@@ -98,7 +147,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
             
-            {navItems.slice(3).map((item) => (
+            {navItems.slice(2).map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
                   className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
@@ -145,7 +194,48 @@ export function Header() {
                 </div>
 
                 <nav className="flex flex-col gap-2">
-                  {navItems.slice(0, 3).map((item) => (
+                  <Link href="/">
+                    <span
+                      className={`block text-base font-medium py-2 cursor-pointer ${
+                        location === "/" ? "text-secondary" : "text-foreground"
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      data-testid="mobile-link-home"
+                    >
+                      Home
+                    </span>
+                  </Link>
+
+                  <div className="py-2">
+                    <Link href="/conditions">
+                      <span
+                        className={`block text-base font-medium mb-2 cursor-pointer ${
+                          location === "/conditions" ? "text-secondary" : "text-foreground"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        data-testid="mobile-link-conditions"
+                      >
+                        Conditions
+                      </span>
+                    </Link>
+                    <div className="pl-4 space-y-1">
+                      {conditionPages.map((condition) => (
+                        <Link key={condition.href} href={condition.href}>
+                          <span
+                            className={`block text-sm py-1.5 cursor-pointer ${
+                              location === condition.href ? "text-secondary" : "text-muted-foreground"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            data-testid={`mobile-link-condition-${condition.name.toLowerCase().replace(/\s+/g, "-")}`}
+                          >
+                            {condition.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {navItems.slice(1, 2).map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
                         className={`block text-base font-medium py-2 cursor-pointer ${
@@ -180,7 +270,7 @@ export function Header() {
                     </div>
                   </div>
                   
-                  {navItems.slice(3).map((item) => (
+                  {navItems.slice(2).map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
                         className={`block text-base font-medium py-2 cursor-pointer ${
