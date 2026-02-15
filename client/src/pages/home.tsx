@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect, useRef } from "react";
+import heroHomeImage from "../assets/images/hero-home.jpg";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -233,19 +234,11 @@ export default function Home() {
         className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
         data-testid="section-hero"
       >
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <img
+          src={heroHomeImage}
+          alt="Physiotherapist performing manual therapy treatment"
           className="absolute inset-0 w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=80"
-        >
-          <source
-            src="https://videos.pexels.com/video-files/5473762/5473762-uhd_2560_1440_30fps.mp4"
-            type="video/mp4"
-          />
-        </video>
+        />
         <div className="absolute inset-0 bg-slate-900/60" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
