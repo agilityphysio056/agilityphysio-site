@@ -34,6 +34,7 @@ const servicePages = [
   { name: "Clinic Physiotherapy", href: "/services/clinic-physiotherapy" },
   { name: "Home Visit Physiotherapy", href: "/services/home-visit-physiotherapy" },
   { name: "Virtual Physiotherapy", href: "/services/virtual-physiotherapy" },
+  { name: "West Midlands Home Visit", href: "/services/west-midlands-home-visit" },
 ];
 
 const clinicLocations = [
@@ -126,11 +127,6 @@ export function Header() {
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center" className="w-56">
-                <Link href="/services">
-                  <DropdownMenuItem className="cursor-pointer font-medium" data-testid="link-services-all">
-                    All Services
-                  </DropdownMenuItem>
-                </Link>
                 {servicePages.map((service) => (
                   <Link key={service.href} href={service.href}>
                     <DropdownMenuItem className="cursor-pointer" data-testid={`link-service-${service.name.toLowerCase().replace(/\s+/g, "-")}`}>
@@ -257,17 +253,7 @@ export function Header() {
                   </div>
 
                   <div className="py-2">
-                    <Link href="/services">
-                      <span
-                        className={`block text-base font-medium mb-2 cursor-pointer ${
-                          location === "/services" ? "text-secondary" : "text-foreground"
-                        }`}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        data-testid="mobile-link-services"
-                      >
-                        Services
-                      </span>
-                    </Link>
+                    <span className="block text-base font-medium text-foreground mb-2">Services</span>
                     <div className="pl-4 space-y-1">
                       {servicePages.map((service) => (
                         <Link key={service.href} href={service.href}>
