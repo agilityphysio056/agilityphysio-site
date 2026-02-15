@@ -246,7 +246,7 @@ export default function Home() {
             Agility Physio
           </p>
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 whitespace-nowrap"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             data-testid="text-hero-title"
           >
             Evidence-Based <span className="text-primary">Physio Care</span>
