@@ -201,8 +201,8 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-full sm:w-80">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between mb-8">
+              <div className="flex flex-col h-full overflow-hidden">
+                <div className="flex items-center justify-between mb-4 shrink-0">
                   <img 
                     src={logoImg} 
                     alt="Agility Physio" 
@@ -210,7 +210,7 @@ export function Header() {
                   />
                 </div>
 
-                <nav className="flex flex-col gap-2">
+                <nav className="flex flex-col gap-2 overflow-y-auto flex-1 pr-1">
                   <Link href="/">
                     <span
                       className={`block text-base font-medium py-2 cursor-pointer ${
@@ -307,7 +307,7 @@ export function Header() {
                   ))}
                 </nav>
 
-                <div className="mt-auto pt-8 space-y-4">
+                <div className="pt-4 pb-2 space-y-4 shrink-0 border-t border-border mt-2">
                   <a
                     href="tel:02030929976"
                     className="flex items-center gap-2 text-muted-foreground"
