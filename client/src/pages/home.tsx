@@ -190,8 +190,11 @@ function TestimonialsSection() {
         <div
           ref={scrollRef}
           className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
+          style={{ touchAction: 'pan-y' }}
           onMouseEnter={() => setIsPlaying(false)}
           onMouseLeave={() => setIsPlaying(true)}
+          onTouchStart={() => setIsPlaying(false)}
+          onTouchEnd={() => setIsPlaying(true)}
         >
           {duplicatedReviews.map((review, index) => (
             <div
@@ -237,9 +240,9 @@ export default function Home() {
         <img
           src={heroHomeImage}
           alt="Physiotherapist performing manual therapy treatment"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
-        <div className="absolute inset-0 bg-slate-900/60" />
+        <div className="absolute inset-0 bg-slate-900/60 pointer-events-none" />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-primary mb-4 font-medium">
