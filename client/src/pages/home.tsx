@@ -338,17 +338,17 @@ export default function Home() {
         data-testid="section-trust-bar"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2 md:gap-4">
             {trustItems.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 justify-center"
+                className="flex flex-col md:flex-row items-center gap-2 md:gap-3 justify-center text-center md:text-left"
               >
-                <div className="w-8 h-8 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-[#1F2A44] flex items-center justify-center">
+                <div className="w-8 h-8 shrink-0 rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none bg-[#1F2A44] flex items-center justify-center">
                   <item.icon className="w-4 h-4 text-white" />
                 </div>
                 <span
-                  className="text-sm font-medium text-[#1F2A44]"
+                  className="text-xs md:text-sm font-medium text-[#1F2A44] leading-tight"
                   data-testid={`text-trust-${index}`}
                 >
                   {item.label}
