@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import heroBannerImg from "@/assets/images/hero-home-visit-nw-london.jpg";
 import { 
   CheckCircle2, 
   Phone, 
@@ -136,8 +137,13 @@ export default function HomePhysioWestMidlands() {
       title="Home Physiotherapy in North-West London | Agility Physio"
       description="Expert home physiotherapy services across Harrow, Stanmore, Wembley, Edgware and North-West London. Professional physiotherapy delivered to your doorstep by HCPC registered practitioners."
     >
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-secondary" data-testid="section-west-midlands-hero">
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/80" />
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden" data-testid="section-west-midlands-hero">
+        <img
+          src={heroBannerImg}
+          alt="Physiotherapy home visit treatment"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-slate-900/65 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
           <div className="max-w-3xl">
             <p className="text-sm font-medium text-primary mb-2">Home Visit Physiotherapy</p>
