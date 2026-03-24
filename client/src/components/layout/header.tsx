@@ -34,7 +34,7 @@ const servicePages = [
   { name: "Clinic Physiotherapy", href: "/services/clinic-physiotherapy" },
   { name: "Home Visit Physiotherapy", href: "/services/home-visit-physiotherapy" },
   { name: "Virtual Physiotherapy", href: "/services/virtual-physiotherapy" },
-  { name: "West Midlands Home Visit", href: "/services/home-physio-west-midlands" },
+  { name: "North-West London Home Visit", href: "/services/home-physio-west-midlands" },
 ];
 
 const clinicLocations = [

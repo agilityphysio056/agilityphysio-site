@@ -18,15 +18,15 @@ import {
 } from "lucide-react";
 
 const coverageAreas = [
-  "Birmingham",
-  "Solihull", 
-  "West Bromwich",
-  "Smethwick",
-  "Halesowen",
-  "Dudley",
-  "Redditch",
-  "Bromsgrove",
-  "Oldbury",
+  "Harrow",
+  "Stanmore",
+  "Wembley",
+  "Edgware",
+  "Pinner",
+  "Northwood",
+  "Ruislip",
+  "Uxbridge",
+  "Watford",
 ];
 
 const homeServices = [
@@ -133,8 +133,8 @@ const whyChooseUs = [
 export default function HomePhysioWestMidlands() {
   return (
     <Layout
-      title="Home Physiotherapy in West Midlands | Agility Physio"
-      description="Expert home physiotherapy services across Birmingham, Solihull, West Bromwich and the West Midlands. Professional physiotherapy delivered to your doorstep by HCPC registered practitioners."
+      title="Home Physiotherapy in North-West London | Agility Physio"
+      description="Expert home physiotherapy services across Harrow, Stanmore, Wembley, Edgware and North-West London. Professional physiotherapy delivered to your doorstep by HCPC registered practitioners."
     >
       <section className="relative min-h-[60vh] flex items-center overflow-hidden bg-secondary" data-testid="section-west-midlands-hero">
         <div className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/80" />
@@ -148,7 +148,7 @@ export default function HomePhysioWestMidlands() {
               Physiotherapy Delivered to Your Doorstep
             </h1>
             <p className="text-lg text-white/90 leading-relaxed mb-6">
-              Stay independent with our expert physiotherapy services in the West Midlands. Professional home physiotherapy providing advanced, evidence-based treatment in the comfort of your own home.
+              Stay independent with our expert physiotherapy services across North-West London. Professional home physiotherapy providing advanced, evidence-based treatment in the comfort of your own home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/contact">
@@ -171,7 +171,7 @@ export default function HomePhysioWestMidlands() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12">
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-              Home Physiotherapy Services in West Midlands
+              Home Physiotherapy Services in North-West London
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               Are you struggling with chronic back pain, muscle stiffness, sciatica, or a slipped disc and finding it difficult to attend a clinic? Our expert physiotherapists deliver professional home physiotherapy services, providing advanced, evidence-based treatment in the comfort of your own home.
@@ -182,9 +182,9 @@ export default function HomePhysioWestMidlands() {
             <div className="flex items-start gap-4">
               <MapPin className="w-6 h-6 text-primary shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-foreground mb-2">Home Visits Across the West Midlands</h3>
+                <h3 className="font-semibold text-foreground mb-2">Home Visits Across North-West London</h3>
                 <p className="text-muted-foreground mb-4">
-                  Our home physiotherapy service covers the West Midlands region including:
+                  Our home physiotherapy service covers North-West London including:
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {coverageAreas.map((area, index) => (
@@ -302,7 +302,7 @@ export default function HomePhysioWestMidlands() {
               </Card>
               <Card className="p-6">
                 <h3 className="font-semibold text-foreground mb-2">What areas do you cover?</h3>
-                <p className="text-muted-foreground">We provide home physiotherapy services across the West Midlands including Birmingham, Solihull, West Bromwich, Smethwick, Halesowen, Dudley, Redditch, Bromsgrove, and Oldbury.</p>
+                <p className="text-muted-foreground">We provide home physiotherapy services across North-West London including Harrow, Stanmore, Wembley, Edgware, Pinner, Northwood, Ruislip, Uxbridge, and Watford.</p>
               </Card>
             </div>
           </div>
