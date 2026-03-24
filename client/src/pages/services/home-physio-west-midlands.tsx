@@ -309,7 +309,7 @@ export default function HomePhysioWestMidlands() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-20 bg-secondary/10">
+      <section className="py-16 lg:py-20 pb-36 md:pb-20 bg-secondary/10">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold text-foreground mb-4">
             Book Your Home Visit Today
@@ -335,6 +335,27 @@ export default function HomePhysioWestMidlands() {
           </p>
         </div>
       </section>
+      <div
+        className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-border shadow-lg px-4 py-3 flex gap-3"
+        data-testid="sticky-mobile-cta"
+      >
+        <a
+          href="https://new-ob.rushcliff.com/holding-page/445519"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-1"
+        >
+          <Button className="w-full" size="sm" data-testid="sticky-button-book">
+            Book Home Visit
+          </Button>
+        </a>
+        <a href="tel:02030929976" className="flex-1">
+          <Button variant="outline" className="w-full" size="sm" data-testid="sticky-button-call">
+            <Phone className="w-4 h-4 mr-1.5" />
+            Call Us
+          </Button>
+        </a>
+      </div>
     </Layout>
   );
 }
