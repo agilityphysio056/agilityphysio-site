@@ -567,14 +567,14 @@ export default function HomePhysioWestMidlands() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             <Card className="p-8 bg-white/5 border-white/10 text-left" data-testid="card-pricing-initial">
               <p className="text-sm font-medium text-primary uppercase tracking-wider mb-2">Initial Assessment</p>
-              <p className="text-4xl font-bold text-white mb-1">from £50</p>
+              <p className="text-4xl font-bold text-white mb-1">from £70</p>
               <p className="text-sm text-white/60 mt-3 leading-relaxed">
                 Comprehensive assessment, diagnosis, and first treatment session delivered in your home.
               </p>
             </Card>
             <Card className="p-8 bg-white/5 border-white/10 text-left" data-testid="card-pricing-followup">
               <p className="text-sm font-medium text-primary uppercase tracking-wider mb-2">Follow-Up Session</p>
-              <p className="text-4xl font-bold text-white mb-1">from £45</p>
+              <p className="text-4xl font-bold text-white mb-1">from £65</p>
               <p className="text-sm text-white/60 mt-3 leading-relaxed">
                 Ongoing treatment and rehabilitation sessions to support your continued recovery.
               </p>
