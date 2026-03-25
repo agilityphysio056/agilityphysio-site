@@ -1,0 +1,142 @@
+Please further optimise the Home Visit Physiotherapy page for SEO, local ranking (North-West London), and maximum conversion, while keeping the current design and structure.
+
+GOAL:
+Make this page a high-ranking and high-converting landing page targeting “home physiotherapy North-West London” and related keywords.
+
+IMPORTANT:
+- Do NOT break current design or layout
+- Keep it clean, premium, and mobile-friendly
+- Improve content depth, SEO structure, and trust signals
+- Make it feel authoritative and local
+
+-----------------------------------
+1. ADD STRONG LOCAL SEO OPTIMISATION
+-----------------------------------
+
+Naturally incorporate these keywords throughout the page (without keyword stuffing):
+
+- home physiotherapy North-West London
+- home physio Stanmore
+- home physiotherapy Harrow
+- physiotherapy at home London
+- mobile physiotherapist near me
+
+Add 1–2 natural mentions per section.
+
+Also add a short paragraph section titled:
+
+“Local Home Physiotherapy in North-West London”
+
+Include:
+We provide home physiotherapy across Stanmore, Harrow, Edgware, Wembley, Pinner, Northwood, Ruislip, Uxbridge, and surrounding areas.
+
+-----------------------------------
+2. ADD GOOGLE RATING TRUST LINE (CRITICAL)
+-----------------------------------
+
+Add this directly under the hero section:
+
+⭐ Rated 4.9/5 from 150+ verified patient reviews
+
+Make it visually prominent but clean.
+
+-----------------------------------
+3. ADD STRUCTURED DATA (VERY IMPORTANT FOR SEO)
+-----------------------------------
+
+Implement JSON-LD structured data for:
+
+- LocalBusiness
+- MedicalBusiness / Physiotherapy
+
+Include:
+- Business name: Agility Physio
+- Area served: North-West London
+- Services: Physiotherapy, Home Visits
+- Telephone number
+- URL
+- Opening hours
+
+Also add Review schema with rating:
+- RatingValue: 4.9
+- ReviewCount: 150+
+
+-----------------------------------
+4. IMPROVE HEADINGS (H1, H2 STRUCTURE)
+-----------------------------------
+
+Ensure proper SEO hierarchy:
+
+H1:
+Home Physiotherapy in North-West London
+
+H2 examples:
+- Physiotherapy Delivered to Your Doorstep
+- Who Is Home Physiotherapy For?
+- Why Choose Agility Physio?
+- Home Visit Physiotherapy Pricing
+- Areas We Cover
+- Frequently Asked Questions
+
+-----------------------------------
+5. ADD INTERNAL LINKING
+-----------------------------------
+
+Add links to:
+- Back Pain page
+- Neck Pain page
+- Clinic Physiotherapy page
+
+Use anchor text like:
+“Learn more about our back pain physiotherapy”
+
+-----------------------------------
+6. ADD IMAGE SEO
+-----------------------------------
+
+Ensure all images have alt text like:
+- home physiotherapy North-West London
+- physiotherapist treating patient at home
+- home physio Stanmore
+
+-----------------------------------
+7. ADD STRONGER CALL-TO-ACTION LANGUAGE
+-----------------------------------
+
+Update CTAs across page to include urgency:
+
+- Book Your Home Visit Today
+- Call Now to Book Your Appointment
+- Same-Day Appointments Available
+
+-----------------------------------
+8. ADD LOCATION-BASED FAQ
+-----------------------------------
+
+Add one more FAQ:
+
+“Do you offer home physiotherapy near me?”
+
+Answer:
+Yes, we provide home physiotherapy across North-West London including Stanmore, Harrow, Edgware, Wembley, and nearby areas. Contact us to confirm availability in your location.
+
+-----------------------------------
+9. PAGE SPEED + PERFORMANCE
+-----------------------------------
+
+- Ensure images are optimised
+- Lazy load images where possible
+- Avoid heavy scripts
+
+-----------------------------------
+10. FINAL TRUST BOOST (IMPORTANT)
+-----------------------------------
+
+Add a short line near CTA:
+
+Trusted by 150+ patients across North-West London for professional, reliable home physiotherapy.
+
+-----------------------------------
+
+OUTPUT:
+Implement all changes directly into the page code with clean, maintainable structure.

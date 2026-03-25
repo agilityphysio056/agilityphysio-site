@@ -261,7 +261,11 @@ function TestimonialsCarousel() {
 const faqs = [
   {
     q: "Do I need a GP referral?",
-    a: "No, you can book directly with us without a GP or consultant referral. Simply contact us to arrange your appointment.",
+    a: "No, you can book directly with us without a GP or consultant referral. Simply contact us to arrange your home physiotherapy appointment.",
+  },
+  {
+    q: "Do you offer home physiotherapy near me?",
+    a: "Yes, we provide home physiotherapy across North-West London including Stanmore, Harrow, Edgware, Wembley, and nearby areas. Contact us to confirm availability in your location.",
   },
   {
     q: "What areas do you cover?",
@@ -269,11 +273,11 @@ const faqs = [
   },
   {
     q: "How quickly can I book a home visit?",
-    a: "We aim to offer appointments within 24–48 hours where possible, depending on location and availability. Contact us to check current availability.",
+    a: "Same-day or next-day appointments are available in many cases. We aim to offer appointments within 24–48 hours where possible. Contact us to check current availability.",
   },
   {
     q: "What conditions do you treat?",
-    a: "We treat a wide range of conditions including back pain, neck pain, joint pain, mobility problems, post-surgical rehabilitation, balance issues, and musculoskeletal injuries.",
+    a: "We treat a wide range of conditions including back pain, neck pain, joint pain, mobility problems, post-surgical rehabilitation, balance issues, and musculoskeletal injuries across North-West London.",
   },
   {
     q: "Is home physiotherapy suitable for elderly patients?",
@@ -294,16 +298,60 @@ const faqs = [
 ];
 
 export default function HomePhysioWestMidlands() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["MedicalBusiness", "LocalBusiness"],
+          "name": "Agility Physio",
+          "url": "https://agilityphysio.co.uk",
+          "telephone": "+442030929976",
+          "image": "https://agilityphysio.co.uk/og-image.jpg",
+          "description": "Agility Physio provides expert home physiotherapy services across North-West London, including Stanmore, Harrow, Edgware, and Wembley.",
+          "medicalSpecialty": "Physiotherapy",
+          "areaServed": [
+            "North-West London", "Stanmore", "Harrow", "Edgware", "Wembley",
+            "Pinner", "Northwood", "Ruislip", "Uxbridge", "Watford"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Physiotherapy Services",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Visit Physiotherapy" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "MSK Physiotherapy" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Post-Surgical Rehabilitation" } }
+            ]
+          },
+          "openingHoursSpecification": [
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "19:00" },
+            { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "14:00" }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "150",
+            "bestRating": "5"
+          }
+        }
+      ]
+    });
+    document.head.appendChild(script);
+    return () => { document.head.removeChild(script); };
+  }, []);
+
   return (
     <Layout
-      title="Home Physiotherapy in North-West London | Agility Physio"
-      description="Expert home physiotherapy services across Harrow, Stanmore, Wembley, Edgware and North-West London. HCPC registered physiotherapists delivering evidence-based treatment to your doorstep within 24–48 hours."
+      title="Home Physiotherapy North-West London | Agility Physio"
+      description="Expert home physiotherapy in North-West London — Stanmore, Harrow, Edgware, Wembley & more. HCPC registered physiotherapists. Same-day appointments available. Book today."
     >
       {/* HERO */}
       <section className="relative min-h-[65vh] flex items-center overflow-hidden" data-testid="section-west-midlands-hero">
         <img
           src={heroBannerImg}
-          alt="Physiotherapy home visit treatment"
+          alt="Home physiotherapy North-West London — physiotherapist treating patient at home"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         />
         <div className="absolute inset-0 bg-slate-900/70 pointer-events-none" />
@@ -314,26 +362,44 @@ export default function HomePhysioWestMidlands() {
               className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-5"
               data-testid="text-west-midlands-title"
             >
-              Physiotherapy Delivered to Your Doorstep Across North-West London
+              Home Physiotherapy in North-West London
             </h1>
             <p className="text-lg text-white/85 leading-relaxed mb-8 max-w-2xl">
-              No need to travel. Get expert home physiotherapy for pain, mobility issues, post-surgery recovery, and rehabilitation — delivered in the comfort of your own home within 24–48 hours where possible.
+              Expert home physiotherapy for pain, mobility issues, post-surgery recovery, and rehabilitation — delivered to your doorstep across Stanmore, Harrow, Edgware, Wembley, and surrounding areas. Same-day appointments available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="text-base px-8 w-full sm:w-auto" data-testid="button-book-west-midlands">
-                  Book Your Home Visit Now
+                  Book Your Home Visit Today
                 </Button>
               </a>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-base px-8 w-full sm:w-auto">
                   <Phone className="w-4 h-4 mr-2" />
-                  Call 0203 092 9976
+                  Call Now to Book
                 </Button>
               </a>
             </div>
             <p className="text-sm text-white/70">
-              HCPC registered physiotherapists &nbsp;•&nbsp; Evidence-based treatment &nbsp;•&nbsp; Home visits across North-West London
+              HCPC registered physiotherapists &nbsp;•&nbsp; Evidence-based treatment &nbsp;•&nbsp; Same-day appointments available
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* GOOGLE RATING TRUST BAR */}
+      <section className="py-4 bg-[#1F2A44]" data-testid="section-rating-bar">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+            <div className="flex items-center gap-2">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-5 h-5 text-primary fill-primary" />
+              ))}
+              <span className="text-white font-bold ml-1">4.9 / 5</span>
+            </div>
+            <span className="hidden sm:block text-white/30">|</span>
+            <p className="text-white/90 text-sm font-medium">
+              Rated 4.9/5 from <strong className="text-white">150+ verified patient reviews</strong> across North-West London
             </p>
           </div>
         </div>
@@ -398,6 +464,20 @@ export default function HomePhysioWestMidlands() {
         </div>
       </section>
 
+      {/* LOCAL SEO SECTION */}
+      <section className="py-12 bg-background" data-testid="section-local-seo">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
+              Local Home Physiotherapy in North-West London
+            </h2>
+            <p className="text-muted-foreground leading-relaxed">
+              We provide home physiotherapy across <strong>Stanmore</strong>, <strong>Harrow</strong>, <strong>Edgware</strong>, <strong>Wembley</strong>, <strong>Pinner</strong>, <strong>Northwood</strong>, <strong>Ruislip</strong>, <strong>Uxbridge</strong>, and surrounding areas. Whether you are searching for a mobile physiotherapist near you or need home physio in Stanmore or Harrow, our HCPC registered team brings professional, evidence-based physiotherapy directly to your door — no referral required and same-day appointments available.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* WHY CHOOSE US */}
       <section className="py-16 lg:py-20 bg-muted" data-testid="section-why-choose">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -427,7 +507,7 @@ export default function HomePhysioWestMidlands() {
           <div className="text-center mt-10">
             <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-why">
-                Book Your Home Visit
+                Book Your Home Visit Today
               </Button>
             </a>
           </div>
@@ -455,6 +535,22 @@ export default function HomePhysioWestMidlands() {
                 <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
               </Card>
             ))}
+          </div>
+          <div className="mt-10 bg-muted rounded-tl-2xl rounded-br-2xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 justify-between">
+            <p className="text-sm text-muted-foreground">
+              Treating conditions including back pain, neck pain, joint injuries, and more.
+            </p>
+            <div className="flex flex-wrap gap-3 shrink-0">
+              <Link href="/conditions/back-pain">
+                <span className="text-sm font-medium text-primary hover:underline cursor-pointer">Back pain physiotherapy →</span>
+              </Link>
+              <Link href="/conditions/neck-pain">
+                <span className="text-sm font-medium text-primary hover:underline cursor-pointer">Neck pain physiotherapy →</span>
+              </Link>
+              <Link href="/services/clinic-physiotherapy">
+                <span className="text-sm font-medium text-primary hover:underline cursor-pointer">Clinic physiotherapy →</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -490,13 +586,13 @@ export default function HomePhysioWestMidlands() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-pricing">
-                Book Your Home Visit
+                Book Your Home Visit Today
               </Button>
             </a>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
                 <Phone className="w-4 h-4 mr-2" />
-                Call 0203 092 9976
+                Call Now to Book
               </Button>
             </a>
           </div>
@@ -536,26 +632,26 @@ export default function HomePhysioWestMidlands() {
       <section className="py-16 lg:py-20 pb-36 md:pb-20 bg-secondary/10" data-testid="section-final-cta">
         <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-4">
-            Book Your Home Visit Today
+            Book Your Home Visit Today — Same-Day Appointments Available
           </h2>
           <p className="text-muted-foreground mb-8 leading-relaxed">
-            Get expert physiotherapy delivered directly to your home by our experienced team. Whether you are recovering from injury, struggling with mobility, or looking for convenient treatment at home — we are here to help.
+            Get expert home physiotherapy in North-West London delivered directly to your door. Whether you are recovering from injury, struggling with mobility, or need physiotherapy at home in Stanmore, Harrow, or nearby — we are ready to help.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-home-visit-cta">
-                Book Online
+                Book Your Home Visit Today
               </Button>
             </a>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-call-west-midlands">
                 <Phone className="w-4 h-4 mr-2" />
-                Call 0203 092 9976
+                Call Now to Book
               </Button>
             </a>
           </div>
           <p className="text-sm text-muted-foreground mt-6">
-            Home visits delivered directly to your home — no clinic visit required
+            Trusted by <strong>150+ patients</strong> across North-West London for professional, reliable home physiotherapy.
           </p>
         </div>
       </section>
