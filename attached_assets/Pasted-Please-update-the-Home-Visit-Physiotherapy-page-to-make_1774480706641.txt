@@ -1,0 +1,188 @@
+Please update the “Home Visit Physiotherapy” page to make it more conversion-focused, premium, and trustworthy while keeping the existing Agility Physio branding, colours, and clean layout.
+
+GOAL:
+Turn this page into a high-converting landing page for home physiotherapy bookings in North-West London.
+
+IMPORTANT:
+- Keep the overall design professional, modern, and clean
+- Maintain mobile responsiveness
+- Keep existing branding/logo/header/footer
+- Improve copy, structure, CTA placement, and trust signals
+- Make the page feel more premium and patient-focused
+- Do not overcomplicate the design
+- Make the final page look polished and production-ready
+
+CHANGES TO MAKE:
+
+1. HERO SECTION
+Update the hero section headline and subheadline to be more compelling and conversion-focused.
+
+Replace existing hero copy with:
+Headline:
+Physiotherapy Delivered to Your Doorstep Across North-West London
+
+Subheadline:
+No need to travel. Get expert home physiotherapy for pain, mobility issues, post-surgery recovery, and rehabilitation — delivered in the comfort of your own home within 24–48 hours where possible.
+
+Primary CTA button:
+Book Your Home Visit Now
+
+Secondary CTA button:
+Call 0203 092 9976
+
+Also add a small trust line below the buttons:
+HCPC registered physiotherapists • Evidence-based treatment • Home visits across North-West London
+
+2. ADD A “WHO THIS SERVICE IS FOR” SECTION
+Create a new section below the hero or near the top of the page with 4–6 cards or bullet blocks.
+
+Section title:
+Who Is Home Physiotherapy For?
+
+Include these points:
+- Elderly patients who find it difficult to travel
+- Patients recovering after surgery
+- People with back pain, neck pain, or joint pain
+- Patients with reduced mobility or balance problems
+- Busy professionals who prefer treatment at home
+- People needing rehabilitation in their own environment
+
+3. ADD A PRICING SECTION
+Add a clear pricing section before the FAQ.
+
+Section title:
+Home Visit Physiotherapy Pricing
+
+Include:
+- Initial Assessment: from £50
+- Follow-Up Session: from £45
+
+Add a short note underneath:
+Final pricing may vary depending on location, complexity, and treatment requirements. Please contact us to confirm availability and pricing for your area.
+
+Style this section so it stands out clearly and feels premium.
+
+4. ADD A “WHY CHOOSE AGILITY PHYSIO” SECTION
+Create a new section with icons/cards.
+
+Section title:
+Why Choose Agility Physio for Home Visits?
+
+Include these points:
+- Experienced HCPC registered physiotherapists
+- Treatment in the comfort of your own home
+- Same-day or next-day appointments where available
+- Personalised rehabilitation plans
+- Evidence-based hands-on treatment and exercise therapy
+- Friendly, professional, patient-centred care
+
+5. IMPROVE THE EXISTING CONTENT
+Refine the existing copy throughout the page so it reads more naturally, professionally, and persuasively.
+Avoid generic wording.
+Make the tone sound:
+- professional
+- reassuring
+- premium
+- clear
+- patient-focused
+
+6. ADD TRUST / SOCIAL PROOF
+Add a review/testimonial section before the final CTA.
+
+Section title:
+Trusted by Patients Across London
+
+Use placeholder testimonials if needed for now, but structure the section properly so real reviews can easily be inserted later.
+
+Example placeholders:
+- “Professional, knowledgeable, and convenient. Having physio at home made a huge difference to my recovery.”
+- “Excellent service from start to finish. Clear advice, effective treatment, and very easy to arrange.”
+- “A great option for anyone struggling to travel. Highly recommended.”
+
+Also add a trust badge style line such as:
+5-star rated physiotherapy service
+
+7. STRENGTHEN THE FAQ SECTION
+Keep the FAQ section but improve the wording and add these FAQs if not already included:
+
+- Do I need a GP referral?
+Answer:
+No, you can book directly with us without a GP or consultant referral.
+
+- What areas do you cover?
+Answer:
+We provide home physiotherapy across North-West London, including Stanmore, Harrow, Edgware, Wembley, Pinner, Northwood, Ruislip, Uxbridge, and surrounding areas.
+
+- How quickly can I book a home visit?
+Answer:
+We aim to offer appointments within 24–48 hours where possible, depending on location and availability.
+
+- What conditions do you treat?
+Answer:
+We treat a wide range of issues including back pain, neck pain, joint pain, mobility problems, post-surgical rehabilitation, balance issues, and musculoskeletal injuries.
+
+- Is home physiotherapy suitable for elderly patients?
+Answer:
+Yes. Home physiotherapy is ideal for elderly patients who find travelling difficult or would benefit from rehabilitation in their own environment.
+
+- Do you offer follow-up treatment at home?
+Answer:
+Yes. We provide both initial assessments and follow-up treatment sessions at home.
+
+8. IMPROVE CTA PLACEMENT THROUGHOUT THE PAGE
+Add clear call-to-action buttons in multiple places, especially:
+- after hero
+- after “Why Choose Us”
+- near pricing
+- final CTA section
+
+Use CTA labels like:
+- Book Your Home Visit
+- Call Now
+- Enquire Today
+
+9. IMPROVE FINAL CTA SECTION
+Replace the bottom call-to-action with a more compelling conversion block.
+
+Use:
+Title:
+Book Your Home Visit Today
+
+Text:
+Get expert physiotherapy delivered directly to your home by our experienced team. Whether you are recovering from injury, struggling with mobility, or looking for convenient treatment at home, we are here to help.
+
+Buttons:
+- Book Online
+- Call 0203 092 9976
+
+Add a small line under buttons:
+Home visits delivered directly to your home — no clinic visit required.
+
+10. SEO / CONTENT IMPROVEMENTS
+Ensure the page content is naturally optimized for:
+- home physiotherapy North-West London
+- home physio Stanmore
+- home physiotherapy Harrow
+- physiotherapy at home London
+- home visit physio near me
+
+Do this naturally without keyword stuffing.
+
+11. DESIGN / UI IMPROVEMENTS
+Please also:
+- improve spacing and section hierarchy
+- make cards more visually balanced
+- ensure buttons are prominent
+- make text easier to scan
+- improve contrast where needed
+- keep the page elegant and not too busy
+
+12. TECHNICAL
+- Do not break existing navigation/header/footer
+- Keep code clean and reusable
+- Make sure page looks good on desktop and mobile
+- If the page is built as a React component, update it cleanly
+- If there are reusable components for sections/cards/buttons, use them where appropriate
+
+OUTPUT:
+Please fully implement these changes directly in the page code, not just suggest them.
