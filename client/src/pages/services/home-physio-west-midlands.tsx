@@ -331,8 +331,8 @@ export default function HomePhysioWestMidlands() {
           ],
           "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "150",
+            "ratingValue": "5.0",
+            "reviewCount": "250",
             "bestRating": "5"
           }
         }
@@ -395,11 +395,11 @@ export default function HomePhysioWestMidlands() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 text-primary fill-primary" />
               ))}
-              <span className="text-white font-bold ml-1">4.9 / 5</span>
+              <span className="text-white font-bold ml-1">5.0 / 5</span>
             </div>
             <span className="hidden sm:block text-white/30">|</span>
             <p className="text-white/90 text-sm font-medium">
-              Rated 4.9/5 from <strong className="text-white">150+ verified patient reviews</strong> across North-West London
+              Rated 5.0/5 from <strong className="text-white">250+ verified patient reviews</strong> across North-West London
             </p>
           </div>
         </div>
@@ -651,7 +651,7 @@ export default function HomePhysioWestMidlands() {
             </a>
           </div>
           <p className="text-sm text-muted-foreground mt-6">
-            Trusted by <strong>150+ patients</strong> across North-West London for professional, reliable home physiotherapy.
+            Trusted by <strong>250+ patients</strong> across North-West London for professional, reliable home physiotherapy.
           </p>
         </div>
       </section>
