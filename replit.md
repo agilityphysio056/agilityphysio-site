@@ -60,6 +60,13 @@ Full shadcn/ui component library installed including Dialog, Select, Accordion, 
 - **zod-validation-error**: Human-readable validation error messages
 - **@hookform/resolvers**: Form validation integration
 
+### Booking System
+- **CMS Widget**: Booking is handled by an external CMS (separate Replit project) via an embeddable widget script loaded in `client/index.html`
+- **Widget URL**: `https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/booking-widget.js`
+- **Direct Booking Page**: `https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e`
+- All "Book" buttons across the site link to the CMS booking page (opened in new tab)
+- The widget script renders a floating "Book Appointment" button on all pages
+
 ### Development Tools
 - **Replit Plugins**: Runtime error overlay, cartographer, dev banner for Replit environment
 - **TypeScript**: Strict mode with path aliases configured
