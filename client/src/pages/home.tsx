@@ -266,7 +266,7 @@ export default function Home() {
                 Find a Clinic
               </Button>
             </Link>
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 variant="outline"
@@ -379,7 +379,7 @@ export default function Home() {
             Why wait. Call us today or book online for a fast appointment
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="text-base px-8" data-testid="button-pain-book">
                 Book Online
               </Button>
@@ -632,7 +632,7 @@ export default function Home() {
             Take the first step towards recovery. Our team is ready to help you get back to doing what you love.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-cta-book">
                 Book Online
               </Button>

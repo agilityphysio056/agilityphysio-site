@@ -61,11 +61,10 @@ Full shadcn/ui component library installed including Dialog, Select, Accordion, 
 - **@hookform/resolvers**: Form validation integration
 
 ### Booking System
-- **CMS Widget**: Booking is handled by an external CMS (separate Replit project) via an embeddable widget script loaded in `client/index.html`
-- **Widget URL**: `https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/booking-widget.js`
-- **Direct Booking Page**: `https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e`
-- All "Book" buttons across the site link to the CMS booking page (opened in new tab)
-- The widget script renders a floating "Book Appointment" button on all pages
+- **Current**: All "Book" buttons link to Rushcliff: `https://new-ob.rushcliff.com/holding-page/445519` (opened in new tab)
+- **CMS Widget (pending)**: A CMS booking widget from a separate Replit project is ready to integrate once that project is deployed. The widget script tag is commented out in `client/index.html`. When the CMS is deployed, replace all Rushcliff URLs with the CMS booking URL and uncomment the widget script.
+- **CMS Widget URL** (for when deployed): `https://<deployed-domain>/booking-widget.js`
+- **CMS Booking page** (for when deployed): `https://<deployed-domain>/book/0d9c1e55-283f-4917-8db5-233603050f7e`
 
 ### Development Tools
 - **Replit Plugins**: Runtime error overlay, cartographer, dev banner for Replit environment

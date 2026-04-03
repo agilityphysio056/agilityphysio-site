@@ -187,7 +187,7 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span>0203 092 9976</span>
             </a>
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button data-testid="button-book-now">
                 Book Now
               </Button>
@@ -316,7 +316,7 @@ export function Header() {
                     <Phone className="w-5 h-5" />
                     <span>0203 092 9976</span>
                   </a>
-                  <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+                  <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
                     <Button className="w-full" data-testid="mobile-button-book" onClick={() => setIsMobileMenuOpen(false)}>
                       Book Now
                     </Button>

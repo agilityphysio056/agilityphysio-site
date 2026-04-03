@@ -368,7 +368,7 @@ export default function HomePhysioWestMidlands() {
               Expert home physiotherapy for pain, mobility issues, post-surgery recovery, and rehabilitation — delivered to your doorstep across Stanmore, Harrow, Edgware, Wembley, and surrounding areas. Same-day appointments available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+              <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="text-base px-8 w-full sm:w-auto" data-testid="button-book-west-midlands">
                   Book Your Home Visit Today
                 </Button>
@@ -505,7 +505,7 @@ export default function HomePhysioWestMidlands() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-why">
                 Book Your Home Visit Today
               </Button>
@@ -584,7 +584,7 @@ export default function HomePhysioWestMidlands() {
             Final pricing may vary depending on location, complexity, and treatment requirements. Please contact us to confirm availability and pricing for your area.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-pricing">
                 Book Your Home Visit Today
               </Button>
@@ -638,7 +638,7 @@ export default function HomePhysioWestMidlands() {
             Get expert home physiotherapy in North-West London delivered directly to your door. Whether you are recovering from injury, struggling with mobility, or need physiotherapy at home in Stanmore, Harrow, or nearby — we are ready to help.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e" target="_blank" rel="noopener noreferrer">
+            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button size="lg" data-testid="button-book-home-visit-cta">
                 Book Your Home Visit Today
               </Button>
@@ -662,7 +662,7 @@ export default function HomePhysioWestMidlands() {
         data-testid="sticky-mobile-cta"
       >
         <a
-          href="https://dc493564-c50f-4406-8aed-a89dc73b1df9-00-1mbvbxisvok70.kirk.replit.dev/book/0d9c1e55-283f-4917-8db5-233603050f7e"
+          href="https://new-ob.rushcliff.com/holding-page/445519"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1"
