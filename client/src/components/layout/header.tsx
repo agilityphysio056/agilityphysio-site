@@ -189,7 +189,7 @@ export function Header() {
             </a>
             <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
               <Button data-testid="button-book-now">
-                Book Now
+                Book Appointment
               </Button>
             </a>
           </div>
