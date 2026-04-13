@@ -73,8 +73,9 @@ const servicesData: Record<string, {
       "Anyone who prefers treatment at home",
     ],
     pricing: [
-      { service: "Initial Assessment", price: "£50" },
-      { service: "Follow-up", price: "£45" },
+      { service: "Initial Assessment (60 mins)", price: "£120" },
+      { service: "Follow-up (45 mins)", price: "£95" },
+      { service: "Follow-up (30 mins)", price: "£75" },
     ],
   },
   "virtual-physiotherapy": {
@@ -104,8 +105,8 @@ const servicesData: Record<string, {
       "Patients located outside our home visit area",
     ],
     pricing: [
-      { service: "Initial Assessment", price: "£50" },
-      { service: "Follow-up", price: "£45" },
+      { service: "Initial Consultation (45 mins)", price: "£60" },
+      { service: "Follow-up Consultation (30 mins)", price: "£45" },
     ],
   },
 };
