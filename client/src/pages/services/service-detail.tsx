@@ -28,7 +28,7 @@ const servicesData: Record<string, {
       "Professional clinical environment",
     ],
     whatToExpect: [
-      "60-minute initial assessment to understand your condition",
+      "30-minute initial assessment to understand your condition",
       "Comprehensive physical examination and diagnosis",
       "Hands-on treatment during your first session",
       "Personalised treatment plan explained in clear terms",
