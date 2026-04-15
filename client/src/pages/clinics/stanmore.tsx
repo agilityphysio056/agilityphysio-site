@@ -152,7 +152,7 @@ export default function StanmoreClinic() {
                     <Clock className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                     <div>
                       <p className="text-sm font-medium text-foreground">Opening Hours</p>
-                      <p className="text-sm text-muted-foreground">Mon-Fri: 8am-8pm<br />Sat: 9am-2pm<br />Sun: Closed</p>
+                      <p className="text-sm text-muted-foreground">Mon-Sat: 9am-7pm<br />Sun: 12pm-8pm</p>
                     </div>
                   </div>
                 </div>
