@@ -1,5 +1,6 @@
 import { Link, useParams } from "wouter";
 import { Layout } from "@/components/layout/layout";
+import { openBookingWidget } from "@/lib/booking";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone } from "lucide-react";
@@ -157,11 +158,9 @@ export default function ServiceDetail() {
               {service.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" data-testid="button-book-service">
-                  Book Now
-                </Button>
-              </a>
+              <Button size="lg" data-testid="button-book-service" onClick={openBookingWidget}>
+                Book Now
+              </Button>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white">
                   <Phone className="w-4 h-4 mr-2" />
@@ -250,9 +249,7 @@ export default function ServiceDetail() {
                 <p className="text-sm text-muted-foreground mb-4">
                   Ready to get started? Book your appointment today.
                 </p>
-                <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button className="w-full">Book Appointment</Button>
-                </a>
+                <Button className="w-full" onClick={openBookingWidget}>Book Appointment</Button>
               </Card>
 
               <Card className="p-6">
@@ -279,9 +276,7 @@ export default function ServiceDetail() {
             Take the first step towards recovery with our expert physiotherapy team.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg">Book Now</Button>
-            </a>
+            <Button size="lg" onClick={openBookingWidget}>Book Now</Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />

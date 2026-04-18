@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect, useRef } from "react";
+import { openBookingWidget } from "@/lib/booking";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -368,11 +369,9 @@ export default function HomePhysioWestMidlands() {
               Expert home physiotherapy for pain, mobility issues, post-surgery recovery, and rehabilitation — delivered to your doorstep across Stanmore, Harrow, Edgware, Wembley, and surrounding areas. Same-day appointments available.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="text-base px-8 w-full sm:w-auto" data-testid="button-book-west-midlands">
-                  Book Your Home Visit Today
-                </Button>
-              </a>
+              <Button size="lg" className="text-base px-8 w-full sm:w-auto" data-testid="button-book-west-midlands" onClick={openBookingWidget}>
+                Book Your Home Visit Today
+              </Button>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 text-base px-8 w-full sm:w-auto">
                   <Phone className="w-4 h-4 mr-2" />
@@ -505,11 +504,9 @@ export default function HomePhysioWestMidlands() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" data-testid="button-book-why">
-                Book Your Home Visit Today
-              </Button>
-            </a>
+            <Button size="lg" data-testid="button-book-why" onClick={openBookingWidget}>
+              Book Your Home Visit Today
+            </Button>
           </div>
         </div>
       </section>
@@ -584,11 +581,9 @@ export default function HomePhysioWestMidlands() {
             Final pricing may vary depending on location, complexity, and treatment requirements. Please contact us to confirm availability and pricing for your area.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" data-testid="button-book-pricing">
-                Book Your Home Visit Today
-              </Button>
-            </a>
+            <Button size="lg" data-testid="button-book-pricing" onClick={openBookingWidget}>
+              Book Your Home Visit Today
+            </Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
                 <Phone className="w-4 h-4 mr-2" />
@@ -638,11 +633,9 @@ export default function HomePhysioWestMidlands() {
             Get expert home physiotherapy in North-West London delivered directly to your door. Whether you are recovering from injury, struggling with mobility, or need physiotherapy at home in Stanmore, Harrow, or nearby — we are ready to help.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" data-testid="button-book-home-visit-cta">
-                Book Your Home Visit Today
-              </Button>
-            </a>
+            <Button size="lg" data-testid="button-book-home-visit-cta" onClick={openBookingWidget}>
+              Book Your Home Visit Today
+            </Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-call-west-midlands">
                 <Phone className="w-4 h-4 mr-2" />
@@ -661,16 +654,9 @@ export default function HomePhysioWestMidlands() {
         className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-border shadow-lg px-4 py-3 flex gap-3"
         data-testid="sticky-mobile-cta"
       >
-        <a
-          href="https://new-ob.rushcliff.com/holding-page/445519"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex-1"
-        >
-          <Button className="w-full" size="sm" data-testid="sticky-button-book">
-            Book Home Visit
-          </Button>
-        </a>
+        <Button className="w-full flex-1" size="sm" data-testid="sticky-button-book" onClick={openBookingWidget}>
+          Book Home Visit
+        </Button>
         <a href="tel:02030929976" className="flex-1">
           <Button variant="outline" className="w-full" size="sm" data-testid="sticky-button-call">
             <Phone className="w-4 h-4 mr-1.5" />

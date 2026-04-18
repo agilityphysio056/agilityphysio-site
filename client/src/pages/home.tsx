@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { useState, useEffect, useRef } from "react";
+import { openBookingWidget } from "@/lib/booking";
 import heroHomeImage from "../assets/images/hero-home.jpg";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
@@ -266,16 +267,15 @@ export default function Home() {
                 Find a Clinic
               </Button>
             </Link>
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button
+            <Button
                 size="lg"
                 variant="outline"
                 className="text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
                 data-testid="button-hero-book"
+                onClick={openBookingWidget}
               >
                 Book Appointment
               </Button>
-            </a>
           </div>
           
           <div className="flex items-center justify-center gap-3 mt-8" data-testid="google-reviews-badge">
@@ -379,11 +379,9 @@ export default function Home() {
             Why wait. Call us today or book online for a fast appointment
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="text-base px-8" data-testid="button-pain-book">
-                Book Online
-              </Button>
-            </a>
+            <Button size="lg" className="text-base px-8" data-testid="button-pain-book" onClick={openBookingWidget}>
+              Book Online
+            </Button>
             <Link href="/contact">
               <Button size="lg" variant="secondary" className="text-base px-8" data-testid="button-pain-contact">
                 Contact Us
@@ -632,11 +630,9 @@ export default function Home() {
             Take the first step towards recovery. Our team is ready to help you get back to doing what you love.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" data-testid="button-cta-book">
-                Book Online
-              </Button>
-            </a>
+            <Button size="lg" data-testid="button-cta-book" onClick={openBookingWidget}>
+              Book Online
+            </Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-cta-call">
                 <Phone className="w-4 h-4 mr-2" />

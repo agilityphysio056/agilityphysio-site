@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
+import { openBookingWidget } from "@/lib/booking";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Building2, Home, Monitor, Phone, ArrowRight, MapPin } from "lucide-react";
@@ -203,9 +204,7 @@ export default function Services() {
             Take the first step towards recovery. Our team is here to help you get back to doing what you love.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button size="lg">Book Appointment</Button>
-            </a>
+            <Button size="lg" onClick={openBookingWidget}>Book Appointment</Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />

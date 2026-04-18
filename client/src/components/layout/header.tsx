@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import { openBookingWidget } from "@/lib/booking";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   DropdownMenu,
@@ -187,11 +188,9 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span>0203 092 9976</span>
             </a>
-            <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-              <Button data-testid="button-book-now">
-                Book Appointment
-              </Button>
-            </a>
+            <Button data-testid="button-book-now" onClick={openBookingWidget}>
+              Book Appointment
+            </Button>
           </div>
 
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -316,11 +315,9 @@ export function Header() {
                     <Phone className="w-5 h-5" />
                     <span>0203 092 9976</span>
                   </a>
-                  <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer">
-                    <Button className="w-full" data-testid="mobile-button-book" onClick={() => setIsMobileMenuOpen(false)}>
-                      Book Now
-                    </Button>
-                  </a>
+                  <Button className="w-full" data-testid="mobile-button-book" onClick={() => { setIsMobileMenuOpen(false); openBookingWidget(); }}>
+                    Book Now
+                  </Button>
                 </div>
               </div>
             </SheetContent>

@@ -1,5 +1,6 @@
 import { Link, useParams } from "wouter";
 import { Layout } from "@/components/layout/layout";
+import { openBookingWidget } from "@/lib/booking";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone, AlertTriangle } from "lucide-react";
@@ -463,9 +464,7 @@ export default function ConditionDetail() {
                 <p className="text-sm text-muted-foreground mb-4">
                   Book an assessment with one of our experienced physiotherapists.
                 </p>
-                <a href="https://new-ob.rushcliff.com/holding-page/445519" target="_blank" rel="noopener noreferrer" className="block">
-                  <Button className="w-full">Book Now</Button>
-                </a>
+                <Button className="w-full" onClick={openBookingWidget}>Book Now</Button>
               </Card>
 
               <Card className="p-6">

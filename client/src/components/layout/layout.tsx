@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { openBookingWidget } from "@/lib/booking";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -42,10 +43,8 @@ export function Layout({ children, title, description }: LayoutProps) {
       <main className="flex-1">{children}</main>
       <Footer />
 
-      <a
-        href="https://new-ob.rushcliff.com/holding-page/445519"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={openBookingWidget}
         className={`fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:block transition-all duration-300 ${
           showSticky ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
         }`}
@@ -56,7 +55,7 @@ export function Layout({ children, title, description }: LayoutProps) {
             Book Appointment
           </span>
         </div>
-      </a>
+      </button>
     </div>
   );
 }
