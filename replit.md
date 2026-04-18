@@ -61,10 +61,11 @@ Full shadcn/ui component library installed including Dialog, Select, Accordion, 
 - **@hookform/resolvers**: Form validation integration
 
 ### Booking System
-- **Current**: All "Book" buttons link to Rushcliff: `https://new-ob.rushcliff.com/holding-page/445519` (opened in new tab)
-- **CMS Widget (pending)**: A CMS booking widget from a separate Replit project is ready to integrate once that project is deployed. The widget script tag is commented out in `client/index.html`. When the CMS is deployed, replace all Rushcliff URLs with the CMS booking URL and uncomment the widget script.
-- **CMS Widget URL** (for when deployed): `https://<deployed-domain>/booking-widget.js`
-- **CMS Booking page** (for when deployed): `https://<deployed-domain>/book/0d9c1e55-283f-4917-8db5-233603050f7e`
+- **Header / inline buttons**: Still link to Rushcliff `https://new-ob.rushcliff.com/holding-page/445519` (opened in new tab)
+- **CMS Widget (LIVE)**: Floating "Book Appointment" button bottom-right on every page, injected via script tag before `</body>` in `client/index.html`
+  - Script: `https://cms.agilityphysio.net/booking-widget.js`
+  - Clinic ID: `0d9c1e55-283f-4917-8db5-233603050f7e`
+  - Key: `89454515f4347880ea905dfb61193e7c29b93bed55971091636d1523aa063927`
 
 ### Development Tools
 - **Replit Plugins**: Runtime error overlay, cartographer, dev banner for Replit environment
