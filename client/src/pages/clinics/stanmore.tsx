@@ -111,7 +111,7 @@ export default function StanmoreClinic() {
       {/* SOCIAL PROOF — reused from homepage */}
       <div className="bg-slate-900 pt-12 lg:pt-16" data-testid="section-reviews-heading">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-primary text-lg font-semibold mb-2">★★★★★</p>
+          <p className="text-primary text-lg font-semibold mb-2">★★★★★ 200+ Google 5 Star Reviews</p>
           <p className="text-white/90 text-sm md:text-base">
             Rated 5 stars by our patients in Stanmore
           </p>
@@ -232,14 +232,14 @@ export default function StanmoreClinic() {
                       <p className="font-semibold text-foreground">Initial Assessment</p>
                       <p className="text-xs text-muted-foreground">45 minutes</p>
                     </div>
-                    <p className="text-2xl font-bold text-primary">£65</p>
+                    <p className="text-2xl font-bold text-primary">£50</p>
                   </div>
                   <div className="flex items-center justify-between p-4 rounded-xl bg-background border border-border" data-testid="row-price-followup">
                     <div>
                       <p className="font-semibold text-foreground">Follow-up Treatment</p>
                       <p className="text-xs text-muted-foreground">30 minutes</p>
                     </div>
-                    <p className="text-2xl font-bold text-primary">£55</p>
+                    <p className="text-2xl font-bold text-primary">£45</p>
                   </div>
                 </div>
 
