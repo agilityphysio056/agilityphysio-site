@@ -53,7 +53,7 @@ export default function StanmoreClinic() {
           alt="Stanmore Business and Innovation Centre - Agility Physio clinic location"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-slate-900/70" />
+        <div className="absolute inset-0 bg-slate-900/80" />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 w-full">
           <div className="max-w-3xl">
             <p className="text-sm font-medium text-primary mb-2 uppercase tracking-widest">Agility Physio · Stanmore</p>
@@ -66,6 +66,17 @@ export default function StanmoreClinic() {
             <p className="text-lg lg:text-xl text-white/90 leading-relaxed mb-8">
               HCPC Registered Physiotherapists | Same Week Appointments Available
             </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-2 mb-4" data-testid="trust-bar">
+              {trustBadges.map((badge, i) => {
+                const Icon = badge.icon;
+                return (
+                  <div key={i} className="flex items-center gap-2 text-white/90 text-sm font-medium">
+                    <Icon className={`w-4 h-4 ${badge.icon === Star ? "text-primary fill-primary" : "text-primary"}`} />
+                    <span>{badge.label}</span>
+                  </div>
+                );
+              })}
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <Button
                 size="lg"
@@ -79,7 +90,7 @@ export default function StanmoreClinic() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
+                  className="text-base px-8 bg-transparent border-white text-white hover:bg-white/10 hover:text-white"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Call 0203 092 9976
@@ -92,18 +103,6 @@ export default function StanmoreClinic() {
               📅 Limited appointments available this week — book now to secure your slot
             </p>
 
-            {/* Trust bar */}
-            <div className="flex flex-wrap gap-x-6 gap-y-3 mt-2" data-testid="trust-bar">
-              {trustBadges.map((badge, i) => {
-                const Icon = badge.icon;
-                return (
-                  <div key={i} className="flex items-center gap-2 text-white/90 text-sm font-medium">
-                    <Icon className={`w-4 h-4 ${badge.icon === Star ? "text-primary fill-primary" : "text-primary"}`} />
-                    <span>{badge.label}</span>
-                  </div>
-                );
-              })}
-            </div>
           </div>
         </div>
       </section>
