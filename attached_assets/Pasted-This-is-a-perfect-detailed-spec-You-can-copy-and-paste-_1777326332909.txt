@@ -1,0 +1,62 @@
+This is a perfect, detailed spec! You can copy and paste this directly into Replit Agent:
+
+---
+
+> **Please complete task #14 exactly as described in the spec below. Follow every step in order and do not skip any. Here is the full spec:**
+>
+> **TASK: Redesign Stanmore Clinic Page**
+>
+> **Step 1 — Extract reviews into a shared component**
+> - Move `googleReviews`, `GoogleLogo`, and `TestimonialsSection` from `home.tsx` into a new shared file under `client/src/components/`
+> - Export it as a single reusable component
+> - Update `home.tsx` to import and render it so the homepage looks completely unchanged
+>
+> **Step 2 — Redesign the Stanmore hero**
+> - Headline: "Expert Physiotherapy in Stanmore"
+> - Subheadline: "HCPC Registered Physiotherapists | Same Week Appointments Available"
+> - Two side-by-side CTA buttons: gold "Book Appointment" (wired to `openBookingWidget` from `@/lib/booking`) and outlined "Call 0203 092 9976" (tel: link)
+> - Trust bar below buttons: "★ 5-Star Rated" | "✓ HCPC Registered" | "✓ 10+ Years Experience" | "✓ AXA & BUPA Recognised"
+> - Urgency line: "📅 Limited appointments available this week — book now to secure your slot"
+>
+> **Step 3 — Insert shared reviews section**
+> - Place it immediately after the hero and above "About Our Stanmore Clinic"
+> - Add heading: "★★★★★ Rated 5 stars by our patients in Stanmore"
+> - Must be the reused component from Step 1 — identical look to homepage
+>
+> **Step 4 — Add "Why Choose Us" row**
+> - Place it before the "Conditions We Treat" block
+> - 4 cards using lucide icons: 📅 Same Week Appointments, 🏥 Private Treatment Rooms, ✓ HCPC Registered Therapists, 💳 AXA & BUPA Recognised
+> - Rounded corners, subtle shadows
+>
+> **Step 5 — Add pricing card**
+> - Place it after the "Red Flags" block inside the main 2/3 column
+> - Initial Assessment: £65 — 45 minutes
+> - Follow-up Treatment: £55 — 30 minutes
+> - Note: "AXA and BUPA insurance accepted"
+> - Gold "Book Your Initial Assessment" button wired to `openBookingWidget`
+>
+> **Step 6 — Add mobile sticky book bar**
+> - Fixed bottom bar, visible on mobile only (`md:hidden`)
+> - Full-width gold "Book Appointment" button calling `openBookingWidget`
+> - Add enough bottom padding to the page so it doesn't clash with the floating CMS booking widget bubble
+>
+> **Step 7 — Polish and ship**
+> - Confirm rounded corners and shadows are consistent across all new cards
+> - Verify fully responsive at mobile, tablet, and desktop
+> - Do NOT touch or remove any existing sections: About, What to Expect, Conditions We Treat, Red Flags, Clinic Details sidebar, Getting Here, Services at This Clinic, Ready to Book CTA, header, footer
+> - Run `npm run build` to confirm clean compile
+> - Commit and push to main so Hostinger auto-deploys
+>
+> **Files to work in:**
+> - `client/src/pages/clinics/stanmore.tsx`
+> - `client/src/pages/home.tsx` (lines 91-225, 560-565)
+> - `client/src/lib/booking.ts`
+> - `client/src/components/layout/layout.tsx`
+> - `client/index.html`
+> - `client/src/index.css`
+>
+> **Do NOT change:** Stockwell page, any other clinic pages, the googleReviews data or carousel logic, the floating CMS booking widget in `client/index.html`, or pricing on `/services/clinic-physiotherapy`.
+
+---
+
+Once Replit is done, share a screenshot and I'll review it for you! 🙂

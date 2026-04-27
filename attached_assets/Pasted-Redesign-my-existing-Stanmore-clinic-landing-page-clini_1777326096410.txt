@@ -1,0 +1,74 @@
+Redesign my existing Stanmore clinic landing page (/clinics/stanmore) with the following improvements. Keep all existing content and information but enhance the design and add the following elements:
+1. HERO SECTION
+
+Full-width hero with a warm, professional background (clinic/treatment room feel)
+Headline: "Expert Physiotherapy in Stanmore"
+Subheadline: "HCPC Registered Physiotherapists | Same Week Appointments Available"
+Two CTA buttons side by side: "Book Appointment" (primary, gold/yellow) and "Call 0203 092 9976" (secondary, outline)
+Add a trust bar below the hero showing: ⭐ 5-Star Rated | ✓ HCPC Registered | ✓ 10+ Years Experience | ✓ AXA & BUPA Recognised
+
+2. SOCIAL PROOF SECTION (add after hero)
+
+Add a Google Reviews section showing 3 patient testimonials in cards
+Each card has: 5 gold stars, quote text, patient first name and initial
+Use these example reviews or placeholders I can replace later:
+
+"Booked same day, felt so much better after first session. Highly recommend!" — Sarah M.
+"Professional, knowledgeable and really helped my back pain. 5 stars." — James T.
+"Best physio in Stanmore, sorted my shoulder injury in 3 sessions." — Aisha K.
+
+
+Add a line: "★★★★★ Rated 5 stars by our patients in Stanmore"
+
+3. WHY CHOOSE US SECTION (add before conditions)
+
+4 icon boxes in a row:
+
+📅 Same Week Appointments
+🏥 Private Treatment Rooms
+✓ HCPC Registered Therapists
+💳 AXA & BUPA Recognised
+
+
+
+4. PRICING SECTION (add after conditions)
+
+Simple clean pricing card:
+
+Initial Assessment: £65 — 45 minutes
+Follow-up Treatment: £55 — 30 minutes
+Add note: "AXA and BUPA insurance accepted"
+
+
+Add a CTA button: "Book Your Initial Assessment"
+
+5. URGENCY BANNER
+
+Add a subtle banner near the main CTA buttons saying:
+"📅 Limited appointments available this week — Book now to secure your slot"
+
+6. STICKY MOBILE BUTTON
+
+On mobile, add a fixed bottom bar with "Book Appointment" button always visible
+
+7. GENERAL DESIGN IMPROVEMENTS
+
+Use a clean modern font (Inter or similar)
+Colour scheme: White background, dark navy text, gold/amber (#F5A623) for CTAs
+Add subtle shadows and rounded corners to all cards
+Make sure page loads fast and is fully mobile responsive
+Keep the existing nav, footer, clinic details sidebar and all current content — just enhance around it
+
+Do not remove any existing content. Only add and improve.
+
+
+Once Replit makes the changes, share a screenshot with me and I'll review it and give you further refinements if needed!You said: I already have reviews on the main landing page can we bring on this page as wellI already have reviews on the main landing page can we bring on this page as well22:40Claude responded: Simple fix!Simple fix! Here's the prompt to give Replit:
+
+
+On the Stanmore clinic page (/clinics/stanmore), find the reviews/testimonials component that already exists on the main homepage and reuse it on this page.
+
+Copy the exact same reviews section from the homepage and add it to the Stanmore clinic page
+Place it just below the hero section, before the "About Our Stanmore Clinic" section
+Make sure it looks identical to the homepage version — same styling, same cards, same stars
+Do not create new reviews or duplicate the component code — just import/reuse the existing reviews component
+Make sure it is fully mobile responsive
