@@ -243,7 +243,7 @@ export default function StanmoreClinic() {
                   <div className="flex items-center justify-between p-4 rounded-xl bg-background border border-border" data-testid="row-price-initial">
                     <div>
                       <p className="font-semibold text-foreground">Initial Assessment</p>
-                      <p className="text-xs text-muted-foreground">45 minutes</p>
+                      <p className="text-xs text-muted-foreground">30 minutes</p>
                     </div>
                     <p className="text-2xl font-bold text-primary">£50</p>
                   </div>
