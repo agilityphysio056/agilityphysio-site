@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { TestimonialsSection } from "@/components/testimonials-section";
@@ -41,6 +42,18 @@ const whyChooseUs = [
 ];
 
 export default function StanmoreClinic() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      const tryScroll = () => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "auto", block: "start" });
+      };
+      const t = setTimeout(tryScroll, 200);
+      return () => clearTimeout(t);
+    }
+  }, []);
+
   return (
     <Layout
       title="Physiotherapy in Stanmore | Agility Physio"
@@ -108,7 +121,7 @@ export default function StanmoreClinic() {
       </section>
 
       {/* SOCIAL PROOF — reused from homepage */}
-      <div className="bg-slate-900 pt-12 lg:pt-16" data-testid="section-reviews-heading">
+      <div id="reviews" className="bg-slate-900 pt-12 lg:pt-16" data-testid="section-reviews-heading">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-primary text-lg font-semibold mb-2">★★★★★ 200+ Google 5 Star Reviews</p>
           <p className="text-white/90 text-sm md:text-base">
@@ -158,7 +171,7 @@ export default function StanmoreClinic() {
               </div>
 
               {/* WHY CHOOSE US */}
-              <div data-testid="section-why-choose-us">
+              <div id="why-choose-us" data-testid="section-why-choose-us">
                 <h2 className="text-2xl font-bold text-foreground mb-6">
                   Why Choose Agility Physio Stanmore
                 </h2>
@@ -219,7 +232,8 @@ export default function StanmoreClinic() {
 
               {/* PRICING */}
               <div
-                className="bg-white p-6 lg:p-8 rounded-2xl shadow-md border border-border"
+                id="pricing"
+                className="bg-white p-6 lg:p-8 rounded-2xl shadow-md border border-border scroll-mt-24"
                 data-testid="section-pricing"
               >
                 <h2 className="text-2xl font-bold text-foreground mb-2">Pricing</h2>
