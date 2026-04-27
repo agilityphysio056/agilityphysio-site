@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Pause, Play, Star } from "lucide-react";
 
@@ -36,36 +36,6 @@ export const googleReviews = [
 
 export function TestimonialsSection() {
   const [isPlaying, setIsPlaying] = useState(true);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    if (!isPlaying || !scrollRef.current) return;
-
-    const container = scrollRef.current;
-    const scrollWidth = container.scrollWidth;
-    const clientWidth = container.clientWidth;
-    const maxScroll = scrollWidth - clientWidth;
-
-    const interval = setInterval(() => {
-      setScrollPosition((prev) => {
-        const newPos = prev + 1;
-        if (newPos >= maxScroll) {
-          return 0;
-        }
-        return newPos;
-      });
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, [isPlaying]);
-
-  useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft = scrollPosition;
-    }
-  }, [scrollPosition]);
-
   const duplicatedReviews = [...googleReviews, ...googleReviews];
 
   return (
@@ -73,8 +43,8 @@ export function TestimonialsSection() {
       className="py-16 lg:py-20 bg-slate-900"
       data-testid="section-testimonials"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-10">
+        <div className="flex items-center justify-between">
           <div>
             <p className="text-sm uppercase tracking-widest text-primary mb-3 font-medium">
               Testimonials
@@ -96,19 +66,16 @@ export function TestimonialsSection() {
             {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
           </Button>
         </div>
+      </div>
+      <div className="marquee-track w-full overflow-hidden">
         <div
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
-          style={{ touchAction: 'pan-y' }}
-          onMouseEnter={() => setIsPlaying(false)}
-          onMouseLeave={() => setIsPlaying(true)}
-          onTouchStart={() => setIsPlaying(false)}
-          onTouchEnd={() => setIsPlaying(true)}
+          className={`animate-marquee flex w-max ${isPlaying ? "" : "is-paused"}`}
+          data-testid="marquee-track"
         >
           {duplicatedReviews.map((review, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-80 bg-white p-6 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none border-2 border-primary/20"
+              className="flex-shrink-0 w-80 mr-6 bg-white p-6 rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none border-2 border-primary/20"
               data-testid={`card-review-${index}`}
             >
               <div className="flex items-center justify-between mb-4">

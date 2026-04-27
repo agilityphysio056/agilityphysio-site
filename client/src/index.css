@@ -294,4 +294,19 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee-x 60s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-marquee.is-paused,
+  .marquee-track:hover .animate-marquee {
+    animation-play-state: paused;
+  }
 }
