@@ -296,6 +296,11 @@ export default function BookingsPage() {
   );
 
   const todayISO = useMemo(() => formatDateISO(new Date()), []);
+  const toDateISO = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 60);
+    return formatDateISO(d);
+  }, []);
   const availabilityQ = useQuery<Availability>({
     queryKey: [
       "/api/cms/availability",
@@ -303,6 +308,7 @@ export default function BookingsPage() {
       clinician?.clinicianId,
       service?.serviceId,
       todayISO,
+      toDateISO,
     ],
     queryFn: () =>
       getAvailability({
@@ -310,6 +316,7 @@ export default function BookingsPage() {
         clinicianId: clinician!.clinicianId,
         serviceId: service!.serviceId,
         fromDate: todayISO,
+        toDate: toDateISO,
       }),
     enabled: !!clinic && !!clinician && !!service,
     staleTime: 60 * 1000,

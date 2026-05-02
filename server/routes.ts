@@ -118,6 +118,7 @@ export async function registerRoutes(
       const clinicianId = String(req.query.clinicianId ?? "");
       const serviceId = String(req.query.serviceId ?? "");
       const fromDate = String(req.query.fromDate ?? "");
+      const toDate = req.query.toDate ? String(req.query.toDate) : "";
       if (!clinicId || !clinicianId || !serviceId || !fromDate) {
         return res.status(400).json({ error: "clinicId, clinicianId, serviceId and fromDate are required" });
       }
@@ -128,6 +129,7 @@ export async function registerRoutes(
       url.searchParams.set("clinicianId", clinicianId);
       url.searchParams.set("serviceId", serviceId);
       url.searchParams.set("fromDate", fromDate);
+      if (toDate) url.searchParams.set("toDate", toDate);
       const r = await fetch(url.toString(), { headers: { "x-api-key": key } });
       if (!r.ok) throw new Error(`availability ${r.status}: ${await r.text()}`);
       res.json(await r.json());

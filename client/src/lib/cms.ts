@@ -153,6 +153,7 @@ export async function getAvailability(args: {
   clinicianId: string;
   serviceId: string;
   fromDate: string;
+  toDate?: string;
 }): Promise<Availability> {
   const qs = new URLSearchParams({
     clinicId: args.clinicId,
@@ -160,6 +161,7 @@ export async function getAvailability(args: {
     serviceId: args.serviceId,
     fromDate: args.fromDate,
   });
+  if (args.toDate) qs.set("toDate", args.toDate);
   if (isProdHost()) {
     const res = await fetch(`${CMS_DIRECT_BASE}/availability?${qs}`, {
       headers: { "x-api-key": keyForOrThrow(args.clinicId) },
