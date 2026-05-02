@@ -452,7 +452,7 @@ export default function BookingsPage() {
             {step === 1 && (
               <StepShell direction={direction} step={1}>
                 <h2 className="text-2xl font-bold mb-6">
-                  Step 1 — Select a clinic
+                  Select a clinic
                 </h2>
                 {clinicsQ.isLoading && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -550,7 +550,7 @@ export default function BookingsPage() {
             {step === 2 && (
               <StepShell direction={direction} step={2}>
                 <h2 className="text-2xl font-bold mb-1">
-                  Step 2 — Choose your appointment
+                  Choose your appointment
                 </h2>
                 <p className="text-muted-foreground mb-6">
                   At{" "}
@@ -649,7 +649,7 @@ export default function BookingsPage() {
             {step === 3 && (
               <StepShell direction={direction} step={3}>
                 <h2 className="text-2xl font-bold mb-1">
-                  Step 3 — Choose your clinician
+                  Choose your clinician
                 </h2>
                 <p className="text-muted-foreground mb-6">
                   Available for{" "}
@@ -813,7 +813,7 @@ export default function BookingsPage() {
             {step === 4 && (
               <StepShell direction={direction} step={4}>
                 <h2 className="text-2xl font-bold mb-6">
-                  Step 4 — Pick a date and time
+                  Pick a date and time
                 </h2>
                 {availabilityQ.isLoading && (
                   <Card className="p-12 flex items-center justify-center">
@@ -937,7 +937,7 @@ export default function BookingsPage() {
             {step === 5 && (
               <StepShell direction={direction} step={5}>
                 <h2 className="text-2xl font-bold mb-6">
-                  Step 5 — Your details
+                  Your details
                 </h2>
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                   <div className="lg:col-span-8">
