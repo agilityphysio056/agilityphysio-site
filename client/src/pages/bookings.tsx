@@ -298,7 +298,7 @@ export default function BookingsPage() {
   const todayISO = useMemo(() => formatDateISO(new Date()), []);
   const toDateISO = useMemo(() => {
     const d = new Date();
-    d.setDate(d.getDate() + 60);
+    d.setDate(d.getDate() + 90);
     return formatDateISO(d);
   }, []);
   const availabilityQ = useQuery<Availability>({
