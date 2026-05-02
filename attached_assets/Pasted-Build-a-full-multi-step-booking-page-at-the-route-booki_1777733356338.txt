@@ -1,0 +1,128 @@
+Build a full multi-step booking page at the route /bookings for Agility Physio. 
+This page must be smooth, modern, engaging and mobile-responsive. 
+It should match our existing website colour scheme exactly:
+- Primary: Teal/green-blue (#1a9b8c or closest match to agilityphysio.net)
+- Background: Clean white (#ffffff)
+- Text: Deep navy (#1a2e44)
+- Accent: Soft teal highlight on hover/active states
+- Font: Match existing website font (check current CSS for font-family)
+
+The booking flow has 5 steps shown as a clean progress bar at the top:
+Step 1 → Step 2 → Step 3 → Step 4 → Step 5
+
+---
+
+STEP 1 — SELECT CLINIC
+Show 2 large clickable cards side by side (stack on mobile):
+- Card 1: "Stanmore Clinic" with address, small map thumbnail, and a tick icon when selected
+- Card 2: "Stockwell Clinic" with address, small map thumbnail, and a tick icon when selected
+When a card is clicked it gets a teal border highlight and "Selected" badge. 
+A "Next →" button appears below once one is selected.
+
+---
+
+STEP 2 — SELECT CLINICIAN
+Show clinician profile cards for the selected clinic (2 clinicians for Stanmore, 
+use placeholder data: Name, HCPC registration, photo placeholder with initials avatar, 
+short 2-line bio, specialisms as small pill badges e.g. "Back Pain", "Sports Injury").
+Cards are horizontally laid out, teal border on selection. "Next →" button appears on selection.
+
+---
+
+STEP 3 — SELECT DATE & TIME
+Layout: Three-column layout on desktop, stacked on mobile.
+- LEFT COLUMN: Available time slots — only appear once a date is hovered or clicked. 
+  Show slots as clean pill buttons (e.g. 9:00am, 9:30am, 10:00am...). 
+  Selected slot gets teal fill. Column header: "Available Times"
+- CENTRE COLUMN (dominant): A clean inline calendar. 
+  Current month shown. Available dates are bold/teal, unavailable are grey/strikethrough.
+  Hovering a date previews times in the left column instantly.
+  Clicking a date confirms it and locks the left column to show real slots.
+- RIGHT COLUMN: Booking summary card — shows Clinic, Clinician, Date, Time selected so far.
+  Updates live as user picks. This becomes the "Your Booking" receipt.
+
+"Next →" only activates once both date AND time are selected.
+
+---
+
+STEP 4 — PATIENT DETAILS
+Clean form with the following fields:
+- First Name, Last Name (side by side)
+- Date of Birth
+- Email Address
+- Mobile Number
+- "Is this your first visit?" — Yes / No toggle
+- Reason for appointment (dropdown: Back Pain, Neck Pain, Shoulder Pain, 
+  Sports Injury, Post-Surgery Rehab, Other)
+- Special notes / additional info (optional textarea)
+- Checkbox: "I agree to the cancellation policy" (required)
+
+Form validation inline — red border + message on missing required fields.
+"Confirm Booking →" CTA button in teal, full width, bold.
+
+---
+
+STEP 5 — CONFIRMATION PAGE (Thank You Page)
+Route: /bookings/confirmation
+Large animated green tick icon (CSS animation, draws itself in).
+Headline: "You're all booked in! 🎉"
+Subtext: "A confirmation has been sent to [patient email]. 
+We'll also send an SMS reminder before your appointment."
+
+Show full booking summary card:
+- Clinic name + address
+- Clinician name
+- Date & time
+- Patient name
+- Appointment type
+
+Two CTA buttons:
+- "Add to Google Calendar" (generates .ics link)
+- "Back to Homepage" → links to agilityphysio.net
+
+---
+
+GOOGLE ADS CONVERSION TRACKING
+On the /bookings/confirmation page load, fire this Google Ads conversion event:
+  gtag('event', 'conversion', {
+    'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+    'value': 1.0,
+    'currency': 'GBP'
+  });
+Add a comment // REPLACE AW-CONVERSION_ID and CONVERSION_LABEL with values from Google Ads
+Also fire a dataLayer push for Google Tag Manager:
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ 'event': 'booking_confirmed' });
+
+---
+
+NOTIFICATIONS (on booking confirmation):
+1. Send confirmation email to patient email address with full booking details
+2. Send SMS to patient mobile number: 
+   "Hi [First Name], your appointment at Agility Physio [Clinic] is confirmed for 
+   [Date] at [Time] with [Clinician]. Reply CANCEL to cancel. Team Agility Physio"
+3. Send alert email to clinic admin with full patient details and booking info
+
+---
+
+ANIMATIONS & UX POLISH:
+- Step transitions: smooth slide-in from right, slide-out to left (CSS transitions)
+- Progress bar fills smoothly with teal as steps complete
+- Calendar date hover: subtle scale(1.05) + teal background
+- Time slot selection: satisfying pop animation (scale up then settle)
+- All buttons: teal with white text, slight lift shadow on hover (translateY -2px)
+- Card selections: smooth border transition 200ms ease
+- Mobile: fully responsive, touch-friendly tap targets minimum 44px
+- Loading states: skeleton shimmer on clinician cards while data loads
+
+---
+
+TECHNICAL NOTES:
+- This booking page should connect to the existing appointment/booking database 
+  already built in this Replit project
+- Pull real clinician data, real availability slots, and real clinic info 
+  from the existing backend/database
+- On form submit, write the new booking to the existing bookings database table
+- Use the existing email/SMS notification system already set up in this project
+- Keep URL structure: /bookings (start) → /bookings/confirmation (end)
+- Ensure the page works on: Chrome, Safari, Firefox, iOS Safari, Android Chrome
