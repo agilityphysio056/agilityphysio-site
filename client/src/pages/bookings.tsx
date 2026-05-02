@@ -422,7 +422,15 @@ export default function BookingsPage() {
                       <button
                         key={c.id}
                         type="button"
-                        onClick={() => setClinicId(c.id)}
+                        aria-pressed={selected}
+                        onClick={() => {
+                          if (clinicId !== c.id) {
+                            setClinicianId(undefined);
+                            setDate(undefined);
+                            setTime(undefined);
+                          }
+                          setClinicId(c.id);
+                        }}
                         className={`text-left rounded-2xl overflow-hidden border-2 bg-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                           selected
                             ? "border-primary shadow-lg"
@@ -501,7 +509,14 @@ export default function BookingsPage() {
                           <button
                             key={c.id}
                             type="button"
-                            onClick={() => setClinicianId(c.id)}
+                            aria-pressed={selected}
+                            onClick={() => {
+                              if (clinicianId !== c.id) {
+                                setDate(undefined);
+                                setTime(undefined);
+                              }
+                              setClinicianId(c.id);
+                            }}
                             className={`text-left rounded-2xl bg-card p-6 border-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                               selected ? "border-primary shadow-lg" : "border-border"
                             }`}
@@ -696,7 +711,7 @@ export default function BookingsPage() {
                                   <FormControl>
                                     <Input
                                       {...field}
-                                      data-testid="input-firstName"
+                                      data-testid="input-first-name"
                                     />
                                   </FormControl>
                                   <FormMessage />
@@ -712,7 +727,7 @@ export default function BookingsPage() {
                                   <FormControl>
                                     <Input
                                       {...field}
-                                      data-testid="input-lastName"
+                                      data-testid="input-last-name"
                                     />
                                   </FormControl>
                                   <FormMessage />
@@ -786,13 +801,14 @@ export default function BookingsPage() {
                                       <button
                                         key={v}
                                         type="button"
+                                        aria-pressed={active}
                                         onClick={() => field.onChange(v)}
                                         className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${
                                           active
                                             ? "bg-primary text-primary-foreground border-primary"
                                             : "bg-background border-border hover:border-primary"
                                         }`}
-                                        data-testid={`button-firstVisit-${v}`}
+                                        data-testid={`button-first-visit-${v}`}
                                       >
                                         {v === "yes" ? "Yes" : "No"}
                                       </button>
@@ -857,6 +873,7 @@ export default function BookingsPage() {
                                 <div className="flex items-start gap-3">
                                   <FormControl>
                                     <Checkbox
+                                      id="agreed-checkbox"
                                       checked={!!field.value}
                                       onCheckedChange={(v) =>
                                         field.onChange(v === true)
@@ -864,7 +881,10 @@ export default function BookingsPage() {
                                       data-testid="checkbox-agreed"
                                     />
                                   </FormControl>
-                                  <Label className="text-sm font-normal leading-snug">
+                                  <Label
+                                    htmlFor="agreed-checkbox"
+                                    className="text-sm font-normal leading-snug cursor-pointer"
+                                  >
                                     I agree to the{" "}
                                     <a
                                       href="/about"

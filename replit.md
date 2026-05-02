@@ -66,6 +66,13 @@ Full shadcn/ui component library installed including Dialog, Select, Accordion, 
   - Script: `https://cms.agilityphysio.net/booking-widget.js`
   - Clinic ID: `0d9c1e55-283f-4917-8db5-233603050f7e`
   - Key: `89454515f4347880ea905dfb61193e7c29b93bed55971091636d1523aa063927`
+- **/bookings prototype (Demo only — NOT shipped to GitHub yet)**: Multi-step booking UI at `/bookings` and `/bookings/confirmation` (`client/src/pages/bookings.tsx`, `client/src/pages/bookings/confirmation.tsx`).
+  - Frontend-only visual prototype with mock clinic/clinician/slot data.
+  - Clear amber "Demo only — not connected" banner on both pages.
+  - Booking handed between pages via sessionStorage key `agility:demo-booking`.
+  - Confirmation page shows graceful empty state when visited directly.
+  - Google Ads conversion + GTM dataLayer push are intentionally commented out in the confirmation page (see comment block — has REPLACE marker for AW-CONVERSION_ID).
+  - Built because the CMS at cms.agilityphysio.net only exposes 2 public API endpoints (`GET /api/public/clinics`, `POST /api/public/bookings`) and lacks public read endpoints for clinicians/services/availability, so a real flow is currently impossible without changes to the CMS Replit project (and adding Stockwell, which is missing from CMS today).
 
 ### Development Tools
 - **Replit Plugins**: Runtime error overlay, cartographer, dev banner for Replit environment
