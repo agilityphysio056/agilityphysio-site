@@ -37,12 +37,14 @@ import {
   MapPin,
   AlertTriangle,
 } from "lucide-react";
+import stanmoreHero from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
+import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
 
 type Clinic = {
   id: string;
   name: string;
   address: string;
-  mapImage: string;
+  image: string;
 };
 
 type Clinician = {
@@ -60,15 +62,13 @@ const CLINICS: Clinic[] = [
     name: "Stanmore Clinic",
     address:
       "Stanmore Business and Innovation Centre, Howard Road, Stanmore, HA7 1GB",
-    mapImage:
-      "https://maps.googleapis.com/maps/api/staticmap?center=Stanmore+HA7+1GB&zoom=14&size=400x200&markers=color:0xF2B705|Stanmore+HA7+1GB",
+    image: stanmoreHero,
   },
   {
     id: "stockwell",
     name: "Stockwell Clinic",
     address: "Stockwell, London SW8",
-    mapImage:
-      "https://maps.googleapis.com/maps/api/staticmap?center=Stockwell+SW8&zoom=14&size=400x200&markers=color:0xF2B705|Stockwell+SW8",
+    image: stockwellHero,
   },
 ];
 
@@ -439,21 +439,31 @@ export default function BookingsPage() {
                         data-testid={`card-clinic-${c.id}`}
                       >
                         <div className="aspect-[2/1] bg-muted relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center">
-                            <MapPin className="w-10 h-10 text-primary" />
-                          </div>
+                          <img
+                            src={c.image}
+                            alt={`${c.name} exterior`}
+                            className="absolute inset-0 w-full h-full object-cover"
+                            loading="lazy"
+                            data-testid={`img-clinic-${c.id}`}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent" />
                           {selected && (
                             <div className="absolute top-3 right-3">
-                              <Badge className="bg-primary text-primary-foreground gap-1">
+                              <Badge className="bg-primary text-primary-foreground gap-1 shadow-lg">
                                 <Check className="w-3 h-3" /> Selected
                               </Badge>
                             </div>
                           )}
+                          <div className="absolute bottom-3 left-4 right-4 text-white">
+                            <h3 className="font-bold text-xl drop-shadow-md">
+                              {c.name}
+                            </h3>
+                          </div>
                         </div>
                         <div className="p-5">
-                          <h3 className="font-bold text-lg mb-1">{c.name}</h3>
-                          <p className="text-sm text-muted-foreground">
-                            {c.address}
+                          <p className="text-sm text-muted-foreground flex items-start gap-2">
+                            <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary" />
+                            <span>{c.address}</span>
                           </p>
                         </div>
                       </button>
