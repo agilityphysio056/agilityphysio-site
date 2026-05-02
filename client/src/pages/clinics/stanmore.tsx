@@ -90,20 +90,20 @@ export default function StanmoreClinic() {
                 );
               })}
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4 mb-6 max-w-sm sm:max-w-none">
               <Button
                 size="lg"
                 onClick={openBookingWidget}
-                className="text-base px-8 shadow-lg"
+                className="w-full sm:w-auto text-base px-8 shadow-lg"
                 data-testid="button-hero-book"
               >
                 Book Appointment
               </Button>
-              <a href="tel:02030929976" data-testid="link-hero-call">
+              <a href="tel:02030929976" className="w-full sm:w-auto" data-testid="link-hero-call">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-base px-8 bg-transparent border-white text-white hover:bg-white/10 hover:text-white"
+                  className="w-full sm:w-auto text-base px-8 bg-transparent border-white text-white hover:bg-white/10 hover:text-white"
                 >
                   <Phone className="w-4 h-4 mr-2" />
                   Call 0203 092 9976

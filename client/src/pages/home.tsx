@@ -125,16 +125,16 @@ export default function Home() {
           >
             Our highly trained physiotherapists help you restore function, reduce pain, and get back to doing what you love.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/clinics">
-              <Button size="lg" className="text-base px-8" data-testid="button-hero-find-clinic">
+          <div className="flex flex-col sm:flex-row gap-4 sm:justify-center items-stretch sm:items-center mb-12 max-w-sm sm:max-w-none mx-auto">
+            <Link href="/clinics" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto text-base px-8" data-testid="button-hero-find-clinic">
                 Find a Clinic
               </Button>
             </Link>
             <Button
                 size="lg"
                 variant="outline"
-                className="text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
+                className="w-full sm:w-auto text-base px-8 bg-white/10 border-white/30 text-white hover:bg-white/20"
                 data-testid="button-hero-book"
                 onClick={openBookingWidget}
               >
