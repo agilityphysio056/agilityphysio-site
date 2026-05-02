@@ -73,7 +73,7 @@ The site has a fully native multi-step booking flow at `/bookings` (and confirma
   - `GET  /api/cms/availability?clinicId=…&clinicianId=…&serviceId=…&fromDate=YYYY-MM-DD`
   - `POST /api/cms/bookings` (forwards upstream status + body verbatim)
 - **sessionStorage key**: `agility:booking` (handed from `bookings.tsx` to the confirmation page).
-- **Analytics**: site-wide gtag in `client/index.html` loads Google Ads account `AW-17788015342`. On `/bookings/confirmation` we fire `gtag("event", "conversion", { send_to: "AW-17788015342/REPLACE_WITH_CONVERSION_LABEL", value: 50.0, currency: "GBP" })` plus push `{ event: "booking_confirmed" }` onto `window.dataLayer`. The fire is gated by a `agility:booking:conversion_fired` sessionStorage flag (keyed on the booking reference) so a page refresh does not double-count. **Replace `REPLACE_WITH_CONVERSION_LABEL` in `client/src/pages/bookings/confirmation.tsx` with the conversion label from Google Ads.**
+- **Analytics**: site-wide gtag in `client/index.html` loads Google Ads account `AW-17788015342`. On `/bookings/confirmation` we fire `gtag("event", "conversion", { send_to: "AW-17788015342/d9b0CJS8t6YcEO6l_qFC", value: 50.0, currency: "GBP" })` plus push `{ event: "booking_confirmed" }` onto `window.dataLayer`. The fire is gated by an `agility:booking:conversion_fired` sessionStorage flag (keyed on the booking reference) so a page refresh does not double-count.
 - **Service display**: prefixes "Pay as you go - " and "Private – " are stripped at render time. Order is Initial Assessment → Treatment → Home Visit.
 
 ### Development Tools

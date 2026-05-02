@@ -132,7 +132,7 @@ export default function BookingConfirmationPage() {
     const w = window as any;
     if (typeof w.gtag === "function") {
       w.gtag("event", "conversion", {
-        send_to: "AW-17788015342/REPLACE_WITH_CONVERSION_LABEL",
+        send_to: "AW-17788015342/d9b0CJS8t6YcEO6l_qFC",
         value: 50.0,
         currency: "GBP",
       });
