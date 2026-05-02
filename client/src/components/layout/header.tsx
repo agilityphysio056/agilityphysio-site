@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Phone, ChevronDown, MapPin, FlaskConical } from "lucide-react";
+import { Menu, Phone, ChevronDown, MapPin } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
@@ -46,7 +46,6 @@ const clinicLocations = [
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isPreviewEnv, setIsPreviewEnv] = useState(false);
   const [location] = useLocation();
 
   useEffect(() => {
@@ -55,16 +54,6 @@ export function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const host = window.location.hostname;
-    setIsPreviewEnv(
-      host === "localhost" ||
-        host === "127.0.0.1" ||
-        host.endsWith(".replit.dev") ||
-        host.endsWith(".repl.co"),
-    );
   }, []);
 
   return (
@@ -191,18 +180,6 @@ export function Header() {
           </nav>
 
           <div className="hidden lg:flex items-center gap-2">
-            {isPreviewEnv && (
-              <Link href="/bookings">
-                <span
-                  className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 hover:bg-amber-200 transition-colors cursor-pointer whitespace-nowrap"
-                  data-testid="link-preview-bookings"
-                  title="Visible only in the Replit preview — hidden on the live site"
-                >
-                  <FlaskConical className="w-3.5 h-3.5" />
-                  Preview booking page
-                </span>
-              </Link>
-            )}
             <a
               href="tel:02030929976"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -330,18 +307,6 @@ export function Header() {
                 </nav>
 
                 <div className="pt-4 pb-2 space-y-4 shrink-0 border-t border-border mt-2">
-                  {isPreviewEnv && (
-                    <Link href="/bookings">
-                      <span
-                        className="flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-md bg-amber-100 text-amber-900 cursor-pointer"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        data-testid="mobile-link-preview-bookings"
-                      >
-                        <FlaskConical className="w-4 h-4" />
-                        Preview booking page (Replit only)
-                      </span>
-                    </Link>
-                  )}
                   <a
                     href="tel:02030929976"
                     className="flex items-center gap-2 text-muted-foreground"

@@ -3,13 +3,20 @@ import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { CalendarPlus, Home, AlertTriangle, Info } from "lucide-react";
+import { CalendarPlus, Home, Info } from "lucide-react";
 
 type StoredBooking = {
   clinic: { id: string; name: string; address: string };
+  service?: {
+    id: string;
+    name: string;
+    priceGBP: number;
+    durationMinutes: number;
+  };
   clinician: { id: string; name: string };
   date: string;
   time: string;
+  reference?: string | null;
   patient: {
     firstName: string;
     lastName: string;
@@ -69,7 +76,8 @@ function buildIcsHref(b: StoredBooking) {
   const [hh, mm] = b.time.split(":").map(Number);
   const start = new Date(date);
   start.setHours(hh, mm, 0, 0);
-  const end = new Date(start.getTime() + 30 * 60 * 1000);
+  const durationMin = b.service?.durationMinutes ?? 30;
+  const end = new Date(start.getTime() + durationMin * 60 * 1000);
   const fmt = (d: Date) =>
     d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   const ics = [
@@ -83,7 +91,7 @@ function buildIcsHref(b: StoredBooking) {
     `DTEND:${fmt(end)}`,
     `SUMMARY:Physio appointment with ${b.clinician.name}`,
     `LOCATION:${b.clinic.name}, ${b.clinic.address}`,
-    `DESCRIPTION:Reason: ${b.patient.reason}`,
+    `DESCRIPTION:${b.service ? b.service.name + ". " : ""}Reason: ${b.patient.reason}`,
     "END:VEVENT",
     "END:VCALENDAR",
   ].join("\r\n");
@@ -95,7 +103,7 @@ export default function BookingConfirmationPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    const raw = sessionStorage.getItem("agility:demo-booking");
+    const raw = sessionStorage.getItem("agility:booking");
     if (raw) {
       try {
         setBooking(JSON.parse(raw));
@@ -106,25 +114,32 @@ export default function BookingConfirmationPage() {
     setLoaded(true);
   }, []);
 
-  // Analytics events for a real (non-demo) flow would fire here.
-  // They are intentionally disabled in this prototype so test runs
-  // do not pollute live analytics.
-  //
-  // useEffect(() => {
-  //   if (!booking) return;
-  //   // REPLACE AW-CONVERSION_ID and CONVERSION_LABEL with values from Google Ads
-  //   if (typeof window !== "undefined" && (window as any).gtag) {
-  //     (window as any).gtag("event", "conversion", {
-  //       send_to: "AW-CONVERSION_ID/CONVERSION_LABEL",
-  //       value: 1.0,
-  //       currency: "GBP",
-  //     });
-  //   }
-  //   if (typeof window !== "undefined") {
-  //     (window as any).dataLayer = (window as any).dataLayer || [];
-  //     (window as any).dataLayer.push({ event: "booking_confirmed" });
-  //   }
-  // }, [booking]);
+  // Analytics: push a GTM dataLayer event for booking conversion.
+  // Google Ads conversion fire is intentionally commented out until the
+  // user supplies the conversion label. AW account ID (AW-17780015342)
+  // is already loaded site-wide via gtag in client/index.html — only the
+  // /CONVERSION_LABEL needs to be filled in below.
+  useEffect(() => {
+    if (!booking) return;
+    if (typeof window === "undefined") return;
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    (window as any).dataLayer.push({
+      event: "booking_confirmed",
+      clinic: booking.clinic.name,
+      service: booking.service?.name,
+      value: booking.service?.priceGBP,
+      currency: "GBP",
+      bookingReference: booking.reference,
+    });
+    // if ((window as any).gtag) {
+    //   (window as any).gtag("event", "conversion", {
+    //     send_to: "AW-17780015342/CONVERSION_LABEL", // REPLACE CONVERSION_LABEL
+    //     value: booking.service?.priceGBP ?? 1.0,
+    //     currency: "GBP",
+    //     transaction_id: booking.reference ?? "",
+    //   });
+    // }
+  }, [booking]);
 
   const formattedDate = booking
     ? new Date(booking.date).toLocaleDateString("en-GB", {
@@ -137,23 +152,9 @@ export default function BookingConfirmationPage() {
 
   return (
     <Layout
-      title="Booking preview | Agility Physio"
-      description="Visual prototype of the Agility Physio booking confirmation page."
+      title="Booking confirmed | Agility Physio"
+      description="Your physiotherapy appointment with Agility Physio is confirmed."
     >
-      <div
-        className="bg-amber-50 border-b border-amber-200 text-amber-900"
-        data-testid="banner-demo"
-      >
-        <div className="max-w-3xl mx-auto px-6 py-2.5 flex items-start sm:items-center gap-3 text-sm">
-          <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5 sm:mt-0" />
-          <p>
-            <strong className="font-semibold">Demo only — not connected.</strong>{" "}
-            Nothing was saved. No email or SMS has been sent. This page is a
-            visual prototype.
-          </p>
-        </div>
-      </div>
-
       <section className="py-14 lg:py-20 bg-background">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           {!loaded ? null : booking ? (
@@ -164,19 +165,30 @@ export default function BookingConfirmationPage() {
                   className="text-3xl lg:text-4xl font-bold mb-3"
                   data-testid="text-confirmation-title"
                 >
-                  Preview: your booking would be confirmed
+                  Your booking is confirmed
                 </h1>
                 <p className="text-muted-foreground">
-                  In the live version, a confirmation would be sent to{" "}
+                  A confirmation has been sent to{" "}
                   <span className="font-medium text-foreground">
                     {booking.patient.email}
-                  </span>{" "}
-                  and an SMS reminder to{" "}
+                  </span>
+                  . We'll send a reminder by SMS to{" "}
                   <span className="font-medium text-foreground">
                     {booking.patient.phone}
                   </span>{" "}
-                  before the appointment. Nothing was sent for this preview.
+                  before your appointment.
                 </p>
+                {booking.reference && (
+                  <p className="text-sm text-muted-foreground mt-3">
+                    Booking reference:{" "}
+                    <span
+                      className="font-mono font-medium text-foreground"
+                      data-testid="confirm-reference"
+                    >
+                      {booking.reference}
+                    </span>
+                  </p>
+                )}
               </div>
 
               <Card
@@ -196,6 +208,15 @@ export default function BookingConfirmationPage() {
                       </div>
                     </dd>
                   </div>
+                  {booking.service && (
+                    <div>
+                      <dt className="text-muted-foreground">Appointment</dt>
+                      <dd className="font-medium" data-testid="confirm-service">
+                        {booking.service.name} · £{booking.service.priceGBP} ·{" "}
+                        {booking.service.durationMinutes} min
+                      </dd>
+                    </div>
+                  )}
                   <div>
                     <dt className="text-muted-foreground">Clinician</dt>
                     <dd className="font-medium" data-testid="confirm-clinician">
@@ -223,7 +244,7 @@ export default function BookingConfirmationPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-muted-foreground">Appointment type</dt>
+                    <dt className="text-muted-foreground">Reason</dt>
                     <dd className="font-medium" data-testid="confirm-reason">
                       {booking.patient.reason}
                     </dd>
@@ -248,12 +269,14 @@ export default function BookingConfirmationPage() {
                   </Link>
                 </Button>
               </div>
+
+              <p className="text-xs text-muted-foreground text-center mt-8">
+                Need to change or cancel? Please call 0203 092 9976 at least 24
+                hours before your appointment.
+              </p>
             </>
           ) : (
-            <Card
-              className="p-8 text-center"
-              data-testid="card-no-booking"
-            >
+            <Card className="p-8 text-center" data-testid="card-no-booking">
               <div
                 className="w-16 h-16 mx-auto mb-5 rounded-full bg-muted flex items-center justify-center"
                 aria-hidden="true"
@@ -267,8 +290,8 @@ export default function BookingConfirmationPage() {
                 No booking in progress
               </h1>
               <p className="text-muted-foreground mb-6">
-                We couldn't find a booking from this session. Start the
-                preview from the beginning to see the confirmation step.
+                We couldn't find a recent booking from this session. To book an
+                appointment, start from the beginning.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button asChild size="lg" data-testid="button-start-booking">

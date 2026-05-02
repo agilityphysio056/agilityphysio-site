@@ -60,19 +60,21 @@ Full shadcn/ui component library installed including Dialog, Select, Accordion, 
 - **zod-validation-error**: Human-readable validation error messages
 - **@hookform/resolvers**: Form validation integration
 
-### Booking System
-- **Header / inline buttons**: Still link to Rushcliff `https://new-ob.rushcliff.com/holding-page/445519` (opened in new tab)
-- **CMS Widget (LIVE)**: Floating "Book Appointment" button bottom-right on every page, injected via script tag before `</body>` in `client/index.html`
-  - Script: `https://cms.agilityphysio.net/booking-widget.js`
-  - Clinic ID: `0d9c1e55-283f-4917-8db5-233603050f7e`
-  - Key: `89454515f4347880ea905dfb61193e7c29b93bed55971091636d1523aa063927`
-- **/bookings prototype (Demo only — NOT shipped to GitHub yet)**: Multi-step booking UI at `/bookings` and `/bookings/confirmation` (`client/src/pages/bookings.tsx`, `client/src/pages/bookings/confirmation.tsx`).
-  - Frontend-only visual prototype with mock clinic/clinician/slot data.
-  - Clear amber "Demo only — not connected" banner on both pages.
-  - Booking handed between pages via sessionStorage key `agility:demo-booking`.
-  - Confirmation page shows graceful empty state when visited directly.
-  - Google Ads conversion + GTM dataLayer push are intentionally commented out in the confirmation page (see comment block — has REPLACE marker for AW-CONVERSION_ID).
-  - Built because the CMS at cms.agilityphysio.net only exposes 2 public API endpoints (`GET /api/public/clinics`, `POST /api/public/bookings`) and lacks public read endpoints for clinicians/services/availability, so a real flow is currently impossible without changes to the CMS Replit project (and adding Stockwell, which is missing from CMS today).
+### Booking System (LIVE — native flow)
+The site has a fully native multi-step booking flow at `/bookings` (and confirmation at `/bookings/confirmation`) wired to the live CMS at `cms.agilityphysio.net`. The third-party Rushcliff link and the floating widget script have been removed.
+
+- **Pages**: `client/src/pages/bookings.tsx` (5-step flow: Clinic → Service → Clinician → Date & Time → Your details) and `client/src/pages/bookings/confirmation.tsx` (success card with booking reference, Add-to-calendar `.ics`, GTM dataLayer push).
+- **`openBookingWidget()`** in `client/src/lib/booking.ts` does SPA navigation to `/bookings` (history.pushState + popstate) — keeps all existing call sites in `home.tsx`, `services.tsx`, `service-detail.tsx`, `home-physio-west-midlands.tsx`, `condition-detail.tsx`, `stanmore.tsx`, `header.tsx` working without edits.
+- **Sticky "Book Appointment" rail** on the right (in `layout.tsx`) is a Wouter `<Link>` to `/bookings` and is hidden when already on `/bookings*`.
+- **CMS proxy in Express** (`server/routes.ts`): the CMS only allows CORS from `agilityphysio.net` / `www.agilityphysio.net`, so the browser can't call it directly. Express proxies through 5 endpoints, caches per-clinic API keys server-side (5-min TTL), and strips the `apiKey` field from the clinic listing returned to the client.
+  - `GET  /api/cms/clinics`
+  - `GET  /api/cms/services?clinicId=…`
+  - `GET  /api/cms/clinicians?clinicId=…`
+  - `GET  /api/cms/availability?clinicId=…&clinicianId=…&serviceId=…&fromDate=YYYY-MM-DD`
+  - `POST /api/cms/bookings` (forwards upstream status + body verbatim)
+- **sessionStorage key**: `agility:booking` (handed from `bookings.tsx` to the confirmation page).
+- **Analytics**: confirmation page pushes a `booking_confirmed` event onto `window.dataLayer` (clinic, service, value GBP, bookingReference). The Google Ads conversion `gtag("event", "conversion", …)` block is intentionally commented out — fill in the `CONVERSION_LABEL` portion of `AW-17780015342/CONVERSION_LABEL` in the confirmation page when Google Ads provides it.
+- **Service display**: prefixes "Pay as you go - " and "Private – " are stripped at render time. Order is Initial Assessment → Treatment → Home Visit.
 
 ### Development Tools
 - **Replit Plugins**: Runtime error overlay, cartographer, dev banner for Replit environment
