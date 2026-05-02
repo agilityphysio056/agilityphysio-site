@@ -41,57 +41,18 @@ import {
 } from "lucide-react";
 import stanmoreHero from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
 import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
-
-type Clinic = {
-  clinicId: string;
-  name: string;
-  address: string;
-  phone: string;
-};
-
-type Clinician = {
-  clinicianId: string;
-  firstName: string;
-  lastName: string;
-  title: string | null;
-  hcpcNumber: string | null;
-  bio: string | null;
-  specialisms: string[];
-  photoUrl: string | null;
-  serviceIds: string[];
-};
-
-type Service = {
-  serviceId: string;
-  name: string;
-  durationMinutes: number;
-  priceGBP: number;
-  description: string | null;
-  clinicianIds: string[];
-};
-
-type Slot = { startTime: string; endTime: string };
-type Day = { date: string; slots: Slot[] };
-type Availability = {
-  clinicId: string;
-  clinicianId: string;
-  serviceId: string;
-  timezone: string;
-  days: Day[];
-};
-
-async function cmsGet<T>(path: string): Promise<T> {
-  const res = await fetch(path);
-  if (!res.ok) {
-    let msg = `${res.status}`;
-    try {
-      const j = await res.json();
-      msg = j.error || msg;
-    } catch {}
-    throw new Error(msg);
-  }
-  return res.json();
-}
+import {
+  listClinics,
+  listServices,
+  listClinicians,
+  getAvailability,
+  createBooking,
+  type Clinic,
+  type Clinician,
+  type Service,
+  type Slot,
+  type Availability,
+} from "@/lib/cms";
 
 function formatDateISO(d: Date): string {
   const y = d.getFullYear();
@@ -301,16 +262,13 @@ export default function BookingsPage() {
 
   const clinicsQ = useQuery<Clinic[]>({
     queryKey: ["/api/cms/clinics"],
-    queryFn: () => cmsGet<Clinic[]>("/api/cms/clinics"),
+    queryFn: () => listClinics(),
   });
   const clinic = clinicsQ.data?.find((c) => c.clinicId === clinicId);
 
   const servicesQ = useQuery<Service[]>({
     queryKey: ["/api/cms/services", clinic?.clinicId],
-    queryFn: () =>
-      cmsGet<Service[]>(
-        `/api/cms/services?clinicId=${clinic!.clinicId}`,
-      ),
+    queryFn: () => listServices(clinic!.clinicId),
     enabled: !!clinic,
   });
   const sortedServices = useMemo(
@@ -324,10 +282,7 @@ export default function BookingsPage() {
 
   const cliniciansQ = useQuery<Clinician[]>({
     queryKey: ["/api/cms/clinicians", clinic?.clinicId],
-    queryFn: () =>
-      cmsGet<Clinician[]>(
-        `/api/cms/clinicians?clinicId=${clinic!.clinicId}`,
-      ),
+    queryFn: () => listClinicians(clinic!.clinicId),
     enabled: !!clinic,
   });
   const cliniciansForService = useMemo(() => {
@@ -350,11 +305,12 @@ export default function BookingsPage() {
       todayISO,
     ],
     queryFn: () =>
-      cmsGet<Availability>(
-        `/api/cms/availability?clinicId=${clinic!.clinicId}&clinicianId=${
-          clinician!.clinicianId
-        }&serviceId=${service!.serviceId}&fromDate=${todayISO}`,
-      ),
+      getAvailability({
+        clinicId: clinic!.clinicId,
+        clinicianId: clinician!.clinicianId,
+        serviceId: service!.serviceId,
+        fromDate: todayISO,
+      }),
     enabled: !!clinic && !!clinician && !!service,
     staleTime: 60 * 1000,
   });
@@ -414,36 +370,18 @@ export default function BookingsPage() {
       ];
       if (data.notes && data.notes.trim())
         noteParts.push(`Notes: ${data.notes.trim()}`);
-      const payload = {
+      return createBooking({
         clinicId: clinic.clinicId,
         serviceId: service.serviceId,
         clinicianId: clinician.clinicianId,
         date: dateISO,
-        time,
+        time: time!,
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
         phone: data.phone,
         notes: noteParts.join(" | "),
-      };
-      const res = await fetch(`/api/cms/bookings`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
       });
-      if (!res.ok) {
-        const text = await res.text();
-        let msg = text;
-        try {
-          const parsed = JSON.parse(text);
-          msg = parsed.message || text;
-        } catch {}
-        throw new Error(msg || `${res.status}`);
-      }
-      return res.json() as Promise<{
-        bookingReference?: string;
-        bookingId?: string;
-      }>;
     },
     onSuccess: (resData, formData) => {
       if (!clinic || !service || !clinician || !date || !time) return;
