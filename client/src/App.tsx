@@ -15,6 +15,8 @@ import StockwellClinic from "@/pages/clinics/stockwell";
 import Fees from "@/pages/fees";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
+import Bookings from "@/pages/bookings";
+import BookingConfirmation from "@/pages/bookings/confirmation";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -32,6 +34,8 @@ function Router() {
       <Route path="/fees" component={Fees} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
+      <Route path="/bookings" component={Bookings} />
+      <Route path="/bookings/confirmation" component={BookingConfirmation} />
       <Route component={NotFound} />
     </Switch>
   );
