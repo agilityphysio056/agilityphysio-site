@@ -114,31 +114,33 @@ export default function BookingConfirmationPage() {
     setLoaded(true);
   }, []);
 
-  // Analytics: push a GTM dataLayer event for booking conversion.
-  // Google Ads conversion fire is intentionally commented out until the
-  // user supplies the conversion label. AW account ID (AW-17780015342)
-  // is already loaded site-wide via gtag in client/index.html — only the
-  // /CONVERSION_LABEL needs to be filled in below.
+  // Google Ads conversion + GTM dataLayer event.
+  // Fires exactly once per booking (keyed by booking reference, or a
+  // single-shot session flag if no reference is present) so a refresh
+  // of /bookings/confirmation does not double-count the conversion.
+  // The conversion label below is a placeholder — replace
+  // REPLACE_WITH_CONVERSION_LABEL with the value from Google Ads.
   useEffect(() => {
     if (!booking) return;
     if (typeof window === "undefined") return;
-    (window as any).dataLayer = (window as any).dataLayer || [];
-    (window as any).dataLayer.push({
-      event: "booking_confirmed",
-      clinic: booking.clinic.name,
-      service: booking.service?.name,
-      value: booking.service?.priceGBP,
-      currency: "GBP",
-      bookingReference: booking.reference,
-    });
-    // if ((window as any).gtag) {
-    //   (window as any).gtag("event", "conversion", {
-    //     send_to: "AW-17780015342/CONVERSION_LABEL", // REPLACE CONVERSION_LABEL
-    //     value: booking.service?.priceGBP ?? 1.0,
-    //     currency: "GBP",
-    //     transaction_id: booking.reference ?? "",
-    //   });
-    // }
+
+    const firedKey = "agility:booking:conversion_fired";
+    const firedFor = sessionStorage.getItem(firedKey);
+    const thisFire = booking.reference || "1";
+    if (firedFor === thisFire) return;
+
+    const w = window as any;
+    if (typeof w.gtag === "function") {
+      w.gtag("event", "conversion", {
+        send_to: "AW-17788015342/REPLACE_WITH_CONVERSION_LABEL",
+        value: 50.0,
+        currency: "GBP",
+      });
+    }
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: "booking_confirmed" });
+
+    sessionStorage.setItem(firedKey, thisFire);
   }, [booking]);
 
   const formattedDate = booking
