@@ -39,11 +39,11 @@ export function Layout({ children, title, description }: LayoutProps) {
       {!isBookingsPage && (
         <Link
           href="/bookings"
-          className="fixed left-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-300"
+          className="fixed right-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-300"
           data-testid="sticky-book-online"
         >
-          <div className="bg-primary text-primary-foreground px-3 py-4 rounded-r-md shadow-lg hover:bg-primary/90 active:bg-primary/80 transition-colors cursor-pointer">
-            <span className="text-sm font-semibold [writing-mode:vertical-lr]">
+          <div className="bg-primary text-primary-foreground px-3 py-4 rounded-l-md shadow-lg hover:bg-primary/90 active:bg-primary/80 transition-colors cursor-pointer">
+            <span className="text-sm font-semibold [writing-mode:vertical-rl] rotate-180">
               Book Appointment
             </span>
           </div>
