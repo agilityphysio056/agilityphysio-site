@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { openBookingWidget } from "@/lib/booking";
-import heroHomeImage from "../assets/images/hero-home.jpg";
+import heroVideo from "@assets/agility-hero-video_1778190963861.mp4";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -102,12 +102,16 @@ export default function Home() {
         className="relative min-h-[85vh] flex items-center justify-center overflow-hidden"
         data-testid="section-hero"
       >
-        <img
-          src={heroHomeImage}
-          alt="Physiotherapist performing manual therapy treatment"
+        <video
+          src={heroVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-slate-900/60 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.35)" }} />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-primary mb-4 font-medium">
