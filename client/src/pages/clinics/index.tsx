@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
+import { openBookingWidget } from "@/lib/booking";
 import { Card } from "@/components/ui/card";
 import { Clock, MapPin, Phone } from "lucide-react";
 import heroClinicsImage from "../../assets/images/hero-clinics.jpg";
@@ -85,11 +86,9 @@ export default function Clinics() {
                       View Clinic
                     </Button>
                   </Link>
-                  <Link href="/contact">
-                    <Button data-testid={`button-book-${clinic.slug}`}>
-                      Book Here
-                    </Button>
-                  </Link>
+                  <Button data-testid={`button-book-${clinic.slug}`} onClick={openBookingWidget}>
+                    Book Here
+                  </Button>
                 </div>
               </Card>
             ))}

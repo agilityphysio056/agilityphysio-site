@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Header } from "./header";
 import { Footer } from "./footer";
@@ -10,7 +10,6 @@ interface LayoutProps {
 }
 
 export function Layout({ children, title, description }: LayoutProps) {
-  const [showSticky, setShowSticky] = useState(false);
   const [location] = useLocation();
   const isBookingsPage = location.startsWith("/bookings");
 
@@ -31,14 +30,6 @@ export function Layout({ children, title, description }: LayoutProps) {
     }
   }, [title, description]);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowSticky(window.scrollY > 300);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
@@ -48,13 +39,11 @@ export function Layout({ children, title, description }: LayoutProps) {
       {!isBookingsPage && (
         <Link
           href="/bookings"
-          className={`fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden md:block transition-all duration-300 ${
-            showSticky ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
-          }`}
+          className="fixed left-0 top-1/2 -translate-y-1/2 z-50 transition-all duration-300"
           data-testid="sticky-book-online"
         >
-          <div className="bg-primary text-primary-foreground px-3 py-4 rounded-l-md shadow-lg hover:bg-primary/90 transition-colors cursor-pointer">
-            <span className="text-sm font-semibold [writing-mode:vertical-rl] rotate-180">
+          <div className="bg-primary text-primary-foreground px-3 py-4 rounded-r-md shadow-lg hover:bg-primary/90 active:bg-primary/80 transition-colors cursor-pointer">
+            <span className="text-sm font-semibold [writing-mode:vertical-lr]">
               Book Appointment
             </span>
           </div>
