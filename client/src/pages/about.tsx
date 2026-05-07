@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
+import { openBookingWidget } from "@/lib/booking";
 import { Card } from "@/components/ui/card";
 import {
   ArrowRight,
@@ -236,11 +237,9 @@ export default function About() {
               Evidence-based musculoskeletal physiotherapy and rehabilitation focused on clear diagnosis, structured recovery plans and measurable progress.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Link href="/contact">
-                <Button size="lg" data-testid="button-about-book">
-                  Book Assessment
-                </Button>
-              </Link>
+              <Button size="lg" data-testid="button-about-book" onClick={openBookingWidget}>
+                Book Assessment
+              </Button>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white" data-testid="button-about-call">
                   <Phone className="w-4 h-4 mr-2" />
@@ -390,11 +389,9 @@ export default function About() {
             Book an assessment and we'll guide you through a clear plan to support your recovery.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
-              <Button size="lg" data-testid="button-about-cta-book">
-                Book Assessment
-              </Button>
-            </Link>
+            <Button size="lg" data-testid="button-about-cta-book" onClick={openBookingWidget}>
+              Book Assessment
+            </Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline" data-testid="button-about-cta-call">
                 <Phone className="w-4 h-4 mr-2" />

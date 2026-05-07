@@ -354,11 +354,9 @@ export default function ConditionDetail() {
               {condition.heroDescription || condition.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button size="lg" data-testid="button-book-condition">
-                  Book Assessment
-                </Button>
-              </Link>
+              <Button size="lg" data-testid="button-book-condition" onClick={openBookingWidget}>
+                Book Assessment
+              </Button>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white">
                   <Phone className="w-4 h-4 mr-2" />
@@ -510,9 +508,7 @@ export default function ConditionDetail() {
             Book an assessment with our experienced physiotherapists and take the first step towards recovery.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
-              <Button size="lg">Book Assessment</Button>
-            </Link>
+            <Button size="lg" onClick={openBookingWidget} data-testid="button-cta-book-condition">Book Assessment</Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />

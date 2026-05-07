@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { openBookingWidget } from "@/lib/booking";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -40,11 +41,9 @@ export default function StockwellClinic() {
               Our Stockwell clinic provides expert musculoskeletal physiotherapy to residents of Stockwell, Brixton, Clapham, Vauxhall, and the surrounding areas of South London.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button size="lg" data-testid="button-book-stockwell">
-                  Book at Stockwell
-                </Button>
-              </Link>
+              <Button size="lg" data-testid="button-book-stockwell" onClick={openBookingWidget}>
+                Book at Stockwell
+              </Button>
               <a href="tel:02030929976">
                 <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white">
                   <Phone className="w-4 h-4 mr-2" />
@@ -206,11 +205,9 @@ export default function StockwellClinic() {
             Take the first step towards recovery. Book your physiotherapy appointment at our Stockwell clinic today.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact">
-              <Button size="lg" data-testid="button-cta-book-stockwell">
-                Book at Stockwell
-              </Button>
-            </Link>
+            <Button size="lg" data-testid="button-cta-book-stockwell" onClick={openBookingWidget}>
+              Book at Stockwell
+            </Button>
             <a href="tel:02030929976">
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />

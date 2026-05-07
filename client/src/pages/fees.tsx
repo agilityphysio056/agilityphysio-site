@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
+import { openBookingWidget } from "@/lib/booking";
 import { Card } from "@/components/ui/card";
 import { CheckCircle2, Phone } from "lucide-react";
 import heroFeesImage from "../assets/images/hero-fees.jpg";
@@ -77,9 +78,9 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block mt-auto pt-6">
-                <Button className="w-full">Book Clinic Appointment</Button>
-              </Link>
+              <div className="mt-auto pt-6">
+                <Button className="w-full" onClick={openBookingWidget} data-testid="button-book-clinic">Book Clinic Appointment</Button>
+              </div>
             </Card>
 
             <Card className="p-6 flex flex-col" data-testid="card-home-visit-prices">
@@ -97,9 +98,9 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block mt-auto pt-6">
-                <Button className="w-full">Book Home Visit</Button>
-              </Link>
+              <div className="mt-auto pt-6">
+                <Button className="w-full" onClick={openBookingWidget} data-testid="button-book-home-visit">Book Home Visit</Button>
+              </div>
             </Card>
 
             <Card className="p-6 flex flex-col" data-testid="card-virtual-prices">
@@ -117,9 +118,9 @@ export default function Fees() {
                   </div>
                 ))}
               </div>
-              <Link href="/contact" className="block mt-auto pt-6">
-                <Button className="w-full">Book Virtual Appointment</Button>
-              </Link>
+              <div className="mt-auto pt-6">
+                <Button className="w-full" onClick={openBookingWidget} data-testid="button-book-virtual">Book Virtual Appointment</Button>
+              </div>
             </Card>
           </div>
         </div>
