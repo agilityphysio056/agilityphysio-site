@@ -111,7 +111,7 @@ export default function Home() {
           className="absolute inset-0 w-full h-full object-cover pointer-events-none"
           aria-hidden="true"
         />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.35)" }} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(0,0,0,0.6)" }} />
         
         <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <p className="text-sm uppercase tracking-widest text-primary mb-4 font-medium">
