@@ -193,8 +193,17 @@ export function Header() {
             </Button>
           </div>
 
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-            <SheetTrigger asChild className="lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
+            <Button
+              size="sm"
+              className="text-xs px-3 h-8"
+              onClick={openBookingWidget}
+              data-testid="button-mobile-book-header"
+            >
+              Book
+            </Button>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
               <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
                 <Menu className="w-5 h-5" />
               </Button>
@@ -324,6 +333,7 @@ export function Header() {
           </Sheet>
         </div>
       </div>
+    </div>
     </header>
   );
 }
