@@ -500,6 +500,10 @@ export default function BookingsPage() {
                               setTime(undefined);
                             }
                             setClinicId(c.clinicId);
+                            setDirection(1);
+                            setStep(2);
+                            if (typeof window !== "undefined")
+                              window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className={`text-left rounded-2xl overflow-hidden border-2 bg-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                             selected
@@ -544,9 +548,11 @@ export default function BookingsPage() {
                 <div className="mt-8 flex justify-end">
                   <Button
                     size="lg"
+                    variant="outline"
                     onClick={goNext}
                     disabled={!clinicId}
                     data-testid="button-step1-next"
+                    className="text-muted-foreground"
                   >
                     Next <ArrowRight className="w-4 h-4 ml-1" />
                   </Button>
@@ -602,6 +608,10 @@ export default function BookingsPage() {
                               setTime(undefined);
                             }
                             setServiceId(s.serviceId);
+                            setDirection(1);
+                            setStep(3);
+                            if (typeof window !== "undefined")
+                              window.scrollTo({ top: 0, behavior: "smooth" });
                           }}
                           className={`text-left rounded-2xl bg-card p-6 border-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                             selected
@@ -730,6 +740,10 @@ export default function BookingsPage() {
                                 setTime(undefined);
                               }
                               setClinicianId(c.clinicianId);
+                              setDirection(1);
+                              setStep(4);
+                              if (typeof window !== "undefined")
+                                window.scrollTo({ top: 0, behavior: "smooth" });
                             }}
                             className={`text-left rounded-2xl bg-card p-6 border-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
                               selected
