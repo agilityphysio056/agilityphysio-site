@@ -43,8 +43,7 @@ export default function PrivacyPage() {
           <p>
             <strong>Agility Physio Ltd</strong>
             <br />
-            ICO Registration Number:{" "}
-            <em>[to be added — owner to provide]</em>
+            ICO Registration Number: ZB688837
             <br />
             Data protection contact:{" "}
             <a href="mailto:privacy@agilityphysio.net">
