@@ -46,8 +46,8 @@ export default function PrivacyPage() {
             ICO Registration Number: ZB688837
             <br />
             Data protection contact:{" "}
-            <a href="mailto:privacy@agilityphysio.net">
-              privacy@agilityphysio.net
+            <a href="mailto:info@agilityphysio.net">
+              info@agilityphysio.net
             </a>
             <br />
             General contact:{" "}
@@ -188,8 +188,8 @@ export default function PrivacyPage() {
           </ol>
           <p>
             To exercise any of these rights, email{" "}
-            <a href="mailto:privacy@agilityphysio.net">
-              privacy@agilityphysio.net
+            <a href="mailto:info@agilityphysio.net">
+              info@agilityphysio.net
             </a>
             . We will respond within one calendar month.
           </p>

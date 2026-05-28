@@ -147,10 +147,10 @@ export function Footer() {
             <br />
             Agility Physio Ltd | ICO Registered | To exercise your data rights:{" "}
             <a
-              href="mailto:privacy@agilityphysio.net"
+              href="mailto:info@agilityphysio.net"
               className="underline hover:opacity-100"
             >
-              privacy@agilityphysio.net
+              info@agilityphysio.net
             </a>
           </p>
         </div>
