@@ -70,9 +70,10 @@ export async function registerRoutes(
         ipAddress,
         userAgent,
       });
-      console.log(
-        `[audit] contact.form.submitted id=${message.id} email=${message.email}`,
-      );
+      // Audit log without PII — log only the record id. The full email
+      // is stored against the record; logs are kept 30 days (see privacy
+      // policy) and must not contain personal data beyond what's needed.
+      console.log(`[audit] contact.form.submitted id=${message.id}`);
       res.status(201).json({
         success: true,
         message: "Thank you for your enquiry. We'll be in touch shortly.",
