@@ -103,6 +103,12 @@ const patientSchema = z.object({
   firstVisit: z.enum(["yes", "no"], { required_error: "Please choose one" }),
   reason: z.string().min(1, "Please choose a reason"),
   notes: z.string().optional(),
+  dataConsent: z.literal(true, {
+    errorMap: () => ({
+      message:
+        "Please consent to us processing your health information to provide treatment.",
+    }),
+  }),
   agreed: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the cancellation policy" }),
   }),
@@ -361,6 +367,7 @@ export default function BookingsPage() {
       firstVisit: undefined as unknown as "yes",
       reason: "",
       notes: "",
+      dataConsent: false as unknown as true,
       agreed: false as unknown as true,
     },
   });
@@ -388,6 +395,7 @@ export default function BookingsPage() {
         email: data.email,
         phone: data.phone,
         notes: noteParts.join(" | "),
+        dataConsent: true,
       });
     },
     onSuccess: (resData, formData) => {
@@ -1131,6 +1139,54 @@ export default function BookingsPage() {
                               </FormItem>
                             )}
                           />
+                          <div className="rounded-lg border border-border bg-muted/40 p-4 space-y-3">
+                            <p className="text-sm text-muted-foreground leading-relaxed">
+                              Agility Physio Ltd will use your information to
+                              manage your appointment and provide physiotherapy
+                              care. Your health information is special category
+                              data processed under Article 9(2)(h) of UK GDPR
+                              (health or social care). Read our{" "}
+                              <a
+                                href="/privacy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline text-foreground hover:text-primary"
+                              >
+                                Privacy Policy
+                              </a>
+                              .
+                            </p>
+                            <FormField
+                              control={form.control}
+                              name="dataConsent"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <div className="flex items-start gap-3">
+                                    <FormControl>
+                                      <Checkbox
+                                        id="data-consent-checkbox"
+                                        checked={!!field.value}
+                                        onCheckedChange={(v) =>
+                                          field.onChange(v === true)
+                                        }
+                                        data-testid="checkbox-data-consent"
+                                      />
+                                    </FormControl>
+                                    <Label
+                                      htmlFor="data-consent-checkbox"
+                                      className="text-sm font-normal leading-snug cursor-pointer"
+                                    >
+                                      I consent to Agility Physio Ltd
+                                      collecting and processing my health
+                                      information to provide physiotherapy
+                                      treatment. *
+                                    </Label>
+                                  </div>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                          </div>
                           <FormField
                             control={form.control}
                             name="agreed"

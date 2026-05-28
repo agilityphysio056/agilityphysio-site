@@ -4,6 +4,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CalendarPlus, Home, Info } from "lucide-react";
+import { marketingConsentGranted } from "@/lib/consent";
 
 type StoredBooking = {
   clinic: { id: string; name: string; address: string };
@@ -127,20 +128,44 @@ export default function BookingConfirmationPage() {
     const firedKey = "agility:booking:conversion_fired";
     const firedFor = sessionStorage.getItem(firedKey);
     const thisFire = booking.reference || "1";
-    if (firedFor === thisFire) return;
 
     const w = window as any;
-    if (typeof w.gtag === "function") {
-      w.gtag("event", "conversion", {
-        send_to: "AW-17788015342/d9b0CJS8t6YcEO6l_qFC",
-        value: 50.0,
-        currency: "GBP",
-      });
-    }
-    w.dataLayer = w.dataLayer || [];
-    w.dataLayer.push({ event: "booking_confirmed" });
 
-    sessionStorage.setItem(firedKey, thisFire);
+    // dataLayer push (GTM) is harmless without any external script
+    // listening, and useful if a tag manager is later wired up. Fire
+    // once per booking reference using its own session flag so the
+    // marketing-consent conversion below can still fire independently.
+    const dlKey = "agility:booking:datalayer_fired";
+    if (sessionStorage.getItem(dlKey) !== thisFire) {
+      w.dataLayer = w.dataLayer || [];
+      w.dataLayer.push({ event: "booking_confirmed" });
+      sessionStorage.setItem(dlKey, thisFire);
+    }
+
+    // Google Ads conversion only fires if the user granted marketing
+    // consent. We only set the idempotency flag once we've actually
+    // attempted to fire, so a user who grants consent later (e.g. by
+    // opening Cookie Settings on this page) can still trigger it.
+    if (firedFor === thisFire) return;
+    if (!marketingConsentGranted()) return;
+
+    const fireConversion = () => {
+      if (typeof w.gtag === "function") {
+        w.gtag("event", "conversion", {
+          send_to: "AW-17788015342/d9b0CJS8t6YcEO6l_qFC",
+          value: 50.0,
+          currency: "GBP",
+        });
+        sessionStorage.setItem(firedKey, thisFire);
+      }
+    };
+    // Fire now if gtag is ready, otherwise after a short delay to allow
+    // the deferred ads script (loaded by consent.ts) to attach.
+    if (typeof w.gtag === "function") {
+      fireConversion();
+    } else {
+      setTimeout(fireConversion, 800);
+    }
   }, [booking]);
 
   const formattedDate = booking

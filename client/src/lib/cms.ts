@@ -71,6 +71,13 @@ export type BookingPayload = {
   email: string;
   phone: string;
   notes: string;
+  /**
+   * GDPR Article 9(2)(h) explicit consent to process health data.
+   * Required by the Express proxy (`/api/cms/bookings`); stripped from
+   * the upstream payload before forwarding to the CMS, which does not
+   * know about this field.
+   */
+  dataConsent: true;
 };
 
 export type BookingResult = {
@@ -176,16 +183,20 @@ export async function createBooking(
   payload: BookingPayload,
 ): Promise<BookingResult> {
   if (isProdHost()) {
+    // Direct-to-CMS path (static prod). The CMS doesn't accept our
+    // internal dataConsent flag, so strip it before forwarding.
+    const { dataConsent: _omit, ...upstreamPayload } = payload;
     const res = await fetch(`${CMS_DIRECT_BASE}/bookings`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "x-api-key": keyForOrThrow(payload.clinicId),
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(upstreamPayload),
     });
     return readJsonOrThrow<BookingResult>(res);
   }
+  // Dev path: Express proxy validates dataConsent then strips it.
   const res = await fetch(`${PROXY_BASE}/bookings`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

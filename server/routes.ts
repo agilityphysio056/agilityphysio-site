@@ -51,7 +51,28 @@ export async function registerRoutes(
         const validationError = fromZodError(result.error);
         return res.status(400).json({ error: validationError.message });
       }
-      const message = await storage.createContactMessage(result.data);
+      // Schema enforces consentGiven === true via z.literal(true), but
+      // double-check defensively in case the schema is loosened later.
+      if (result.data.consentGiven !== true) {
+        return res.status(400).json({
+          error:
+            "You must consent to us storing your details to respond to your enquiry.",
+        });
+      }
+      const ipAddress =
+        (req.headers["x-forwarded-for"] as string | undefined)
+          ?.split(",")[0]
+          ?.trim() ??
+        req.socket.remoteAddress ??
+        null;
+      const userAgent = (req.headers["user-agent"] as string | undefined) ?? null;
+      const message = await storage.createContactMessage(result.data, {
+        ipAddress,
+        userAgent,
+      });
+      console.log(
+        `[audit] contact.form.submitted id=${message.id} email=${message.email}`,
+      );
       res.status(201).json({
         success: true,
         message: "Thank you for your enquiry. We'll be in touch shortly.",
@@ -140,18 +161,34 @@ export async function registerRoutes(
 
   app.post("/api/cms/bookings", async (req, res) => {
     try {
-      const body = req.body as { clinicId?: string } | undefined;
+      const body = req.body as
+        | { clinicId?: string; dataConsent?: boolean; [k: string]: unknown }
+        | undefined;
       const clinicId = body?.clinicId;
       if (!clinicId) return res.status(400).json({ error: "clinicId is required" });
+      // GDPR / Article 9(2)(h) — explicit consent for processing health
+      // data must be present before we forward the booking to the CMS.
+      if (body?.dataConsent !== true) {
+        return res.status(400).json({
+          error:
+            "You must consent to us processing your health information to provide treatment.",
+        });
+      }
+      console.log(
+        `[audit] booking.submitted clinicId=${clinicId} dataConsent=true`,
+      );
       const key = await apiKeyFor(clinicId);
       if (!key) return res.status(404).json({ error: "Unknown clinic" });
+      // Strip our internal consent flag from the upstream payload — the
+      // CMS schema doesn't know about it and may reject unknown fields.
+      const { dataConsent: _omit, ...upstreamBody } = body;
       const r = await fetch(`${CMS_BASE}/api/public/bookings`, {
         method: "POST",
         headers: {
           "x-api-key": key,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(body),
+        body: JSON.stringify(upstreamBody),
       });
       const text = await r.text();
       // forward upstream status + body (success or validation error)

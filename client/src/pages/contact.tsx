@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Select,
   SelectContent,
@@ -103,10 +104,20 @@ export default function Contact() {
     phone: "",
     subject: "",
     message: "",
+    consentGiven: false,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.consentGiven) {
+      toast({
+        title: "Consent required",
+        description:
+          "Please tick the consent box so we can respond to your enquiry.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -123,6 +134,7 @@ export default function Contact() {
         phone: "",
         subject: "",
         message: "",
+        consentGiven: false,
       });
     } catch (error) {
       toast({
@@ -253,9 +265,41 @@ export default function Contact() {
                       data-testid="textarea-message"
                     />
                   </div>
+                  <div className="rounded-lg border border-border bg-muted/40 p-4 space-y-3">
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Your details will be used to respond to your enquiry only,
+                      and kept for up to 12 months. Read our{" "}
+                      <a
+                        href="/privacy"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline text-foreground hover:text-primary"
+                      >
+                        Privacy Policy
+                      </a>
+                      .
+                    </p>
+                    <div className="flex items-start gap-3">
+                      <Checkbox
+                        id="contact-consent"
+                        checked={formData.consentGiven}
+                        onCheckedChange={(v) =>
+                          setFormData({ ...formData, consentGiven: v === true })
+                        }
+                        data-testid="checkbox-contact-consent"
+                      />
+                      <Label
+                        htmlFor="contact-consent"
+                        className="text-sm font-normal leading-snug cursor-pointer"
+                      >
+                        I consent to Agility Physio Ltd storing my contact
+                        details to respond to this enquiry. *
+                      </Label>
+                    </div>
+                  </div>
                   <Button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !formData.consentGiven}
                     className="w-full md:w-auto"
                     data-testid="button-submit"
                   >

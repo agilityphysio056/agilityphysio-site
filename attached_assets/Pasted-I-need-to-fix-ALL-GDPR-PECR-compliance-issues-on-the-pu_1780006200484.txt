@@ -1,0 +1,261 @@
+I need to fix ALL GDPR/PECR compliance issues on the public website 
+for Agility Physio Ltd in one complete implementation.
+
+IMPORTANT RULES:
+- This is the PUBLIC WEBSITE codebase
+- Do not touch clinical management system files
+- Do not remove existing website functionality  
+- Use existing website design patterns and components
+- Add backend validation everywhere, not just frontend
+- Run build/typecheck after and fix all errors
+
+====================================================
+FIX 1 — COOKIE CONSENT BANNER
+====================================================
+
+In client/index.html these scripts load WITHOUT consent - fix this:
+- Microsoft Clarity: clarity.ms/tag/wu6maznu33
+- Google Analytics 4: G-JBRX62S0VY  
+- Google Ads: AW-17788015342
+
+Implementation:
+- Remove all three scripts from index.html immediately
+- Create consent.ts library with gated script loaders
+- Categories:
+  * Essential: always on, no consent needed
+  * Analytics: GA4 + Microsoft Clarity (off by default)
+  * Marketing: Google Ads (off by default)
+- Store consent in localStorage as website_cookie_consent_v1
+- Load scripts ONLY after user consents to that category
+- Banner appears on first visit BEFORE any scripts load
+- Three buttons: "Accept All", "Reject All", "Manage Preferences"
+- "Manage Preferences" opens dialog showing three toggles
+- Consent choice remembered - banner does not show again
+
+CRITICAL - Sensitive page blocking:
+Even if user gave Analytics consent, DO NOT load 
+Clarity or GA4 on these paths:
+/book, /book/*, /contact
+These pages collect personal/health data - no tracking ever.
+Google Ads conversion tracking on booking confirmation is 
+OK ONLY after marketing consent AND only on thank-you/
+confirmation step, never on form pages.
+
+Google Fonts and Leaflet/CartoDB maps:
+- Keep these as essential (functional requirement)
+- Mention in cookie policy that these send IP to third parties
+  as part of essential website functionality
+
+====================================================
+FIX 2 — PRIVACY POLICY PAGE (/privacy)
+====================================================
+
+/privacy link exists in footer but returns 404. Create it.
+
+This is the WEBSITE privacy policy - different from 
+clinical system privacy policy.
+
+Page content must include:
+
+SECTION 1 - Who We Are
+Agility Physio Ltd
+ICO Registration Number: [PLACEHOLDER - owner to add]
+Contact: privacy@agilityphysio.net
+Website: agilityphysio.co.uk (or current domain)
+
+SECTION 2 - What Data We Collect
+a) Contact form: name, email, phone, subject, message
+   Lawful basis: Legitimate interests (responding to enquiry)
+   Retention: 12 months then permanently deleted
+
+b) Online booking enquiries: name, DOB, email, phone, 
+   reason for appointment
+   Lawful basis: Contract performance + Article 9(2)(h) 
+   health or social care
+   Special category data - explicit consent also obtained
+   Retention: Transferred to clinical records system,
+   retained 8 years per NHS/healthcare guidelines
+
+c) Website analytics (with consent only):
+   Anonymised usage data, pages visited, session duration
+   Tools: Google Analytics 4, Microsoft Clarity
+   Lawful basis: Consent (PECR)
+   Retention: 26 months (GA4 default), 90 days (Clarity)
+
+d) Advertising/conversion tracking (with consent only):
+   Booking conversion events only
+   Tool: Google Ads
+   Lawful basis: Consent (PECR)
+
+e) Server logs:
+   IP address, browser type, pages visited
+   Purpose: Security and fraud prevention
+   Lawful basis: Legitimate interests
+   Retention: 30 days
+
+SECTION 3 - Third Parties We Share Data With
+- Google LLC: Analytics, Ads, Fonts (Privacy Shield/SCCs)
+- Microsoft Corporation: Clarity session recording
+- CartoDB/CARTO: Map tiles on contact page
+- Hostinger: Website hosting (EU servers)
+- Clinical management system: Booking data transferred 
+  for appointment management
+
+SECTION 4 - Your Rights
+All 7 rights: access, rectification, erasure, restriction,
+objection, portability, withdraw consent
+How to exercise: privacy@agilityphysio.net
+Response time: within 1 calendar month
+
+SECTION 5 - Cookies
+Essential cookies: session management, security, 
+  preferences (no consent needed)
+Analytics cookies: GA4, Microsoft Clarity 
+  (consent required, off by default)
+Marketing cookies: Google Ads 
+  (consent required, off by default)
+Third party functional: Google Fonts, Leaflet maps
+  (essential functionality, IP sent to third parties)
+
+Include "Cookie Settings" button that opens consent dialog
+
+SECTION 6 - ICO Complaints
+If unhappy with how we handle your data:
+ICO website: ico.org.uk
+ICO helpline: 0303 123 1113
+
+SECTION 7 - Changes to This Policy
+Last updated: [current date]
+We will notify of significant changes via website notice
+
+====================================================
+FIX 3 — TERMS PAGE (/terms)
+====================================================
+
+/terms link exists in footer but returns 404. Create it.
+
+Basic website terms covering:
+- Website use and acceptable behaviour
+- Intellectual property (content belongs to Agility Physio Ltd)
+- No medical advice disclaimer 
+  ("Website content is for information only and does not 
+  constitute medical advice. Always consult a qualified 
+  physiotherapist.")
+- Limitation of liability
+- Governing law: England and Wales
+- Contact details
+
+====================================================
+FIX 4 — CONTACT FORM GDPR
+====================================================
+
+File: contact.tsx
+
+Changes needed:
+1. Add privacy notice above submit button:
+   "Your details will be used to respond to your enquiry 
+   only, and kept for up to 12 months. Read our Privacy Policy."
+   Link "Privacy Policy" to /privacy in new tab.
+
+2. Add mandatory consent checkbox:
+   "I consent to Agility Physio Ltd storing my contact 
+   details to respond to this enquiry."
+   Form must NOT submit without this ticked.
+
+3. Backend validation:
+   Reject API submissions where consent flag is missing 
+   or false - return 400 error.
+
+4. Fix data storage - currently in-memory only (lost on restart):
+   Create database table contact_submissions:
+   - id UUID primary key
+   - name text not null
+   - email text not null
+   - phone text nullable
+   - subject text nullable
+   - message text not null
+   - consent_given boolean not null default false
+   - ip_address text nullable
+   - user_agent text nullable
+   - created_at timestamptz default now()
+   - responded_at timestamptz nullable
+   - deleted_at timestamptz nullable (soft delete)
+
+   Auto-delete records older than 12 months 
+   (add to existing scheduler if present, or create 
+   a simple daily cron job).
+
+   Add audit log: contact.form.submitted
+
+====================================================
+FIX 5 — BOOKING PAGE PRIVACY NOTICE
+====================================================
+
+File: bookings.tsx - find the "Your details" step 
+(step where name, DOB, email, phone, health reason collected)
+
+This collects SPECIAL CATEGORY health data under UK GDPR.
+
+Add BEFORE the existing cancellation policy checkbox:
+
+Privacy notice text:
+"Agility Physio Ltd will use your information to manage 
+your appointment and provide physiotherapy care. Your 
+health information is special category data processed 
+under Article 9(2)(h) of UK GDPR (health or social care). 
+Read our Privacy Policy."
+
+Mandatory consent checkbox:
+"I consent to Agility Physio Ltd collecting and processing 
+my health information to provide physiotherapy treatment."
+
+Rules:
+- Link "Privacy Policy" to /privacy in new tab
+- Booking must NOT proceed without consent ticked
+- Backend must validate consent, not just frontend
+- This is in ADDITION to the existing cancellation 
+  policy checkbox, not replacing it
+
+====================================================
+FIX 6 — FOOTER CLEANUP
+====================================================
+
+Ensure footer has three working links:
+1. /privacy — Privacy Policy
+2. /terms — Terms of Use
+3. Cookie Settings — opens consent management dialog 
+   (not a page link, triggers the consent banner/dialog)
+
+All must work with no 404s.
+
+====================================================
+FIX 7 — ACCESSIBILITY OF RIGHTS ON WEBSITE
+====================================================
+
+Add to the website footer (small text, not intrusive):
+"Agility Physio Ltd | ICO Registered | 
+To exercise your data rights: privacy@agilityphysio.net"
+
+This makes it easy for anyone to find how to 
+make a data request.
+
+====================================================
+AFTER IMPLEMENTATION - VERIFY:
+====================================================
+1. Fresh browser visit → cookie banner appears BEFORE 
+   any analytics scripts load
+2. "Reject All" → no Clarity, GA4, or Ads scripts load
+3. "Accept All" → scripts load but NOT on /book or /contact
+4. /privacy loads with full content (no 404)
+5. /terms loads with full content (no 404)  
+6. Contact form has consent checkbox, cannot submit without it
+7. Booking "Your details" step has privacy notice + consent
+8. Footer has working Privacy, Terms, Cookie Settings links
+9. Build/typecheck passes with no new errors
+10. Existing website functionality unchanged
+
+Provide final summary:
+- Files changed
+- New pages created
+- Database tables added
+- Any manual steps needed (e.g. add ICO number to privacy page)

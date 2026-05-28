@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
+import { openCookieSettings } from "@/components/cookie-banner";
 
 const services = [
   { label: "Clinic Physiotherapy", href: "/services/clinic-physiotherapy" },
@@ -122,19 +123,35 @@ export function Footer() {
             </div>
             <div className="flex flex-wrap items-center gap-6 md:justify-end">
               <Link href="/privacy">
-                <span className="text-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+                <span className="text-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer" data-testid="link-privacy">
                   Privacy Policy
                 </span>
               </Link>
               <Link href="/terms">
-                <span className="text-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
-                  Terms of Service
+                <span className="text-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer" data-testid="link-terms">
+                  Terms of Use
                 </span>
               </Link>
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                className="text-sm opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+                data-testid="button-cookie-settings"
+              >
+                Cookie Settings
+              </button>
             </div>
           </div>
-          <p className="text-sm opacity-60 mt-6">
+          <p className="text-xs opacity-60 mt-6 leading-relaxed">
             &copy; {new Date().getFullYear()} Agility Physio Ltd. All rights reserved. HCPC Registered.
+            <br />
+            Agility Physio Ltd | ICO Registered | To exercise your data rights:{" "}
+            <a
+              href="mailto:privacy@agilityphysio.net"
+              className="underline hover:opacity-100"
+            >
+              privacy@agilityphysio.net
+            </a>
           </p>
         </div>
       </div>
