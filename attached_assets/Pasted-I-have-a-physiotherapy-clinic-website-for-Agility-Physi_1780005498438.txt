@@ -1,0 +1,93 @@
+I have a physiotherapy clinic website for Agility Physio Ltd built in Replit. 
+The booking system is also hosted here. I need a full GDPR compliance audit 
+specifically for the PUBLIC-FACING website pages.
+
+Please analyze the codebase and audit ONLY the public-facing pages:
+- Homepage
+- About/Team pages
+- Services pages
+- Contact page
+- Blog/Articles if any
+- Public booking page (/book/)
+- Privacy page (/privacy)
+- Any other publicly accessible pages
+
+====================================================
+AUDIT CHECKLIST
+====================================================
+
+1. PRIVACY POLICY
+- Is there a privacy policy linked in the website footer?
+- Is it accessible from every page?
+- Does it cover website-specific data collection (contact forms, cookies, analytics)?
+
+2. CONTACT FORMS
+- Does any contact form exist on the website?
+- Is there a privacy notice near the contact form?
+- Is there a consent checkbox on the contact form?
+- Is form submission data stored? Where? How long?
+
+3. COOKIES & TRACKING
+- List every cookie set on the website
+- List every third-party script loaded (Google Analytics, Google Ads, 
+  Facebook Pixel, Microsoft Clarity, Hotjar, LiveChat, etc.)
+- Are any scripts loading WITHOUT cookie consent?
+- Is there a cookie consent banner on the website?
+- Is there a cookie policy?
+
+4. BOOKING WIDGET / EMBED
+- How is the booking system embedded or linked?
+- Is there a privacy notice visible near the booking entry point?
+- Is the consent checkbox visible before booking starts?
+
+5. ANALYTICS & MARKETING
+- What analytics tools are used?
+- Are IP addresses being collected?
+- Is remarketing/advertising tracking active?
+- Are these disclosed in the privacy policy?
+
+6. NEWSLETTER / EMAIL CAPTURE
+- Is there any email signup form?
+- Is there a consent checkbox?
+- Which email platform is used (Mailchimp, etc.)?
+- Is there an unsubscribe mechanism?
+
+7. THIRD PARTY EMBEDS
+- Google Maps embed?
+- YouTube videos?
+- Social media feeds or share buttons?
+- Live chat widgets?
+- Any of these can set cookies without consent
+
+8. WEBSITE HOSTING & DATA
+- Where is the website hosted?
+- Are server access logs kept? For how long?
+- Is SSL/HTTPS enforced on all pages?
+- Are there any HTTP pages?
+
+9. CHILDREN'S DATA
+- Is there anything on the website targeting children under 13?
+- Any youth/paediatric physiotherapy services advertised?
+
+10. ACCESSIBILITY OF RIGHTS
+- Can a patient easily find how to make a Subject Access Request from the website?
+- Is the ICO complaints route mentioned?
+- Is the Data Controller contact clearly listed?
+
+====================================================
+REPORT FORMAT
+====================================================
+
+For each item above provide:
+✅ COMPLIANT - already done correctly
+⚠️ PARTIAL - partially done
+❌ MISSING - not present at all
+N/A - not applicable
+
+Then provide:
+🔴 CRITICAL fixes needed
+🟡 HIGH priority fixes
+🟢 MEDIUM/best practice fixes
+
+Be specific — list actual file names, page names, and 
+exact locations where changes are needed.
