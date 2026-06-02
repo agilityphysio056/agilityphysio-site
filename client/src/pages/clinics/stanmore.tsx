@@ -178,17 +178,39 @@ export default function StanmoreClinic() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {whyChooseUs.map((item, i) => {
                     const Icon = item.icon;
-                    return (
-                      <div
-                        key={i}
-                        className="bg-white p-5 rounded-2xl shadow-sm border border-border hover-elevate"
-                        data-testid={`card-why-${i}`}
-                      >
+                    const isBookingCard = item.title === "Same Week Appointments";
+                    const cardClassName =
+                      "bg-white p-5 rounded-2xl shadow-sm border border-border hover-elevate";
+                    const cardContent = (
+                      <>
                         <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center mb-3">
                           <Icon className="w-6 h-6 text-primary" />
                         </div>
                         <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </>
+                    );
+                    if (isBookingCard) {
+                      return (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={openBookingWidget}
+                          className={`${cardClassName} text-left w-full cursor-pointer`}
+                          data-testid={`card-why-${i}`}
+                          aria-label="Book an appointment"
+                        >
+                          {cardContent}
+                        </button>
+                      );
+                    }
+                    return (
+                      <div
+                        key={i}
+                        className={cardClassName}
+                        data-testid={`card-why-${i}`}
+                      >
+                        {cardContent}
                       </div>
                     );
                   })}
