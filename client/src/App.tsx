@@ -21,6 +21,8 @@ import BookingConfirmation from "@/pages/bookings/confirmation";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import StanmoreHomeVisit from "@/pages/home-visits/stanmore";
+import MeetTheTeam from "@/pages/meet-the-team/index";
+import TeamProfile from "@/pages/meet-the-team/profile";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +38,8 @@ function Router() {
       <Route path="/clinics/stanmore" component={StanmoreClinic} />
       <Route path="/clinics/stockwell" component={StockwellClinic} />
       <Route path="/home-visits/stanmore" component={StanmoreHomeVisit} />
+      <Route path="/meet-the-team" component={MeetTheTeam} />
+      <Route path="/meet-the-team/:slug" component={TeamProfile} />
       <Route path="/fees" component={Fees} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />

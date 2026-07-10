@@ -1,0 +1,92 @@
+# Confirmed team order and photograph mapping
+
+The four uploaded images are confirmed and must be used in the following order:
+
+1. Abdul Wahab – first uploaded image
+2. Uzma Anwar – second uploaded image
+3. Dr Fayaz Hasham – third uploaded image
+4. Muhammad Umar – fourth uploaded image
+
+Rename and store the images using clear production filenames:
+
+- abdul-wahab.webp
+- uzma-anwar.webp
+- dr-fayaz-hasham.webp
+- muhammad-umar.webp
+
+Do not accidentally assign the photographs to the wrong profiles.
+
+# Main Meet the Team page order
+
+Display the team cards in this exact order:
+
+1. Abdul Wahab
+2. Uzma Anwar
+3. Dr Fayaz Hasham
+4. Muhammad Umar
+
+Although Dr Fayaz Hasham is the Director and Clinical Governance Lead, retain the exact display order specified above.
+
+# Grid layout
+
+There are now four team members.
+
+Use:
+
+- Four cards in one row on wide desktop screens
+- Two cards per row on tablets and smaller laptops
+- One card per row on mobile devices
+
+All cards must have equal height and consistent photograph dimensions.
+
+Use a 4:5 portrait image container with:
+
+- width: 100%
+- aspect-ratio: 4 / 5
+- object-fit: cover
+- object-position: center top
+
+Ensure the face, hair, shoulders and clothing remain visible.
+
+The original photographs have different dimensions and compositions. Visually standardise them through consistent containers and cropping, but do not distort, stretch or materially alter anyone’s appearance.
+
+Dr Fayaz Hasham’s source photograph is smaller and has a different composition. Place it carefully within the same 4:5 card frame using a clean white or very light neutral background. Do not enlarge it excessively to the point that it becomes visibly pixelated.
+
+# Routes
+
+Create these profile routes:
+
+- /meet-the-team/abdul-wahab
+- /meet-the-team/uzma-anwar
+- /meet-the-team/dr-fayaz-hasham
+- /meet-the-team/muhammad-umar
+
+The photograph, team card and “View Profile” button must all open the correct individual profile page.
+
+# Image alt text
+
+Abdul Wahab:
+“Abdul Wahab, Senior Physiotherapist at Agility Physio”
+
+Uzma Anwar:
+“Uzma Anwar, Senior Physiotherapist at Agility Physio”
+
+Dr Fayaz Hasham:
+“Dr Fayaz Hasham, Director and Clinical Governance Lead at Agility Physio”
+
+Muhammad Umar:
+“Muhammad Umar, Senior Physiotherapist at Agility Physio”
+
+# Muhammad Umar card
+
+Name:
+Muhammad Umar
+
+Role:
+Senior Physiotherapist
+
+Use the fourth uploaded photograph.
+
+Do not invent his qualifications, years of experience, clinical specialities or biography.
+
+Build his card and reusable detailed profile route now. Keep his written profile content easy to update once the approved qualifications, brief introduction and full biography are supplied.

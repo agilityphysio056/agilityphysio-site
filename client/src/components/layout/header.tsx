@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Home, Menu, Phone, ChevronDown, MapPin } from "lucide-react";
+import { Home, Menu, Phone, ChevronDown, MapPin, Users } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
@@ -196,6 +196,18 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
             
+            <Link href="/meet-the-team">
+              <span
+                className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                  location.startsWith("/meet-the-team") ? "text-secondary" : "text-foreground"
+                }`}
+                data-testid="link-meet-the-team"
+              >
+                <Users className="w-3.5 h-3.5" />
+                Meet the Team
+              </span>
+            </Link>
+
             {navItems.slice(2).map((item) => (
               <Link key={item.href} href={item.href}>
                 <span
@@ -352,6 +364,19 @@ export function Header() {
                     </div>
                   </div>
                   
+                  <Link href="/meet-the-team">
+                    <span
+                      className={`flex items-center gap-2 text-base font-medium py-2 cursor-pointer ${
+                        location.startsWith("/meet-the-team") ? "text-secondary" : "text-foreground"
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      data-testid="mobile-link-meet-the-team"
+                    >
+                      <Users className="w-4 h-4" />
+                      Meet the Team
+                    </span>
+                  </Link>
+
                   {navItems.slice(2).map((item) => (
                     <Link key={item.href} href={item.href}>
                       <span
