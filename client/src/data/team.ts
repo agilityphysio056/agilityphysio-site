@@ -17,34 +17,31 @@ export interface TeamMember {
   placeholderContent?: boolean;
 }
 
-export const teamMembers: TeamMember[] = [
-  {
-    slug: "abdul-wahab",
-    name: "Abdul Wahab",
-    role: "Senior Physiotherapist",
-    photo: abdulWahabImg,
-    photoAlt: "Abdul Wahab, Senior Physiotherapist at Agility Physio",
-    imageObjectFit: "cover",
-    qualifications: [
-      "BSc (Hons) Physiotherapy",
-      "HCPC Registered",
-      "Member of the Chartered Society of Physiotherapy (CSP)",
-    ],
-    intro:
-      "Abdul is a senior physiotherapist with extensive experience in musculoskeletal assessment and rehabilitation. He takes a thorough, patient-centred approach — combining detailed clinical assessment with hands-on treatment and progressive exercise programmes.",
-    bio: [
-      "Abdul has worked across a range of clinical settings, developing particular expertise in back and neck pain, sports injuries, and post-operative rehabilitation. He holds an honours degree in Physiotherapy and is registered with the Health and Care Professions Council (HCPC).",
-      "He takes time to understand each patient's goals and lifestyle before developing a personalised treatment plan. His sessions combine manual therapy with targeted exercise rehabilitation, with a focus on long-term recovery rather than short-term symptom relief.",
-      "Abdul sees patients at our Stanmore clinic and also conducts home visits across North London.",
-    ],
-    specialities: [
-      "Back & Neck Pain",
-      "Sports Injury Rehabilitation",
-      "Post-Operative Rehabilitation",
-      "Joint & Muscle Pain",
-      "Exercise-Based Rehabilitation",
-    ],
-  },
+export const director: TeamMember = {
+  slug: "dr-fayaz-hasham",
+  name: "Dr Fayaz Hasham",
+  role: "Director & Clinical Governance Lead",
+  photo: drFayazHashamImg,
+  photoAlt: "Dr Fayaz Hasham, Director and Clinical Governance Lead at Agility Physio",
+  imageObjectFit: "cover",
+  qualifications: ["MBBS", "Clinical Governance Lead", "Director, Agility Physio"],
+  intro:
+    "Dr Fayaz Hasham is the Director and Clinical Governance Lead at Agility Physio, responsible for maintaining the clinical standards and professional frameworks that underpin every patient's care. His leadership ensures that the practice operates to the highest standards of safety, quality, and evidence-based medicine.",
+  bio: [
+    "Dr Hasham brings a medical leadership perspective to the clinic, overseeing clinical governance, quality assurance, and the ongoing professional development of the team. His role ensures that every physiotherapist at Agility Physio operates within a robust clinical framework — and that patient safety is always the first priority.",
+    "With a background in medicine, Dr Hasham plays a key role in establishing protocols for complex and post-operative cases, and in maintaining the strong relationships Agility Physio holds with insurance providers including AXA and BUPA.",
+    "His vision for Agility Physio is a practice that combines the clinical rigour of hospital-grade physiotherapy with the accessibility and personal attention of a specialist private clinic.",
+  ],
+  specialities: [
+    "Clinical Governance & Quality Assurance",
+    "Complex & Post-Operative Case Oversight",
+    "Insurance & Insurer Relations",
+    "Team Leadership & Development",
+    "Patient Safety Frameworks",
+  ],
+};
+
+export const clinicians: TeamMember[] = [
   {
     slug: "uzma-anwar",
     name: "Uzma Anwar",
@@ -73,33 +70,6 @@ export const teamMembers: TeamMember[] = [
     ],
   },
   {
-    slug: "dr-fayaz-hasham",
-    name: "Dr Fayaz Hasham",
-    role: "Director & Clinical Governance Lead",
-    photo: drFayazHashamImg,
-    photoAlt: "Dr Fayaz Hasham, Director and Clinical Governance Lead at Agility Physio",
-    imageObjectFit: "cover",
-    qualifications: [
-      "MBBS",
-      "Clinical Governance Lead",
-      "Director, Agility Physio",
-    ],
-    intro:
-      "Dr Fayaz Hasham is the Director and Clinical Governance Lead at Agility Physio, responsible for maintaining the clinical standards and professional frameworks that underpin every patient's care. His leadership ensures that the practice operates to the highest standards of safety, quality, and evidence-based medicine.",
-    bio: [
-      "Dr Hasham brings a medical leadership perspective to the clinic, overseeing clinical governance, quality assurance, and the ongoing professional development of the team. His role ensures that every physiotherapist at Agility Physio operates within a robust clinical framework — and that patient safety is always the first priority.",
-      "With a background in medicine, Dr Hasham plays a key role in establishing protocols for complex and post-operative cases, and in maintaining the strong relationships Agility Physio holds with insurance providers including AXA and BUPA.",
-      "His vision for Agility Physio is a practice that combines the clinical rigour of hospital-grade physiotherapy with the accessibility and personal attention of a specialist private clinic.",
-    ],
-    specialities: [
-      "Clinical Governance & Quality Assurance",
-      "Complex & Post-Operative Case Oversight",
-      "Insurance & Insurer Relations",
-      "Team Leadership & Development",
-      "Patient Safety Frameworks",
-    ],
-  },
-  {
     slug: "muhammad-umar",
     name: "Muhammad Umar",
     role: "Senior Physiotherapist",
@@ -112,7 +82,36 @@ export const teamMembers: TeamMember[] = [
     specialities: [],
     placeholderContent: true,
   },
+  {
+    slug: "abdul-wahab",
+    name: "Abdul Wahab",
+    role: "Senior Physiotherapist",
+    photo: abdulWahabImg,
+    photoAlt: "Abdul Wahab, Senior Physiotherapist at Agility Physio",
+    imageObjectFit: "cover",
+    qualifications: [
+      "BSc (Hons) Physiotherapy",
+      "HCPC Registered",
+      "Member of the Chartered Society of Physiotherapy (CSP)",
+    ],
+    intro:
+      "Abdul is a senior physiotherapist with extensive experience in musculoskeletal assessment and rehabilitation. He takes a thorough, patient-centred approach — combining detailed clinical assessment with hands-on treatment and progressive exercise programmes.",
+    bio: [
+      "Abdul has worked across a range of clinical settings, developing particular expertise in back and neck pain, sports injuries, and post-operative rehabilitation. He holds an honours degree in Physiotherapy and is registered with the Health and Care Professions Council (HCPC).",
+      "He takes time to understand each patient's goals and lifestyle before developing a personalised treatment plan. His sessions combine manual therapy with targeted exercise rehabilitation, with a focus on long-term recovery rather than short-term symptom relief.",
+      "Abdul sees patients at our Stanmore clinic and also conducts home visits across North London.",
+    ],
+    specialities: [
+      "Back & Neck Pain",
+      "Sports Injury Rehabilitation",
+      "Post-Operative Rehabilitation",
+      "Joint & Muscle Pain",
+      "Exercise-Based Rehabilitation",
+    ],
+  },
 ];
+
+export const teamMembers: TeamMember[] = [director, ...clinicians];
 
 export function getTeamMember(slug: string): TeamMember | undefined {
   return teamMembers.find((m) => m.slug === slug);

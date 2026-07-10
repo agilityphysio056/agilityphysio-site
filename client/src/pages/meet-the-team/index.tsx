@@ -3,7 +3,71 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { openBookingWidget } from "@/lib/booking";
 import { ArrowRight, Phone } from "lucide-react";
-import { teamMembers } from "@/data/team";
+import { director, clinicians } from "@/data/team";
+import type { TeamMember } from "@/data/team";
+
+function TeamCard({ member, index }: { member: TeamMember; index: number }) {
+  return (
+    <div
+      className="flex flex-col bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+      data-testid={`card-team-${index}`}
+    >
+      <Link href={`/meet-the-team/${member.slug}`}>
+        <div
+          className="w-full cursor-pointer overflow-hidden"
+          style={{ aspectRatio: "4 / 5", background: "#f8f8f8" }}
+        >
+          <img
+            src={member.photo}
+            alt={member.photoAlt}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: member.imageObjectFit,
+              objectPosition: "center top",
+              display: "block",
+            }}
+            data-testid={`img-team-${member.slug}`}
+          />
+        </div>
+      </Link>
+
+      <div className="flex flex-col flex-1 p-5">
+        <Link href={`/meet-the-team/${member.slug}`}>
+          <h2
+            className="text-lg font-bold text-foreground mb-0.5 hover:text-primary transition-colors cursor-pointer"
+            data-testid={`text-team-name-${index}`}
+          >
+            {member.name}
+          </h2>
+        </Link>
+        <p className="text-sm text-secondary font-medium mb-4">{member.role}</p>
+
+        {member.placeholderContent ? (
+          <p className="text-sm text-muted-foreground leading-relaxed flex-1">
+            Profile coming soon.
+          </p>
+        ) : (
+          <p className="text-sm text-muted-foreground leading-relaxed flex-1 line-clamp-3">
+            {member.intro}
+          </p>
+        )}
+
+        <Link href={`/meet-the-team/${member.slug}`}>
+          <Button
+            variant="outline"
+            size="sm"
+            className="mt-4 w-full"
+            data-testid={`button-view-profile-${member.slug}`}
+          >
+            View Profile
+            <ArrowRight className="w-4 h-4 ml-2" />
+          </Button>
+        </Link>
+      </div>
+    </div>
+  );
+}
 
 export default function MeetTheTeam() {
   return (
@@ -30,74 +94,32 @@ export default function MeetTheTeam() {
         </div>
       </section>
 
-      {/* TEAM GRID */}
-      <section className="py-16 lg:py-24 bg-background" data-testid="section-team-grid">
+      {/* DIRECTOR */}
+      <section className="py-16 lg:py-20 bg-background" data-testid="section-team-director">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8">
-            {teamMembers.map((member, i) => (
-              <div
-                key={member.slug}
-                className="flex flex-col bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                data-testid={`card-team-${i}`}
-              >
-                {/* Photo */}
-                <Link href={`/meet-the-team/${member.slug}`}>
-                  <div
-                    className="w-full cursor-pointer overflow-hidden"
-                    style={{ aspectRatio: "4 / 5", background: "#f8f8f8" }}
-                  >
-                    <img
-                      src={member.photo}
-                      alt={member.photoAlt}
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: member.imageObjectFit,
-                        objectPosition: "center top",
-                        display: "block",
-                      }}
-                      data-testid={`img-team-${member.slug}`}
-                    />
-                  </div>
-                </Link>
+          <h2 className="text-xs font-semibold text-secondary uppercase tracking-widest mb-8">
+            Clinical Leadership
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <TeamCard member={director} index={0} />
+          </div>
+        </div>
+      </section>
 
-                {/* Info */}
-                <div className="flex flex-col flex-1 p-5">
-                  <Link href={`/meet-the-team/${member.slug}`}>
-                    <h2
-                      className="text-lg font-bold text-foreground mb-0.5 hover:text-primary transition-colors cursor-pointer"
-                      data-testid={`text-team-name-${i}`}
-                    >
-                      {member.name}
-                    </h2>
-                  </Link>
-                  <p className="text-sm text-secondary font-medium mb-4">
-                    {member.role}
-                  </p>
+      {/* DIVIDER */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <hr className="border-border" />
+      </div>
 
-                  {member.placeholderContent ? (
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1">
-                      Profile coming soon.
-                    </p>
-                  ) : (
-                    <p className="text-sm text-muted-foreground leading-relaxed flex-1 line-clamp-3">
-                      {member.intro}
-                    </p>
-                  )}
-
-                  <Link href={`/meet-the-team/${member.slug}`}>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="mt-4 w-full"
-                      data-testid={`button-view-profile-${member.slug}`}
-                    >
-                      View Profile
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+      {/* CLINICIANS */}
+      <section className="py-16 lg:py-20 bg-background" data-testid="section-team-clinicians">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-xs font-semibold text-secondary uppercase tracking-widest mb-8">
+            Our Physiotherapists
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+            {clinicians.map((member, i) => (
+              <TeamCard key={member.slug} member={member} index={i + 1} />
             ))}
           </div>
         </div>
