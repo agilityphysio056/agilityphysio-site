@@ -437,7 +437,7 @@ export function HomeVisitLandingPage({ config }: Props) {
                   {[
                     { label: "Initial Assessment", ...pricing.initial },
                     { label: "Follow-up Treatment", ...pricing.followUp45 },
-                    { label: "Follow-up (shorter)", ...pricing.followUp30 },
+                    ...(pricing.followUp30 ? [{ label: "Follow-up (shorter)", ...pricing.followUp30 }] : []),
                   ].map(({ label, duration, price }) => (
                     <div
                       key={label}

@@ -22,7 +22,7 @@ export interface HomeVisitAreaConfig {
   pricing: {
     initial: HomeVisitPricingItem;
     followUp45: HomeVisitPricingItem;
-    followUp30: HomeVisitPricingItem;
+    followUp30?: HomeVisitPricingItem;
   };
   testimonials: HomeVisitTestimonial[];
   googleReviewCount: number;
@@ -73,8 +73,7 @@ export const stockwellHomeVisit: HomeVisitAreaConfig = {
   responseTime: "within 24–48 hours",
   pricing: {
     initial: { duration: "60 mins", price: "£70" },
-    followUp45: { duration: "45 mins", price: "£65" },
-    followUp30: { duration: "30 mins", price: "£65" },
+    followUp45: { duration: "60 mins", price: "£65" },
   },
   testimonials: [
     {
