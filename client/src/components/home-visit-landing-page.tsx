@@ -141,11 +141,23 @@ export function HomeVisitLandingPage({ config }: Props) {
         data-testid="section-hero"
         style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #134e4a 100%)" }}
       >
-        <div className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-          }}
-        />
+        {/* Hero background image */}
+        {config.heroImage && (
+          <>
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${config.heroImage})` }}
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(30,41,59,0.75) 60%, rgba(19,78,74,0.70) 100%)" }} />
+          </>
+        )}
+        {!config.heroImage && (
+          <div className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+            }}
+          />
+        )}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28 w-full">
           <div className="max-w-3xl">
             <p className="text-sm font-medium text-primary mb-2 uppercase tracking-widest">

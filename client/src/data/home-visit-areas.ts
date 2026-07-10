@@ -1,3 +1,5 @@
+import stanmoreHeroImg from "@/assets/images/stanmore-hero.png";
+
 export interface HomeVisitPricingItem {
   duration: string;
   price: string;
@@ -24,6 +26,7 @@ export interface HomeVisitAreaConfig {
   testimonials: HomeVisitTestimonial[];
   googleReviewCount: number;
   googleRating: number;
+  heroImage?: string;
 }
 
 export const stanmoreHomeVisit: HomeVisitAreaConfig = {
@@ -57,6 +60,7 @@ export const stanmoreHomeVisit: HomeVisitAreaConfig = {
   ],
   googleReviewCount: 250,
   googleRating: 5,
+  heroImage: stanmoreHeroImg,
 };
 
 export const stockwellHomeVisit: HomeVisitAreaConfig = {
