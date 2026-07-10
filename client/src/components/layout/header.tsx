@@ -9,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, Phone, ChevronDown, MapPin } from "lucide-react";
+import { Home, Menu, Phone, ChevronDown, MapPin } from "lucide-react";
 import logoImg from "@assets/Untitled-logo_1768001491806.jpg";
 
 const navItems = [
@@ -41,6 +41,10 @@ const servicePages = [
 const clinicLocations = [
   { name: "Stanmore", href: "/clinics/stanmore", area: "North London" },
   { name: "Stockwell", href: "/clinics/stockwell", area: "South London" },
+];
+
+const homeVisitAreas = [
+  { name: "Stanmore", href: "/home-visits/stanmore", area: "North London" },
 ];
 
 export function Header() {
@@ -132,6 +136,33 @@ export function Header() {
                   <Link key={service.href} href={service.href}>
                     <DropdownMenuItem className="cursor-pointer" data-testid={`link-service-${service.name.toLowerCase().replace(/\s+/g, "-")}`}>
                       {service.name}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                    location.startsWith("/home-visits") ? "text-secondary" : "text-foreground"
+                  }`}
+                  data-testid="link-home-visits-dropdown"
+                >
+                  Home Visits
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="center" className="w-56">
+                {homeVisitAreas.map((hv) => (
+                  <Link key={hv.href} href={hv.href}>
+                    <DropdownMenuItem className="cursor-pointer" data-testid={`link-home-visit-${hv.name.toLowerCase()}`}>
+                      <Home className="w-4 h-4 mr-2 text-secondary" />
+                      <div>
+                        <div className="font-medium">{hv.name}</div>
+                        <div className="text-xs text-muted-foreground">{hv.area}</div>
+                      </div>
                     </DropdownMenuItem>
                   </Link>
                 ))}
@@ -254,6 +285,27 @@ export function Header() {
                             data-testid={`mobile-link-condition-${condition.name.toLowerCase().replace(/\s+/g, "-")}`}
                           >
                             {condition.name}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="py-2">
+                    <span className="block text-base font-medium text-foreground mb-2">Home Visits</span>
+                    <div className="pl-4 space-y-1">
+                      {homeVisitAreas.map((hv) => (
+                        <Link key={hv.href} href={hv.href}>
+                          <span
+                            className={`flex items-center gap-2 text-sm py-1.5 cursor-pointer ${
+                              location === hv.href ? "text-secondary" : "text-muted-foreground"
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            data-testid={`mobile-link-home-visit-${hv.name.toLowerCase()}`}
+                          >
+                            <Home className="w-4 h-4" />
+                            {hv.name}
+                            <span className="text-xs">({hv.area})</span>
                           </span>
                         </Link>
                       ))}

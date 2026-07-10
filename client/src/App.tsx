@@ -20,6 +20,7 @@ import Bookings from "@/pages/bookings";
 import BookingConfirmation from "@/pages/bookings/confirmation";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
+import StanmoreHomeVisit from "@/pages/home-visits/stanmore";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/clinics" component={Clinics} />
       <Route path="/clinics/stanmore" component={StanmoreClinic} />
       <Route path="/clinics/stockwell" component={StockwellClinic} />
+      <Route path="/home-visits/stanmore" component={StanmoreHomeVisit} />
       <Route path="/fees" component={Fees} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />

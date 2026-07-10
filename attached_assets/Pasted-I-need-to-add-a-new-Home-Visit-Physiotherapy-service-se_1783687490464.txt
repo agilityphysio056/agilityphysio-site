@@ -1,0 +1,149 @@
+I need to add a new "Home Visit Physiotherapy" service section to my site, 
+starting with a Stanmore-specific landing page, built as a SCALABLE TEMPLATE 
+so I can launch identical pages for other areas (Stockwell, Wirral, etc.) 
+later just by changing config data — not rebuilding the page.
+
+## 1. NAVIGATION UPDATE
+Add "Home Visits" as a new top-level menu item in the header nav, positioned 
+between "Services" and "Clinics". On click, it should either:
+- Link directly to /home-visits/stanmore (if only one area live), OR
+- Show a dropdown listing live home-visit areas (Stanmore for now, 
+  more added later)
+Build it as a dropdown from day one so I don't need to touch the header 
+again when I add new areas — just add new entries to the areas config.
+
+## 2. CREATE A REUSABLE COMPONENT
+Build a component `HomeVisitLandingPage` that accepts a config object like:
+
+{
+  area: "Stanmore",
+  slug: "stanmore",
+  nearbyAreas: ["Edgware", "Harrow", "Kenton"],
+  postcodes: ["HA7", "HA5", "HA3"],
+  phone: "0203 092 9976",
+  responseTime: "within 24-48 hours",
+  pricing: {
+    initial: { duration: "60 mins", price: "£120" },
+    followUp45: { duration: "45 mins", price: "£95" },
+    followUp30: { duration: "30 mins", price: "£75" }
+  },
+  testimonials: [
+    { text: "...", author: "Patient in Stanmore", rating: 5 },
+    { text: "...", author: "Patient in Harrow", rating: 5 }
+  ],
+  googleReviewCount: 220,
+  googleRating: 5
+}
+
+Route it at /home-visits/[slug] (e.g. /home-visits/stanmore), so future 
+areas just need a new config entry + route, no new components.
+
+## 3. PAGE STRUCTURE (mirror the style of my existing /clinics/stanmore 
+page — same visual design language, spacing, card styles, color scheme 
+already in use on the site)
+
+### Hero Section
+- Small eyebrow text: "AGILITY PHYSIO · HOME VISITS"
+- H1: "Home Visit Physiotherapy in [Area]" (dynamic from config)
+- Subheading: "HCPC Registered Physiotherapists | Treatment in the 
+  Comfort of Your Home"
+- Trust badge row: ⭐ [googleRating]-Star Rated | ✓ HCPC Registered | 
+  ✓ DBS-Checked Therapists | ✓ [X]+ Years Experience
+- Primary CTA button: "Book a Home Visit"
+- Secondary CTA: phone number with click-to-call
+- Small urgency line: "Limited home visit slots this week — book to secure"
+
+### Google Reviews Banner
+- "★★★★★ [googleReviewCount]+ Google 5 Star Reviews"
+- "Rated 5 stars by our patients across [area] and surrounding areas"
+
+### Testimonials Carousel
+- Same card style as clinic page (Google logo, 5 stars, quote, 
+  "— Patient in [Location]")
+- Pull testimonials that mention home visits specifically where possible; 
+  tag each with the patient's area (Stanmore, Harrow, Edgware, etc.) 
+  to reinforce area coverage
+
+### About This Service (left column, 2/3 width)
+- Explain the home visit offering: what it is, who delivers it, 
+  what's brought (portable equipment)
+- "What to Expect" section: arrival → assessment → treatment → 
+  exercise demo → advice, as a numbered/checked list
+
+### Why Choose Agility Physio Home Visits (4-box grid, same style 
+as "Why Choose" on clinic page)
+- No Travel Needed — treatment in your own home
+- DBS-Checked Therapists — fully vetted for home visits
+- Same-Day / Next-Day Availability — [responseTime]
+- HCPC Registered — fully qualified, regulated professionals
+
+### Conditions We Treat at Home
+- Bullet list: mobility-limited patients, post-operative rehab, 
+  elderly care, neurological conditions, general MSK 
+  (back/neck/shoulder/knee pain), sports injury maintenance
+
+### Suitable For (bulleted, checkmark icons — match existing style)
+- Those with mobility limitations
+- Post-operative patients who can't travel easily
+- Elderly patients preferring home treatment
+- Busy professionals with limited time
+- Anyone who prefers treatment at home
+
+### Red Flags: When to Seek Urgent Help
+- Same red-flag content style as clinic page (sudden severe weakness, 
+  saddle numbness, bladder/bowel loss, unexplained weight loss, 
+  night pain) — reuse this exact content block/component if possible 
+  since it's clinically identical across pages
+
+### Right Sidebar (sticky, same as clinic page pattern)
+- **Service Area card**: "We Cover [Area]" with list of nearbyAreas 
+  and postcodes, icon-based, NOT a map/address (since this isn't a 
+  fixed location) — instead something like "Home visits available 
+  across [area] and surrounding postcodes: [postcode list]"
+- **Pricing card**: Initial Assessment / Follow-up 45 / Follow-up 30 
+  with prices from config, "Book Your Home Visit" CTA button
+- **Book Now card**: short prompt + booking CTA button
+- **Questions card**: phone number, "Our team is happy to help"
+
+### FAQ Section (NEW — not on clinic page, but needed here)
+Add an accordion FAQ block with these questions (write clear, 
+reassuring answers for each):
+- Is there a travel/callout fee, or is it included in the price?
+- Do you cover my exact postcode?
+- Can I claim this on my insurance? (note most insurers don't cover 
+  home visits — be upfront and clear about this)
+- How soon can someone visit me?
+- What conditions or treatments aren't suitable for a home visit?
+- Are your therapists DBS-checked?
+- What should I prepare before the appointment?
+
+### Bottom CTA Band (same style as clinic page's "Ready to Book" band)
+- H2: "Ready to Book Home Visit Physiotherapy in [Area]?"
+- Subtext: "Take the first step towards recovery — treatment in the 
+  comfort of your own home."
+- Book Now + Call buttons
+
+## 4. SEO / GOOGLE ADS REQUIREMENTS (IMPORTANT)
+- Dynamic <title>: "Home Visit Physiotherapy in [Area] | Agility Physio"
+- Dynamic meta description mentioning area name + "HCPC registered 
+  physiotherapists" + "same week appointments"
+- H1 must contain the area name (for Quality Score relevance)
+- Add area name naturally 3-4 times in body copy (not keyword-stuffed, 
+  just natural mentions — e.g. "our Stanmore home visit team", 
+  "covering Stanmore, Edgware and Harrow")
+- Add schema markup (LocalBusiness or Service schema) with area/service 
+  info for rich results
+- Ensure fast load — reuse existing image assets/components rather 
+  than duplicating heavy new ones
+
+## 5. GOOGLE ADS CONVERSION TRACKING
+Reuse the same Google Tag setup already on the Stanmore clinic Ads 
+campaign (Tag ID: AW-17788015342, conversion label: d9b0CJS8t6YcEO6l_qFC) 
+on the Book Appointment / Book Home Visit buttons on this new page, 
+so home-visit bookings track correctly against the campaign.
+
+## 6. FIRST INSTANCE TO BUILD
+Populate the Stanmore config now and make /home-visits/stanmore live. 
+Leave the areas config file structured so adding Stockwell, Wirral, 
+etc. later is just a new config object + adding it to the nav dropdown 
+— no component changes needed.
