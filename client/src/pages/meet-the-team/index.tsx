@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { openBookingWidget } from "@/lib/booking";
 import { ArrowRight, Phone } from "lucide-react";
-import { director, clinicians, teamMembers } from "@/data/team";
+import { director, clinicians } from "@/data/team";
 import type { TeamMember } from "@/data/team";
 
 function TeamCard({ member, index }: { member: TeamMember; index: number }) {
@@ -82,44 +82,15 @@ export default function MeetTheTeam() {
         data-testid="section-team-hero"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Text */}
-            <div>
-              <p className="text-sm font-medium text-primary mb-2 uppercase tracking-widest">
-                Agility Physio
-              </p>
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight" data-testid="text-team-title">
-                Meet the Team
-              </h1>
-              <p className="text-lg text-white/80 max-w-xl">
-                HCPC registered physiotherapists and clinical leadership — committed to evidence-based care and lasting patient outcomes.
-              </p>
-            </div>
-
-            {/* Photo collage */}
-            <div className="hidden lg:grid grid-cols-2 gap-3">
-              {teamMembers.slice(0, 4).map((member) => (
-                <div
-                  key={member.slug}
-                  className="rounded-xl overflow-hidden border border-white/10 shadow-lg"
-                  style={{ aspectRatio: "3 / 4", background: "#1e293b" }}
-                >
-                  <img
-                    src={member.photo}
-                    alt={member.photoAlt}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center top",
-                      display: "block",
-                      opacity: 0.92,
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="text-sm font-medium text-primary mb-2 uppercase tracking-widest">
+            Agility Physio
+          </p>
+          <h1 className="text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight" data-testid="text-team-title">
+            Meet the Team
+          </h1>
+          <p className="text-lg text-white/80 max-w-2xl">
+            HCPC registered physiotherapists and clinical leadership — committed to evidence-based care and lasting patient outcomes.
+          </p>
         </div>
       </section>
 
