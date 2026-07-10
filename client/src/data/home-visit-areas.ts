@@ -93,7 +93,7 @@ export const stockwellHomeVisit: HomeVisitAreaConfig = {
       rating: 5,
     },
   ],
-  googleReviewCount: 32,
+  googleReviewCount: 250,
   googleRating: 5.0,
   heroImage: stockwellHeroImg,
 };
