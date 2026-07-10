@@ -39,8 +39,7 @@ export const stanmoreHomeVisit: HomeVisitAreaConfig = {
   responseTime: "within 24–48 hours",
   pricing: {
     initial: { duration: "60 mins", price: "£120" },
-    followUp45: { duration: "45 mins", price: "£95" },
-    followUp30: { duration: "30 mins", price: "£75" },
+    followUp45: { duration: "60 mins", price: "£95" },
   },
   testimonials: [
     {
