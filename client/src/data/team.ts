@@ -78,7 +78,7 @@ export const teamMembers: TeamMember[] = [
     role: "Director & Clinical Governance Lead",
     photo: drFayazHashamImg,
     photoAlt: "Dr Fayaz Hasham, Director and Clinical Governance Lead at Agility Physio",
-    imageObjectFit: "contain",
+    imageObjectFit: "cover",
     qualifications: [
       "MBBS",
       "Clinical Governance Lead",
