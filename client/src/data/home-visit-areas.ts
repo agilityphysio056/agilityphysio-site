@@ -59,4 +59,37 @@ export const stanmoreHomeVisit: HomeVisitAreaConfig = {
   googleRating: 5,
 };
 
-export const homeVisitAreas: HomeVisitAreaConfig[] = [stanmoreHomeVisit];
+export const stockwellHomeVisit: HomeVisitAreaConfig = {
+  area: "Stockwell",
+  slug: "stockwell",
+  nearbyAreas: ["Brixton", "Clapham", "Vauxhall"],
+  postcodes: ["SW9", "SW4", "SW8"],
+  phone: "0203 092 9976",
+  responseTime: "within 24–48 hours",
+  pricing: {
+    initial: { duration: "60 mins", price: "£70" },
+    followUp45: { duration: "45 mins", price: "£65" },
+    followUp30: { duration: "30 mins", price: "£65" },
+  },
+  testimonials: [
+    {
+      text: "I was recovering from hip surgery and couldn't travel to a clinic. Having a physiotherapist come to my flat in Stockwell made all the difference — professional, thorough, and really supportive throughout my recovery.",
+      author: "Patient in Stockwell",
+      rating: 5,
+    },
+    {
+      text: "Brilliant service. My back was so bad I couldn't sit in a car, let alone get to an appointment. The home visit was arranged quickly and the treatment was exactly what I needed. Would recommend to anyone in Brixton or Clapham.",
+      author: "Patient in Brixton",
+      rating: 5,
+    },
+    {
+      text: "I booked a home visit for my knee and was really impressed. The physiotherapist arrived on time in Vauxhall, spent a full hour with me, and gave me a clear rehab plan. Five stars without hesitation.",
+      author: "Patient in Vauxhall",
+      rating: 5,
+    },
+  ],
+  googleReviewCount: 32,
+  googleRating: 5.0,
+};
+
+export const homeVisitAreas: HomeVisitAreaConfig[] = [stanmoreHomeVisit, stockwellHomeVisit];

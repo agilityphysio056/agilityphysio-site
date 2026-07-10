@@ -45,6 +45,7 @@ const clinicLocations = [
 
 const homeVisitAreas = [
   { name: "Stanmore", href: "/home-visits/stanmore", area: "North London" },
+  { name: "Stockwell", href: "/home-visits/stockwell", area: "South London" },
 ];
 
 export function Header() {
