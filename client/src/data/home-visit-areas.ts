@@ -1,4 +1,5 @@
 import stanmoreHeroImg from "@/assets/images/stanmore-hero.png";
+import stockwellHeroImg from "@/assets/images/stockwell-hero.png";
 
 export interface HomeVisitPricingItem {
   duration: string;
@@ -94,6 +95,7 @@ export const stockwellHomeVisit: HomeVisitAreaConfig = {
   ],
   googleReviewCount: 32,
   googleRating: 5.0,
+  heroImage: stockwellHeroImg,
 };
 
 export const homeVisitAreas: HomeVisitAreaConfig[] = [stanmoreHomeVisit, stockwellHomeVisit];
