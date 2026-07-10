@@ -38,8 +38,8 @@ export const stanmoreHomeVisit: HomeVisitAreaConfig = {
   phone: "0203 092 9976",
   responseTime: "within 24–48 hours",
   pricing: {
-    initial: { duration: "60 mins", price: "£120" },
-    followUp45: { duration: "60 mins", price: "£95" },
+    initial: { duration: "60 mins", price: "£70" },
+    followUp45: { duration: "60 mins", price: "£65" },
   },
   testimonials: [
     {
