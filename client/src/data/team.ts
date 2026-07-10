@@ -1,7 +1,7 @@
 import abdulWahabImg from "@/assets/images/abdul-wahab.png";
 import uzmaAnwarImg from "@/assets/images/uzma-anwar.png";
 import drFayazHashamImg from "@/assets/images/dr-fayaz-hasham.png";
-import muhammadUmarImg from "@/assets/images/muhammad-umar.png";
+import muhammadUmarAshrafImg from "@/assets/images/muhammad-umar-ashraf.png";
 
 export interface TeamMember {
   slug: string;
@@ -14,6 +14,9 @@ export interface TeamMember {
   intro: string;
   bio: string[];
   specialities: string[];
+  background?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
   placeholderContent?: boolean;
 }
 
@@ -70,17 +73,49 @@ export const clinicians: TeamMember[] = [
     ],
   },
   {
-    slug: "muhammad-umar",
-    name: "Muhammad Umar",
-    role: "Senior Physiotherapist",
-    photo: muhammadUmarImg,
-    photoAlt: "Muhammad Umar, Senior Physiotherapist at Agility Physio",
+    slug: "muhammad-umar-ashraf",
+    name: "Muhammad Umar Ashraf",
+    role: "MSK Physiotherapist",
+    photo: muhammadUmarAshrafImg,
+    photoAlt: "Muhammad Umar Ashraf, MSK Physiotherapist at Agility Physio",
     imageObjectFit: "cover",
-    qualifications: [],
-    intro: "",
-    bio: [],
-    specialities: [],
-    placeholderContent: true,
+    qualifications: ["HCPC", "MCSP"],
+    intro:
+      "Muhammad Umar Ashraf is an MSK Physiotherapist with experience across private practice, hospital-based physiotherapy and multidisciplinary rehabilitation. He provides evidence-based assessment, manual therapy, exercise rehabilitation and patient education for musculoskeletal and neurological conditions.",
+    bio: [
+      "Muhammad Umar Ashraf is an MSK Physiotherapist at Agility Physio, providing comprehensive assessment and rehabilitation for patients presenting with musculoskeletal and neurological conditions.",
+      "He takes an evidence-based and patient-centred approach to care, developing individualised treatment plans based on each patient's presentation, functional limitations and recovery goals. His clinical approach includes manual therapy, therapeutic exercise, structured rehabilitation programmes, patient education and ongoing review of treatment outcomes.",
+      "Muhammad has experience working autonomously with a range of patient presentations, including more complex physical conditions. He is committed to maintaining high professional and clinical standards while helping patients improve their mobility, independence and overall functional ability.",
+      "His previous hospital-based experience includes providing physiotherapy across inpatient and outpatient services. He has undertaken musculoskeletal assessments, supported patients undergoing pre-operative and post-operative rehabilitation and contributed to the management of orthopaedic, neurological and cardiorespiratory conditions.",
+      "His orthopaedic rehabilitation experience includes supporting patients following procedures such as ACL reconstruction and joint replacement surgery, with a focus on restoring movement, strength and functional independence.",
+      "Muhammad's broader clinical training has included supervised experience across outpatient musculoskeletal physiotherapy, orthopaedics, paediatrics, general medicine, plastic surgery, burns rehabilitation, obstetrics and gynaecology, neurology and neurosurgery.",
+      "He has also gained experience within cardiovascular, thoracic, pulmonary and critical-care environments, including early mobilisation, respiratory rehabilitation and chest physiotherapy.",
+      "Muhammad works collaboratively with multidisciplinary healthcare teams and places strong emphasis on clear clinical documentation, patient education, exercise adherence and goal-focused rehabilitation.",
+    ],
+    specialities: [
+      "Musculoskeletal assessment and rehabilitation",
+      "Manual therapy",
+      "Therapeutic exercise",
+      "Spinal and joint conditions",
+      "Neurological rehabilitation",
+      "Post-operative orthopaedic rehabilitation",
+      "Functional rehabilitation",
+      "Cardiorespiratory physiotherapy",
+      "Patient education and self-management",
+      "Multidisciplinary patient care",
+    ],
+    background: [
+      "MSK Physiotherapist, Agility Physio Ltd",
+      "MSK Physiotherapist, private physiotherapy practice in Warwickshire",
+      "Acute Intensive Care Unit Volunteer, Manchester University NHS Foundation Trust",
+      "Physiotherapist Observer, private MSK clinic in Bradford",
+      "Physiotherapist, Surgicare Hospital, Punjab",
+      "Clinical physiotherapy placements, Mayo Hospital Lahore",
+      "Physiotherapist Intern, General Outpatient and Teaching Physiotherapy Clinic",
+    ],
+    metaTitle: "Muhammad Umar Ashraf, MSK Physiotherapist | Agility Physio",
+    metaDescription:
+      "Learn about Muhammad Umar Ashraf, an MSK Physiotherapist at Agility Physio with experience in musculoskeletal assessment, manual therapy, exercise rehabilitation and hospital-based physiotherapy.",
   },
   {
     slug: "abdul-wahab",

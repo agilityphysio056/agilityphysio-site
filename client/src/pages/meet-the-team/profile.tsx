@@ -2,7 +2,7 @@ import { useParams, Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { openBookingWidget } from "@/lib/booking";
-import { ArrowLeft, CheckCircle2, Phone } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Phone, Briefcase } from "lucide-react";
 import { getTeamMember } from "@/data/team";
 import NotFound from "@/pages/not-found";
 
@@ -12,11 +12,15 @@ export default function TeamProfile() {
 
   if (!member) return <NotFound />;
 
+  const metaTitle = member.metaTitle ?? `${member.name} – ${member.role} | Agility Physio`;
+  const metaDescription =
+    member.metaDescription ??
+    `${member.name} is a ${member.role} at Agility Physio. ${
+      member.intro ? member.intro.slice(0, 120) + "…" : "HCPC registered physiotherapist providing expert care in Stanmore and surrounding areas."
+    }`;
+
   return (
-    <Layout
-      title={`${member.name} – ${member.role} | Agility Physio`}
-      description={`${member.name} is a ${member.role} at Agility Physio. ${member.intro ? member.intro.slice(0, 120) + "…" : "HCPC registered physiotherapist providing expert care in Stanmore and surrounding areas."}`}
-    >
+    <Layout title={metaTitle} description={metaDescription}>
       {/* BACK LINK */}
       <div className="bg-muted/40 border-b border-border py-3">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -84,11 +88,9 @@ export default function TeamProfile() {
                 {member.placeholderContent ? (
                   <div className="space-y-4 text-muted-foreground">
                     <p>
-                      Muhammad Umar is a Senior Physiotherapist at Agility Physio. Full profile details — including qualifications, clinical specialities, and biography — will be published here shortly.
+                      Full profile details — including qualifications, clinical specialities, and biography — will be published here shortly.
                     </p>
-                    <p className="text-sm italic">
-                      Profile content coming soon.
-                    </p>
+                    <p className="text-sm italic">Profile content coming soon.</p>
                   </div>
                 ) : (
                   <>
@@ -109,12 +111,27 @@ export default function TeamProfile() {
               {/* Specialities */}
               {!member.placeholderContent && member.specialities.length > 0 && (
                 <div data-testid="section-specialities">
-                  <h2 className="text-lg font-semibold text-foreground mb-3">Clinical Specialities</h2>
+                  <h2 className="text-lg font-semibold text-foreground mb-3">Areas of Expertise</h2>
                   <ul className="space-y-2">
                     {member.specialities.map((s) => (
                       <li key={s} className="flex items-center gap-2 text-sm text-muted-foreground">
                         <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
                         {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Professional Background */}
+              {!member.placeholderContent && member.background && member.background.length > 0 && (
+                <div data-testid="section-background">
+                  <h2 className="text-lg font-semibold text-foreground mb-3">Professional Background</h2>
+                  <ul className="space-y-3">
+                    {member.background.map((item, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                        <Briefcase className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+                        {item}
                       </li>
                     ))}
                   </ul>

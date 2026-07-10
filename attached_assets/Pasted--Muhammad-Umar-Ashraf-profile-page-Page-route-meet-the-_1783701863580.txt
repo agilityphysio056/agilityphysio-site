@@ -1,0 +1,86 @@
+# Muhammad Umar Ashraf profile page
+
+## Page route
+
+/meet-the-team/muhammad-umar-ashraf
+
+## H1
+
+Muhammad Umar Ashraf
+
+## Credentials
+
+HCPC, MCSP
+
+## Role
+
+MSK Physiotherapist
+
+## Biography
+
+Muhammad Umar Ashraf is an MSK Physiotherapist at Agility Physio, providing comprehensive assessment and rehabilitation for patients presenting with musculoskeletal and neurological conditions.
+
+He takes an evidence-based and patient-centred approach to care, developing individualised treatment plans based on each patient’s presentation, functional limitations and recovery goals. His clinical approach includes manual therapy, therapeutic exercise, structured rehabilitation programmes, patient education and ongoing review of treatment outcomes.
+
+Muhammad has experience working autonomously with a range of patient presentations, including more complex physical conditions. He is committed to maintaining high professional and clinical standards while helping patients improve their mobility, independence and overall functional ability.
+
+His previous hospital-based experience includes providing physiotherapy across inpatient and outpatient services. He has undertaken musculoskeletal assessments, supported patients undergoing pre-operative and post-operative rehabilitation and contributed to the management of orthopaedic, neurological and cardiorespiratory conditions.
+
+His orthopaedic rehabilitation experience includes supporting patients following procedures such as ACL reconstruction and joint replacement surgery, with a focus on restoring movement, strength and functional independence.
+
+Muhammad’s broader clinical training has included supervised experience across outpatient musculoskeletal physiotherapy, orthopaedics, paediatrics, general medicine, plastic surgery, burns rehabilitation, obstetrics and gynaecology, neurology and neurosurgery.
+
+He has also gained experience within cardiovascular, thoracic, pulmonary and critical-care environments, including early mobilisation, respiratory rehabilitation and chest physiotherapy.
+
+Muhammad works collaboratively with multidisciplinary healthcare teams and places strong emphasis on clear clinical documentation, patient education, exercise adherence and goal-focused rehabilitation.
+
+## Areas of expertise
+
+- Musculoskeletal assessment and rehabilitation
+- Manual therapy
+- Therapeutic exercise
+- Spinal and joint conditions
+- Neurological rehabilitation
+- Post-operative orthopaedic rehabilitation
+- Functional rehabilitation
+- Cardiorespiratory physiotherapy
+- Patient education and self-management
+- Multidisciplinary patient care
+
+## Professional background
+
+Include a concise professional timeline if this design is consistent with the other team profile pages:
+
+- MSK Physiotherapist, Agility Physio Ltd
+- MSK Physiotherapist, private physiotherapy practice in Warwickshire
+- Acute Intensive Care Unit Volunteer, Manchester University NHS Foundation Trust
+- Physiotherapist Observer, private MSK clinic in Bradford
+- Physiotherapist, Surgicare Hospital, Punjab
+- Clinical physiotherapy placements, Mayo Hospital Lahore
+- Physiotherapist Intern, General Outpatient and Teaching Physiotherapy Clinic
+
+Do not display exact employment dates unless they have been confirmed and approved for publication.
+
+## Call to action
+
+Heading:
+
+Book an Appointment
+
+Text:
+
+Book an appointment with Muhammad or another member of the Agility Physio team for personalised assessment, treatment and rehabilitation.
+
+Use the existing Book an Appointment button and booking URL.
+
+Also include:
+
+Back to Meet the Team
+
+## Meta title
+
+Muhammad Umar Ashraf, MSK Physiotherapist | Agility Physio
+
+## Meta description
+
+Learn about Muhammad Umar Ashraf, an MSK Physiotherapist at Agility Physio with experience in musculoskeletal assessment, manual therapy, exercise rehabilitation and hospital-based physiotherapy.
