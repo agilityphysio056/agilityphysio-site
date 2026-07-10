@@ -39,12 +39,12 @@ const servicePages = [
 ];
 
 const clinicLocations = [
-  { name: "Stanmore", href: "/clinics/stanmore", area: "North London" },
+  { name: "Stanmore", href: "/clinics/stanmore", area: "North West London" },
   { name: "Stockwell", href: "/clinics/stockwell", area: "South London" },
 ];
 
 const homeVisitAreas = [
-  { name: "Stanmore", href: "/home-visits/stanmore", area: "North London" },
+  { name: "Stanmore", href: "/home-visits/stanmore", area: "North West London" },
   { name: "Stockwell", href: "/home-visits/stockwell", area: "South London" },
 ];
 
