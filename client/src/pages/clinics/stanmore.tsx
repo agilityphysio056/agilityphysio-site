@@ -123,7 +123,7 @@ export default function StanmoreClinic() {
       {/* SOCIAL PROOF — reused from homepage */}
       <div id="reviews" className="bg-slate-900 pt-12 lg:pt-16" data-testid="section-reviews-heading">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
-          <p className="text-primary text-lg font-semibold mb-2">★★★★★ 200+ Google 5 Star Reviews</p>
+          <p className="text-primary text-lg font-semibold mb-2">★★★★★ 250+ Google 5 Star Reviews</p>
           <p className="text-white/90 text-sm md:text-base">
             Rated 5 stars by our patients in Stanmore
           </p>

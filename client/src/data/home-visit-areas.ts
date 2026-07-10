@@ -55,7 +55,7 @@ export const stanmoreHomeVisit: HomeVisitAreaConfig = {
       rating: 5,
     },
   ],
-  googleReviewCount: 220,
+  googleReviewCount: 250,
   googleRating: 5,
 };
 

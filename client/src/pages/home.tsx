@@ -153,7 +153,7 @@ export default function Home() {
                 <Star key={i} className="w-5 h-5 text-primary fill-primary" />
               ))}
             </div>
-            <span className="text-white font-medium">Over 200 Reviews</span>
+            <span className="text-white font-medium">Over 250 Reviews</span>
           </div>
         </div>
       </section>
