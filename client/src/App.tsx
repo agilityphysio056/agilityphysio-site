@@ -13,6 +13,7 @@ import ConditionDetail from "@/pages/conditions/condition-detail";
 import Clinics from "@/pages/clinics/index";
 import StanmoreClinic from "@/pages/clinics/stanmore";
 import StockwellClinic from "@/pages/clinics/stockwell";
+import WirralClinic from "@/pages/clinics/wirral";
 import Fees from "@/pages/fees";
 import About from "@/pages/about";
 import Contact from "@/pages/contact";
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/clinics" component={Clinics} />
       <Route path="/clinics/stanmore" component={StanmoreClinic} />
       <Route path="/clinics/stockwell" component={StockwellClinic} />
+      <Route path="/clinics/wirral" component={WirralClinic} />
       <Route path="/home-visits/stanmore" component={StanmoreHomeVisit} />
       <Route path="/home-visits/stockwell" component={StockwellHomeVisit} />
       <Route path="/meet-the-team" component={MeetTheTeam} />

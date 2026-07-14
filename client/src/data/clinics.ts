@@ -1,12 +1,15 @@
 import {
+  Activity,
   Calendar,
   CreditCard,
   Hospital,
   type LucideIcon,
   ShieldCheck,
+  Users,
 } from "lucide-react";
 import stanmoreClinicImage from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
 import stockwellClinicImage from "@assets/front_elevation_1768163052162.jpg";
+import wirralClinicImage from "@/assets/images/hero-service-detail.jpg";
 
 export interface WhyChooseItem {
   icon: LucideIcon;
@@ -25,6 +28,16 @@ export interface PricingConfig {
   initialDuration: string;
   followUpPrice: string;
   followUpDuration: string;
+}
+
+export interface ConditionItem {
+  text: string;
+  href?: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface ClinicConfig {
@@ -48,6 +61,9 @@ export interface ClinicConfig {
   urgencyText?: string;
   trustBadges?: string[];
 
+  heroPrimaryCtaLabel?: string;
+  heroPrimaryCtaHref?: string;
+
   reviewsText?: string;
   reviewsSubtext?: string;
   showTestimonials?: boolean;
@@ -63,26 +79,38 @@ export interface ClinicConfig {
 
   conditionsHeading: string;
   conditionsIntro: string;
-  conditionsList: string[];
+  conditionsList?: string[];
+  conditionsWithLinks?: ConditionItem[];
 
   redFlagsHeading: string;
   redFlagsIntro: string;
   redFlagsList: string[];
 
   pricing?: PricingConfig;
+  pricingMessage?: string;
+  insuranceNote?: string;
 
   addressLines: string[];
   hours: string[];
 
   transport: TransportItem[];
-  parking: string;
+  showParking?: boolean;
+  parking?: string;
+  showMap?: boolean;
 
   services: string[];
+
+  areasServed?: { heading: string; text: string };
+
+  faqs?: FaqItem[];
+
+  structuredData?: object;
 
   ctaHeading: string;
   ctaSubtitle: string;
   ctaBookLabel: string;
   ctaBookTestId: string;
+  ctaPrimaryHref?: string;
   showMobileStickyBar?: boolean;
 }
 
@@ -196,6 +224,8 @@ export const stanmoreClinic: ClinicConfig = {
     "HA7 1GB",
   ],
   hours: ["Mon-Sat: 9am-7pm", "Sun: 12pm-8pm"],
+  showParking: true,
+  showMap: true,
 
   transport: [
     {
@@ -290,6 +320,8 @@ export const stockwellClinic: ClinicConfig = {
     "SW9 9AE",
   ],
   hours: ["Mon-Fri: 8am-8pm", "Sat: 9am-2pm", "Sun: Closed"],
+  showParking: true,
+  showMap: true,
 
   transport: [
     {
@@ -313,4 +345,284 @@ export const stockwellClinic: ClinicConfig = {
     "Take the first step towards recovery. Book your physiotherapy appointment at our Stockwell clinic today.",
   ctaBookLabel: "Book at Stockwell",
   ctaBookTestId: "button-cta-book-stockwell",
+};
+
+export const wirralClinic: ClinicConfig = {
+  slug: "wirral",
+  title: "Physiotherapy in Wirral | Agility Physio",
+  description:
+    "Expert physiotherapy in Wirral from HCPC registered physiotherapists. Treatment for back pain, neck pain, joint problems, sports injuries and post-operative rehabilitation. Book with Agility Physio.",
+
+  heroImage: wirralClinicImage,
+  heroImageAlt: "Modern physiotherapy treatment room — Agility Physio Wirral clinic",
+  heroOverlay: "bg-slate-900/75",
+  heroMinHeight: "min-h-[70vh]",
+  heroContentPadding: "py-20 lg:py-28 w-full",
+  superheading: "Agility Physio · Wirral",
+  superheadingClasses:
+    "text-sm font-medium text-primary mb-2 uppercase tracking-widest",
+  h1: "Expert Physiotherapy in Wirral",
+  h1Classes: "text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight",
+  heroSubtitle: "HCPC Registered Physiotherapists | Personalised Treatment and Rehabilitation",
+  heroSubtitleClasses: "text-lg lg:text-xl text-white/90 leading-relaxed mb-8",
+  phone: "02030929976",
+  phoneDisplay: "0203 092 9976",
+  urgencyText: "Appointments are limited — book early to secure your preferred time.",
+  trustBadges: [
+    "5-Star Rated",
+    "HCPC Registered",
+    "Experienced Physiotherapists",
+    "Self-Pay and Insured Patients",
+  ],
+
+  heroPrimaryCtaLabel: "Register Your Interest",
+  heroPrimaryCtaHref: "tel:02030929976",
+
+  reviewsText: "Patient Success Stories",
+  reviewsSubtext: "Trusted by patients across Agility Physio",
+  showTestimonials: true,
+
+  whyChooseUsHeading: "Why Choose Agility Physio Wirral",
+  whyChooseUs: [
+    {
+      icon: Calendar,
+      title: "Convenient Appointments",
+      description:
+        "Appointments designed to fit around work, family and other commitments.",
+    },
+    {
+      icon: Hospital,
+      title: "Private Treatment Rooms",
+      description: "Professional and confidential one-to-one physiotherapy appointments.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "HCPC Registered Physiotherapists",
+      description:
+        "Assessment and treatment delivered by appropriately registered physiotherapists.",
+    },
+    {
+      icon: Activity,
+      title: "Personalised Rehabilitation",
+      description:
+        "Individual treatment plans based on your condition, goals and progress.",
+    },
+  ],
+
+  aboutHeading: "About Our Wirral Clinic",
+  aboutParagraphs: [
+    "Situated in Bromborough on the Wirral peninsula, our physiotherapy clinic provides musculoskeletal assessment and treatment for patients across the local area. The clinic is run by HCPC registered physiotherapists who take an individualised approach to care — building a treatment plan around each patient's specific condition, goals and lifestyle.",
+    "Our focus is on getting patients back to the things that matter most: returning to work after an injury, resuming sport and physical activity, or simply moving more freely in daily life. We assess the root cause of your problem, explain our findings clearly and agree a realistic rehabilitation pathway with you.",
+    "We see patients with a wide range of musculoskeletal conditions, from acute sports injuries to longer-standing joint and soft tissue problems. Whether your pain has been present for weeks or years, our team will work with you to make meaningful, measurable progress.",
+  ],
+
+  firstApptHeading: "What to Expect at Your First Appointment",
+  firstApptParagraphs: [
+    "From the moment you arrive, the priority is understanding your situation fully. Your physiotherapist will take a thorough history of your symptoms — including how long they have been present, what makes them better or worse, and how they are affecting your daily life, work or sport.",
+    "A comprehensive physical assessment follows, which may include movement testing, manual joint assessment and specific clinical tests relevant to your condition. This allows your physiotherapist to form an accurate diagnosis and explain the likely cause of your symptoms in straightforward terms.",
+    "Your personalised treatment plan is developed with you, not just handed to you. Treatment typically begins at the first appointment and may include hands-on therapy, guided exercise prescription and practical self-management advice. Regular progress reviews keep the plan on track as your condition improves.",
+  ],
+
+  conditionsHeading: "Conditions We Treat",
+  conditionsIntro: "Our Wirral physiotherapists assess and treat a wide range of musculoskeletal conditions, including:",
+  conditionsWithLinks: [
+    { text: "Lower back pain and sciatica", href: "/conditions/back-pain" },
+    { text: "Neck pain and cervical problems", href: "/conditions/neck-pain" },
+    { text: "Shoulder pain, frozen shoulder and rotator cuff problems", href: "/conditions/shoulder-pain" },
+    { text: "Knee pain, ligament injuries and rehabilitation after surgery", href: "/conditions/knee-pain" },
+    { text: "Hip pain and arthritis management", href: "/conditions/hip-pain" },
+    { text: "Sports injuries", href: "/conditions/sports-injuries" },
+    { text: "Muscle and tendon injuries" },
+    { text: "Joint pain and stiffness" },
+    { text: "Post-operative rehabilitation", href: "/conditions/post-op-rehab" },
+    { text: "Return-to-work and return-to-sport rehabilitation" },
+  ],
+
+  redFlagsHeading: "Red Flags: When to Seek Urgent Help",
+  redFlagsIntro:
+    "While most musculoskeletal conditions can be safely managed with physiotherapy, some symptoms require urgent medical attention. Please seek immediate medical advice if you experience:",
+  redFlagsList: [
+    "Sudden severe weakness in your arms or legs",
+    "Numbness in the saddle area (around the genitals or buttocks)",
+    "Loss of bladder or bowel control",
+    "Unexplained weight loss alongside your pain",
+    "Pain that is worse at night and disturbs your sleep significantly",
+  ],
+
+  pricingMessage: "Please contact us for current pricing.",
+  insuranceNote: "Self-paying and insured patients are welcome.",
+
+  addressLines: [
+    "Agility Physio Wirral",
+    "Thursbury House",
+    "1 Thursbury Road",
+    "Bromborough",
+    "CH62 3PW",
+  ],
+  hours: ["Opening Soon"],
+  showParking: false,
+  showMap: false,
+
+  transport: [
+    {
+      mode: "By Rail",
+      detail: "Bromborough Rail (Wirral Line) — please confirm walking distance before travelling.",
+    },
+  ],
+
+  services: [
+    "Musculoskeletal Physiotherapy Assessment",
+    "Back and Neck Pain Treatment",
+    "Sports Injury Rehabilitation",
+    "Post-Operative Rehabilitation",
+    "Joint and Muscle Pain Treatment",
+    "Exercise Rehabilitation",
+    "Return-to-Work Rehabilitation",
+  ],
+
+  areasServed: {
+    heading: "Physiotherapy for Patients Across Wirral",
+    text: "Our Wirral clinic in Bromborough is conveniently placed for patients travelling from Eastham, Bebington, Higher Bebington, Port Sunlight, Spital, Clatterbridge and surrounding areas.",
+  },
+
+  faqs: [
+    {
+      question: "Do I need a GP referral?",
+      answer:
+        "No. Self-paying patients can normally book directly with Agility Physio without a GP referral. Patients using health insurance should check the requirements of their individual policy.",
+    },
+    {
+      question: "What happens at my first physiotherapy appointment?",
+      answer:
+        "Your physiotherapist will discuss your symptoms and medical history, complete an appropriate physical assessment and explain a personalised treatment and rehabilitation plan.",
+    },
+    {
+      question: "What conditions do you treat?",
+      answer:
+        "Our physiotherapists assess and treat a range of musculoskeletal conditions, including back pain, neck pain, joint problems, sports injuries and rehabilitation following surgery.",
+    },
+    {
+      question: "How much does physiotherapy cost in Wirral?",
+      answer: "Please contact us for current pricing.",
+    },
+    {
+      question: "Do you accept health insurance?",
+      answer:
+        "Acceptance depends on your insurer, policy and clinic recognition. Please contact the clinic to confirm before booking.",
+    },
+    {
+      question: "How do I book an appointment?",
+      answer:
+        "You can register your interest online or call us on 0203 092 9976.",
+    },
+  ],
+
+  structuredData: {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["MedicalClinic", "LocalBusiness"],
+        name: "Agility Physio Wirral",
+        telephone: "+442030929976",
+        url: "https://agilityphysio.net/clinics/wirral",
+        medicalSpecialty: "Physiotherapy",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Thursbury House, 1 Thursbury Road",
+          addressLocality: "Bromborough",
+          addressRegion: "Merseyside",
+          postalCode: "CH62 3PW",
+          addressCountry: "GB",
+        },
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Agility Physio Ltd",
+          url: "https://agilityphysio.net",
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://agilityphysio.net",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Clinics",
+            item: "https://agilityphysio.net/clinics",
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: "Wirral",
+            item: "https://agilityphysio.net/clinics/wirral",
+          },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Do I need a GP referral?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. Self-paying patients can normally book directly with Agility Physio without a GP referral. Patients using health insurance should check the requirements of their individual policy.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What happens at my first physiotherapy appointment?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Your physiotherapist will discuss your symptoms and medical history, complete an appropriate physical assessment and explain a personalised treatment and rehabilitation plan.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What conditions do you treat?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Our physiotherapists assess and treat a range of musculoskeletal conditions, including back pain, neck pain, joint problems, sports injuries and rehabilitation following surgery.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How much does physiotherapy cost in Wirral?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Please contact us for current pricing.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Do you accept health insurance?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Acceptance depends on your insurer, policy and clinic recognition. Please contact the clinic to confirm before booking.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How do I book an appointment?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "You can register your interest online or call us on 0203 092 9976.",
+            },
+          },
+        ],
+      },
+    ],
+  },
+
+  ctaHeading: "Wirral Clinic Opening Soon",
+  ctaSubtitle:
+    "Register your interest in physiotherapy at our new Wirral clinic in Bromborough and be the first to know when appointments open.",
+  ctaBookLabel: "Register Your Interest",
+  ctaBookTestId: "button-cta-book-wirral",
+  ctaPrimaryHref: "tel:02030929976",
 };

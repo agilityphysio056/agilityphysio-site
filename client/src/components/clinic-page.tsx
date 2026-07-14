@@ -1,7 +1,14 @@
 import { useEffect } from "react";
+import { Link } from "wouter";
 import { Layout } from "@/components/layout/layout";
 import { Button } from "@/components/ui/button";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { openBookingWidget } from "@/lib/booking";
 import {
   Calendar,
@@ -33,6 +40,20 @@ export function ClinicPage({ config }: ClinicPageProps) {
     }
   }, []);
 
+  useEffect(() => {
+    if (!config.structuredData) return;
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(config.structuredData);
+    document.head.appendChild(script);
+    return () => {
+      if (document.head.contains(script)) document.head.removeChild(script);
+    };
+  }, [config.structuredData]);
+
+  const showParking = config.showParking !== false;
+  const showMap = config.showMap !== false;
+
   return (
     <Layout title={config.title} description={config.description}>
       {/* HERO */}
@@ -55,15 +76,26 @@ export function ClinicPage({ config }: ClinicPageProps) {
               {config.h1}
             </h1>
             {config.heroSubtitle && (
-              <p className={config.heroSubtitleClasses ?? "text-lg text-white/90 leading-relaxed mb-6"}>
+              <p
+                className={
+                  config.heroSubtitleClasses ??
+                  "text-lg text-white/90 leading-relaxed mb-6"
+                }
+              >
                 {config.heroSubtitle}
               </p>
             )}
 
             {config.trustBadges && (
-              <div className="flex flex-wrap gap-x-6 gap-y-3 mt-2 mb-4" data-testid="trust-bar">
+              <div
+                className="flex flex-wrap gap-x-6 gap-y-3 mt-2 mb-4"
+                data-testid="trust-bar"
+              >
                 {config.trustBadges.map((label, i) => (
-                  <div key={i} className="flex items-center gap-2 text-white/90 text-sm font-medium">
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-white/90 text-sm font-medium"
+                  >
                     {i === 0 ? (
                       <Star className="w-4 h-4 text-primary fill-primary" />
                     ) : (
@@ -76,15 +108,34 @@ export function ClinicPage({ config }: ClinicPageProps) {
             )}
 
             <div className="flex flex-col sm:flex-row gap-4 mb-6 max-w-sm sm:max-w-none">
-              <Button
-                size="lg"
-                onClick={openBookingWidget}
-                className="w-full sm:w-auto text-base px-8 shadow-lg"
-                data-testid="button-hero-book"
+              {config.heroPrimaryCtaHref ? (
+                <a
+                  href={config.heroPrimaryCtaHref}
+                  className="w-full sm:w-auto"
+                  data-testid="button-hero-book"
+                >
+                  <Button
+                    size="lg"
+                    className="w-full sm:w-auto text-base px-8 shadow-lg"
+                  >
+                    {config.heroPrimaryCtaLabel ?? "Book Appointment"}
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  size="lg"
+                  onClick={openBookingWidget}
+                  className="w-full sm:w-auto text-base px-8 shadow-lg"
+                  data-testid="button-hero-book"
+                >
+                  {config.heroPrimaryCtaLabel ?? "Book Appointment"}
+                </Button>
+              )}
+              <a
+                href={`tel:${config.phone}`}
+                className="w-full sm:w-auto"
+                data-testid="link-hero-call"
               >
-                Book Appointment
-              </Button>
-              <a href={`tel:${config.phone}`} className="w-full sm:w-auto" data-testid="link-hero-call">
                 <Button
                   size="lg"
                   variant="outline"
@@ -97,7 +148,10 @@ export function ClinicPage({ config }: ClinicPageProps) {
             </div>
 
             {config.urgencyText && (
-              <p className="text-sm text-primary font-medium mb-6" data-testid="text-urgency">
+              <p
+                className="text-sm text-primary font-medium mb-6"
+                data-testid="text-urgency"
+              >
                 {config.urgencyText}
               </p>
             )}
@@ -108,13 +162,21 @@ export function ClinicPage({ config }: ClinicPageProps) {
       {/* SOCIAL PROOF */}
       {(config.reviewsText || config.showTestimonials) && (
         <>
-          <div id="reviews" className="bg-slate-900 pt-12 lg:pt-16" data-testid="section-reviews-heading">
+          <div
+            id="reviews"
+            className="bg-slate-900 pt-12 lg:pt-16"
+            data-testid="section-reviews-heading"
+          >
             <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
               {config.reviewsText && (
-                <p className="text-primary text-lg font-semibold mb-2">{config.reviewsText}</p>
+                <p className="text-primary text-lg font-semibold mb-2">
+                  {config.reviewsText}
+                </p>
               )}
               {config.reviewsSubtext && (
-                <p className="text-white/90 text-sm md:text-base">{config.reviewsSubtext}</p>
+                <p className="text-white/90 text-sm md:text-base">
+                  {config.reviewsSubtext}
+                </p>
               )}
             </div>
           </div>
@@ -130,7 +192,9 @@ export function ClinicPage({ config }: ClinicPageProps) {
             <div className="lg:col-span-2 space-y-10">
               {/* About */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">{config.aboutHeading}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  {config.aboutHeading}
+                </h2>
                 <div className="prose prose-slate max-w-none text-muted-foreground space-y-4">
                   {config.aboutParagraphs.map((p, i) => (
                     <p key={i}>{p}</p>
@@ -140,7 +204,9 @@ export function ClinicPage({ config }: ClinicPageProps) {
 
               {/* First appointment / What to expect */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">{config.firstApptHeading}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  {config.firstApptHeading}
+                </h2>
                 <div className="prose prose-slate max-w-none text-muted-foreground space-y-4">
                   {config.firstApptParagraphs.map((p, i) => (
                     <p key={i}>{p}</p>
@@ -152,7 +218,8 @@ export function ClinicPage({ config }: ClinicPageProps) {
               {config.whyChooseUs && (
                 <div id="why-choose-us" data-testid="section-why-choose-us">
                   <h2 className="text-2xl font-bold text-foreground mb-6">
-                    {config.whyChooseUsHeading ?? `Why Choose Agility Physio ${config.slug.charAt(0).toUpperCase()}${config.slug.slice(1)}`}
+                    {config.whyChooseUsHeading ??
+                      `Why Choose Agility Physio ${config.slug.charAt(0).toUpperCase()}${config.slug.slice(1)}`}
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {config.whyChooseUs.map((item, i) => {
@@ -164,7 +231,9 @@ export function ClinicPage({ config }: ClinicPageProps) {
                           <div className="w-11 h-11 rounded-xl bg-primary/15 flex items-center justify-center mb-3">
                             <Icon className="w-6 h-6 text-primary" />
                           </div>
-                          <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                          <h3 className="font-semibold text-foreground mb-1">
+                            {item.title}
+                          </h3>
                           <p className="text-sm text-muted-foreground leading-relaxed">
                             {item.description}
                           </p>
@@ -185,7 +254,11 @@ export function ClinicPage({ config }: ClinicPageProps) {
                         );
                       }
                       return (
-                        <div key={i} className={cardClassName} data-testid={`card-why-${i}`}>
+                        <div
+                          key={i}
+                          className={cardClassName}
+                          data-testid={`card-why-${i}`}
+                        >
                           {cardContent}
                         </div>
                       );
@@ -196,18 +269,37 @@ export function ClinicPage({ config }: ClinicPageProps) {
 
               {/* Conditions */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">{config.conditionsHeading}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  {config.conditionsHeading}
+                </h2>
                 <p className="text-muted-foreground mb-4">{config.conditionsIntro}</p>
                 <ul className="text-muted-foreground space-y-2">
-                  {config.conditionsList.map((c, i) => (
-                    <li key={i}>{c}</li>
-                  ))}
+                  {config.conditionsWithLinks
+                    ? config.conditionsWithLinks.map((c, i) =>
+                        c.href ? (
+                          <li key={i}>
+                            <Link
+                              href={c.href}
+                              className="hover:text-secondary hover:underline underline-offset-2 transition-colors"
+                            >
+                              {c.text}
+                            </Link>
+                          </li>
+                        ) : (
+                          <li key={i}>{c.text}</li>
+                        )
+                      )
+                    : (config.conditionsList ?? []).map((c, i) => (
+                        <li key={i}>{c}</li>
+                      ))}
                 </ul>
               </div>
 
               {/* Red flags */}
               <div>
-                <h2 className="text-2xl font-bold text-foreground mb-4">{config.redFlagsHeading}</h2>
+                <h2 className="text-2xl font-bold text-foreground mb-4">
+                  {config.redFlagsHeading}
+                </h2>
                 <p className="text-muted-foreground mb-4">{config.redFlagsIntro}</p>
                 <ul className="text-muted-foreground space-y-2">
                   {config.redFlagsList.map((r, i) => (
@@ -216,15 +308,17 @@ export function ClinicPage({ config }: ClinicPageProps) {
                 </ul>
               </div>
 
-              {/* Pricing */}
-              {config.pricing && (
+              {/* Pricing block OR pricing message */}
+              {config.pricing ? (
                 <div
                   id="pricing"
                   className="bg-white p-6 lg:p-8 rounded-2xl shadow-md border border-border scroll-mt-24"
                   data-testid="section-pricing"
                 >
                   <h2 className="text-2xl font-bold text-foreground mb-2">Pricing</h2>
-                  <p className="text-sm text-muted-foreground mb-6">Transparent fees, no hidden costs.</p>
+                  <p className="text-sm text-muted-foreground mb-6">
+                    Transparent fees, no hidden costs.
+                  </p>
                   <div className="space-y-3 mb-5">
                     <div
                       className="flex items-center justify-between p-4 rounded-xl bg-background border border-border"
@@ -232,9 +326,13 @@ export function ClinicPage({ config }: ClinicPageProps) {
                     >
                       <div>
                         <p className="font-semibold text-foreground">Initial Assessment</p>
-                        <p className="text-xs text-muted-foreground">{config.pricing.initialDuration}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {config.pricing.initialDuration}
+                        </p>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{config.pricing.initialPrice}</p>
+                      <p className="text-2xl font-bold text-primary">
+                        {config.pricing.initialPrice}
+                      </p>
                     </div>
                     <div
                       className="flex items-center justify-between p-4 rounded-xl bg-background border border-border"
@@ -242,14 +340,18 @@ export function ClinicPage({ config }: ClinicPageProps) {
                     >
                       <div>
                         <p className="font-semibold text-foreground">Follow-up Treatment</p>
-                        <p className="text-xs text-muted-foreground">{config.pricing.followUpDuration}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {config.pricing.followUpDuration}
+                        </p>
                       </div>
-                      <p className="text-2xl font-bold text-primary">{config.pricing.followUpPrice}</p>
+                      <p className="text-2xl font-bold text-primary">
+                        {config.pricing.followUpPrice}
+                      </p>
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground mb-6 flex items-center gap-2">
                     <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
-                    AXA and BUPA insurance accepted
+                    {config.insuranceNote ?? "AXA and BUPA insurance accepted"}
                   </p>
                   <Button
                     size="lg"
@@ -260,14 +362,33 @@ export function ClinicPage({ config }: ClinicPageProps) {
                     Book Your Initial Assessment
                   </Button>
                 </div>
-              )}
+              ) : config.pricingMessage ? (
+                <div
+                  id="pricing"
+                  className="bg-white p-6 lg:p-8 rounded-2xl shadow-md border border-border scroll-mt-24"
+                  data-testid="section-pricing"
+                >
+                  <h2 className="text-2xl font-bold text-foreground mb-2">
+                    Pricing &amp; Insurance
+                  </h2>
+                  <p className="text-muted-foreground mb-3">{config.pricingMessage}</p>
+                  {config.insuranceNote && (
+                    <p className="text-sm text-muted-foreground flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
+                      {config.insuranceNote}
+                    </p>
+                  )}
+                </div>
+              ) : null}
             </div>
 
             {/* SIDEBAR */}
             <div className="space-y-6">
               {/* Clinic details */}
               <div className="p-6 bg-card border border-border rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
-                <h3 className="text-lg font-semibold text-foreground mb-4">Clinic Details</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-4">
+                  Clinic Details
+                </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
@@ -325,22 +446,28 @@ export function ClinicPage({ config }: ClinicPageProps) {
                       </div>
                     </div>
                   ))}
-                  <div className="flex items-start gap-3">
-                    <Car className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                    <div>
-                      <p className="text-sm font-medium text-foreground">Parking</p>
-                      <p className="text-sm text-muted-foreground">{config.parking}</p>
+                  {showParking && config.parking && (
+                    <div className="flex items-start gap-3">
+                      <Car className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
+                      <div>
+                        <p className="text-sm font-medium text-foreground">Parking</p>
+                        <p className="text-sm text-muted-foreground">{config.parking}</p>
+                      </div>
                     </div>
+                  )}
+                </div>
+                {showMap && (
+                  <div className="mt-4 aspect-video bg-muted rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none flex items-center justify-center">
+                    <p className="text-sm text-muted-foreground">Map placeholder</p>
                   </div>
-                </div>
-                <div className="mt-4 aspect-video bg-muted rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none flex items-center justify-center">
-                  <p className="text-sm text-muted-foreground">Map placeholder</p>
-                </div>
+                )}
               </div>
 
               {/* Services */}
               <div className="p-6 bg-card border border-border rounded-tl-2xl rounded-br-2xl rounded-tr-none rounded-bl-none">
-                <h3 className="text-lg font-semibold text-foreground mb-4">Services at This Clinic</h3>
+                <h3 className="text-lg font-semibold text-foreground mb-4">
+                  Services at This Clinic
+                </h3>
                 <div className="space-y-2">
                   {config.services.map((service, i) => (
                     <div key={i} className="flex items-center gap-2">
@@ -355,6 +482,45 @@ export function ClinicPage({ config }: ClinicPageProps) {
         </div>
       </section>
 
+      {/* AREAS SERVED */}
+      {config.areasServed && (
+        <section className="py-12 lg:py-16 bg-muted/40 border-t border-border">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-foreground mb-3">
+              {config.areasServed.heading}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl">{config.areasServed.text}</p>
+          </div>
+        </section>
+      )}
+
+      {/* FAQ */}
+      {config.faqs && config.faqs.length > 0 && (
+        <section className="py-12 lg:py-16 bg-background border-t border-border" data-testid="section-faq">
+          <div className="max-w-3xl mx-auto px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-foreground mb-8">
+              Frequently Asked Questions
+            </h2>
+            <Accordion type="single" collapsible className="space-y-2">
+              {config.faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="bg-card border border-border rounded-xl px-6"
+                >
+                  <AccordionTrigger className="text-left font-medium text-foreground py-4 hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-4 leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+      )}
+
       {/* CLOSING CTA */}
       <section
         className={`py-16 lg:py-20 bg-secondary/10${config.showMobileStickyBar ? " pb-32 md:pb-20" : ""}`}
@@ -363,13 +529,21 @@ export function ClinicPage({ config }: ClinicPageProps) {
           <h2 className="text-2xl font-bold text-foreground mb-4">{config.ctaHeading}</h2>
           <p className="text-muted-foreground mb-8">{config.ctaSubtitle}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              onClick={openBookingWidget}
-              data-testid={config.ctaBookTestId}
-            >
-              {config.ctaBookLabel}
-            </Button>
+            {config.ctaPrimaryHref ? (
+              <a href={config.ctaPrimaryHref}>
+                <Button size="lg" data-testid={config.ctaBookTestId}>
+                  {config.ctaBookLabel}
+                </Button>
+              </a>
+            ) : (
+              <Button
+                size="lg"
+                onClick={openBookingWidget}
+                data-testid={config.ctaBookTestId}
+              >
+                {config.ctaBookLabel}
+              </Button>
+            )}
             <a href={`tel:${config.phone}`}>
               <Button size="lg" variant="outline">
                 <Phone className="w-4 h-4 mr-2" />

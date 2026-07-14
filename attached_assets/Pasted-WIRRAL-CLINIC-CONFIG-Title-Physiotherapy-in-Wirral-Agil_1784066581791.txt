@@ -1,0 +1,88 @@
+WIRRAL CLINIC CONFIG
+
+Title: Physiotherapy in Wirral | Agility Physio
+Meta description: Expert physiotherapy in Wirral from HCPC registered physiotherapists. Treatment for back pain, neck pain, joint problems, sports injuries and post-operative rehabilitation. Book with Agility Physio.
+Canonical: https://agilityphysio.net/clinics/wirral
+
+HERO
+Eyebrow: AGILITY PHYSIO · WIRRAL
+H1: Expert Physiotherapy in Wirral
+Supporting text: HCPC Registered Physiotherapists | Personalised Treatment and Rehabilitation
+Trust indicators: 5-Star Rated, HCPC Registered, Experienced Physiotherapists, Self-Pay and Insured Patients
+Primary button: Register Your Interest (booking not live yet — use tel: link fallback, not the booking widget)
+Secondary button: Call 0203 092 9976
+Urgency text: Appointments are limited — book early to secure your preferred time.
+Hero image: use a generic modern clinic/treatment-room stock image — do NOT reuse the Stanmore building photo
+
+ADDRESS (confirmed)
+Agility Physio Wirral
+Thursbury House
+1 Thursbury Road
+Bromborough
+CH62 3PW
+
+OPENING HOURS: not yet confirmed — display "Opening Soon" in place of hours, do not invent days/times
+
+PRICING: not yet confirmed — display "Please contact us for current pricing" instead of Stanmore's rates
+
+GETTING HERE
+- Nearest station: Bromborough Rail (Wirral Line) — confirm walking distance before publishing exact minutes
+- Parking: not yet confirmed — omit this line entirely rather than guessing on-site/street
+- Accessibility: not yet confirmed — omit
+
+MAP / DIRECTIONS BUTTON
+Hide both the map embed and "Get Directions" button until I provide the confirmed Google Business Profile Maps URL. Do not use a raw lat/long guess.
+
+ABOUT OUR WIRRAL CLINIC (write original phrasing, not a reworded copy of Stanmore's paragraph structure)
+Core facts to work from: located in Bromborough on the Wirral peninsula, treats general musculoskeletal conditions, HCPC registered physiotherapists, individualised treatment plans, focus on returning patients to work/sport/daily life.
+
+WHAT TO EXPECT
+Same clinical process as Stanmore (assessment → physical exam → personalised plan → treatment may start same day) — but write it as distinct sentences/structure, not a copy-paste with word swaps.
+
+WHY CHOOSE AGILITY PHYSIO WIRRAL (4 cards — reuse card component, this copy is fine as-is)
+1. Convenient Appointments — Appointments designed to fit around work, family and other commitments.
+2. Private Treatment Rooms — Professional and confidential one-to-one physiotherapy appointments.
+3. HCPC Registered Physiotherapists — Assessment and treatment delivered by appropriately registered physiotherapists.
+4. Personalised Rehabilitation — Individual treatment plans based on your condition, goals and progress.
+
+CONDITIONS WE TREAT (link internally wherever a matching condition page already exists in the data files; render as plain text if not)
+Lower back pain and sciatica; Neck pain and cervical problems; Shoulder pain, frozen shoulder and rotator cuff problems; Knee pain, ligament injuries and rehabilitation after surgery; Hip pain and arthritis management; Sports injuries; Muscle and tendon injuries; Joint pain and stiffness; Post-operative rehabilitation; Return-to-work and return-to-sport rehabilitation
+
+SERVICES AT THIS CLINIC
+Musculoskeletal Physiotherapy Assessment; Back and Neck Pain Treatment; Sports Injury Rehabilitation; Post-Operative Rehabilitation; Joint and Muscle Pain Treatment; Exercise Rehabilitation; Return-to-Work Rehabilitation
+(only list services that match the existing services data file — drop any that aren't genuinely offered)
+
+AREAS SERVED
+Heading: Physiotherapy for Patients Across Wirral
+Text: Our Wirral clinic in Bromborough is conveniently placed for patients travelling from Eastham, Bebington, Higher Bebington, Port Sunlight, Spital, Clatterbridge and surrounding areas.
+(Do NOT include West Kirby, Moreton or Wallasey — too far from Bromborough, keep this realistic to avoid over-claiming.)
+
+RED FLAGS SECTION
+Reuse the existing clinically-approved red-flags content verbatim from the Stanmore config — do not generate new medical claims.
+
+REVIEWS
+Reuse existing testimonials component/toggle, heading "Patient Success Stories," overall statement "Trusted by patients across Agility Physio" — do not mark any existing review as Wirral-specific.
+
+INSURANCE
+Text: Self-paying and insured patients are welcome.
+Do not show AXA/BUPA/Aviva/Vitality logos for this location unless I confirm they're recognised at Bromborough specifically — treat this separately from the Stanmore config even if the field exists.
+
+CLINICIAN SECTION: not yet confirmed — hide this section entirely for now (don't pull a placeholder team member)
+
+FAQ (accordion + FAQPage schema)
+1. Do I need a GP referral? — No. Self-paying patients can normally book directly with Agility Physio without a GP referral. Patients using health insurance should check the requirements of their individual policy.
+2. What happens at my first physiotherapy appointment? — Your physiotherapist will discuss your symptoms and medical history, complete an appropriate physical assessment and explain a personalised treatment and rehabilitation plan.
+3. What conditions do you treat? — Our physiotherapists assess and treat a range of musculoskeletal conditions, including back pain, neck pain, joint problems, sports injuries and rehabilitation following surgery.
+4. How much does physiotherapy cost in Wirral? — Please contact us for current pricing.
+5. Is parking available? — omit this question for now, or answer "Please contact the clinic for parking information" until confirmed
+6. Do you accept health insurance? — Acceptance depends on your insurer, policy and clinic recognition. Please contact the clinic to confirm before booking.
+7. How do I book an appointment? — You can register your interest online or call us on 0203 092 9976.
+
+STRUCTURED DATA
+MedicalClinic/LocalBusiness with confirmed name, address, phone, parent organisation (Agility Physio Ltd) — no hours, no coordinates, no rating until confirmed. BreadcrumbList: Home > Clinics > Wirral. FAQPage matching the visible FAQ above.
+
+FINAL CTA
+Heading: Wirral Clinic Opening Soon
+Supporting text: Register your interest in physiotherapy at our new Wirral clinic in Bromborough and be the first to know when appointments open.
+Primary button: Register Your Interest
+Secondary button: Call 0203 092 9976
