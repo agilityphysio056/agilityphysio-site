@@ -449,7 +449,12 @@ export const wirralClinic: ClinicConfig = {
     "Pain that is worse at night and disturbs your sleep significantly",
   ],
 
-  pricingMessage: "Please contact us for current pricing.",
+  pricing: {
+    initialPrice: "£50",
+    initialDuration: "45 minutes",
+    followUpPrice: "£45",
+    followUpDuration: "30 minutes",
+  },
   insuranceNote: "Self-paying and insured patients are welcome.",
 
   addressLines: [

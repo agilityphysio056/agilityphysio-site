@@ -353,14 +353,26 @@ export function ClinicPage({ config }: ClinicPageProps) {
                     <ShieldCheck className="w-4 h-4 text-primary shrink-0" />
                     {config.insuranceNote ?? "AXA and BUPA insurance accepted"}
                   </p>
-                  <Button
-                    size="lg"
-                    onClick={openBookingWidget}
-                    className="w-full sm:w-auto shadow-md"
-                    data-testid="button-pricing-book"
-                  >
-                    Book Your Initial Assessment
-                  </Button>
+                  {config.heroPrimaryCtaHref ? (
+                    <a href={config.heroPrimaryCtaHref}>
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto shadow-md"
+                        data-testid="button-pricing-book"
+                      >
+                        {config.heroPrimaryCtaLabel ?? "Book Your Initial Assessment"}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button
+                      size="lg"
+                      onClick={openBookingWidget}
+                      className="w-full sm:w-auto shadow-md"
+                      data-testid="button-pricing-book"
+                    >
+                      Book Your Initial Assessment
+                    </Button>
+                  )}
                 </div>
               ) : config.pricingMessage ? (
                 <div
