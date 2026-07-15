@@ -451,7 +451,7 @@ export const wirralClinic: ClinicConfig = {
 
   pricing: {
     initialPrice: "£50",
-    initialDuration: "45 minutes",
+    initialDuration: "30 minutes",
     followUpPrice: "£45",
     followUpDuration: "30 minutes",
   },
