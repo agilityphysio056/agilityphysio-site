@@ -81,7 +81,7 @@ export function Header() {
             />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-4" data-testid="nav-desktop">
+          <nav className="hidden lg:flex items-center gap-3" data-testid="nav-desktop">
             <Link href="/">
               <span
                 className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
@@ -200,12 +200,11 @@ export function Header() {
             
             <Link href="/meet-the-team">
               <span
-                className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap flex items-center gap-1 ${
+                className={`text-sm font-medium transition-colors cursor-pointer hover:text-secondary whitespace-nowrap ${
                   location.startsWith("/meet-the-team") ? "text-secondary" : "text-foreground"
                 }`}
                 data-testid="link-meet-the-team"
               >
-                <Users className="w-3.5 h-3.5" />
                 Meet the Team
               </span>
             </Link>
@@ -224,14 +223,14 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden lg:flex items-center gap-2 shrink-0">
             <a
               href="tel:02030929976"
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap"
               data-testid="link-phone"
             >
-              <Phone className="w-4 h-4" />
-              <span>0203 092 9976</span>
+              <Phone className="w-4 h-4 shrink-0" />
+              <span className="whitespace-nowrap">0203 092 9976</span>
             </a>
             <Button data-testid="button-book-now" onClick={openBookingWidget}>
               Book Appointment
