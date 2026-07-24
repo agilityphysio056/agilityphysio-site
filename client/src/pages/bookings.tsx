@@ -399,6 +399,10 @@ export default function BookingsPage() {
       });
     },
     onSuccess: (resData, formData) => {
+      if (resData.requiresPayment && resData.checkoutUrl) {
+        window.location.href = resData.checkoutUrl;
+        return;
+      }
       if (!clinic || !service || !clinician || !date || !time) return;
       const stored = {
         clinic: {

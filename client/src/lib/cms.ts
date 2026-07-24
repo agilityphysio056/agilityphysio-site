@@ -83,6 +83,8 @@ export type BookingPayload = {
 export type BookingResult = {
   bookingReference?: string;
   bookingId?: string;
+  requiresPayment?: boolean;
+  checkoutUrl?: string;
 };
 
 const apiKeyCache = new Map<string, string>();
