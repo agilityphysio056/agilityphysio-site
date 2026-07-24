@@ -91,16 +91,15 @@ const apiKeyCache = new Map<string, string>();
 
 async function readJsonOrThrow<T>(res: Response): Promise<T> {
   if (!res.ok) {
-    let msg = `${res.status}`;
+    let body: Record<string, unknown> | null = null;
     try {
-      const j = await res.json();
-      msg = (j && (j.error || j.message)) || msg;
-    } catch {
-      try {
-        const t = await res.text();
-        if (t) msg = t;
-      } catch {}
+      body = await res.json();
+    } catch {}
+    // CMS signals upfront payment required via a non-2xx + requiresPayment flag
+    if (body?.requiresPayment && body?.checkoutUrl) {
+      return body as unknown as T;
     }
+    const msg = (body && ((body.error as string) || (body.message as string))) || `${res.status}`;
     throw new Error(msg);
   }
   return res.json() as Promise<T>;
