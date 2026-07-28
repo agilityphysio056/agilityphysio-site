@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import stanmoreClinicImage from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
 import stockwellClinicImage from "@assets/front_elevation_1768163052162.jpg";
-import wirralClinicImage from "@/assets/images/hero-service-detail.jpg";
+import wirralClinicImage from "@/assets/images/wirral-clinic.png";
 
 export interface WhyChooseItem {
   icon: LucideIcon;
