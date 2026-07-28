@@ -41,6 +41,7 @@ import {
 } from "lucide-react";
 import stanmoreHero from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
 import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
+import wirralHero from "@/assets/images/hero-service-detail.jpg";
 import {
   listClinics,
   listServices,
@@ -64,6 +65,7 @@ function formatDateISO(d: Date): string {
 function clinicImage(name: string): string {
   const n = name.toLowerCase();
   if (n.includes("stockwell")) return stockwellHero;
+  if (n.includes("wirral")) return wirralHero;
   return stanmoreHero;
 }
 
