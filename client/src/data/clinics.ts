@@ -229,10 +229,12 @@ export const stanmoreClinic: ClinicConfig = {
   transport: [
     {
       mode: "By Train",
-      detail: "Stanmore Station (Jubilee Line) - 5 minute walk",
+      detail:
+        "Our Stanmore clinic is conveniently located approximately a 15-minute walk from Stanmore Underground Station (Jubilee Line), providing easy access from across London.",
     },
   ],
-  parking: "Free on-street parking available. Pay & display car park nearby.",
+  parking:
+    "There is no dedicated patient parking available at the clinic. Public parking is available nearby. If travelling by car, please check local parking signs, charges, maximum stay and any applicable restrictions before leaving your vehicle.",
 
   services: [
     "Musculoskeletal Assessment",
