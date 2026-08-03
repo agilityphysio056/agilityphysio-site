@@ -220,7 +220,7 @@ export const stanmoreClinic: ClinicConfig = {
   addressLines: [
     "Agility Physio LTD",
     "HEAL Wellness - 15, 19 Church Rd",
-    "Stanmore",
+    "Stanmore, HA7 4AR",
   ],
   hours: ["Mon-Sat: 9am-7pm", "Sun: 12pm-8pm"],
   showParking: true,
