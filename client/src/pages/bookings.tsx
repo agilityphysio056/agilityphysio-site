@@ -39,7 +39,7 @@ import {
   AlertCircle,
   Loader2,
 } from "lucide-react";
-import stanmoreHero from "@assets/tuLjAm5XPGVuF4lEP2OYKEca7eUXVQNfJIxDOLqD_1768161733217.jpeg";
+import stanmoreHero from "@/assets/images/stanmore-clinic.png";
 import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
 import wirralHero from "@/assets/images/wirral-clinic.png";
 import {
