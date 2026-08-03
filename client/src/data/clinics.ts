@@ -227,7 +227,7 @@ export const stanmoreClinic: ClinicConfig = {
   showParking: true,
   showMap: true,
   mapEmbedUrl:
-    "https://maps.google.com/maps?q=HEAL+Wellness+15+Church+Road+Stanmore+HA7+4AR&output=embed",
+    "https://maps.google.com/maps?q=15-19+Church+Road+Stanmore+HA7+4AR+UK&output=embed",
 
   transport: [
     {
