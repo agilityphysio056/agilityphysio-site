@@ -469,8 +469,23 @@ export function ClinicPage({ config }: ClinicPageProps) {
                   )}
                 </div>
                 {showMap && (
-                  <div className="mt-4 aspect-video bg-muted rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none flex items-center justify-center">
-                    <p className="text-sm text-muted-foreground">Map placeholder</p>
+                  <div className="mt-4 aspect-video rounded-tl-lg rounded-br-lg rounded-tr-none rounded-bl-none overflow-hidden">
+                    {config.mapEmbedUrl ? (
+                      <iframe
+                        src={config.mapEmbedUrl}
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Clinic location map"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted flex items-center justify-center">
+                        <p className="text-sm text-muted-foreground">Map coming soon</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

@@ -97,6 +97,7 @@ export interface ClinicConfig {
   showParking?: boolean;
   parking?: string;
   showMap?: boolean;
+  mapEmbedUrl?: string;
 
   services: string[];
 
@@ -225,6 +226,8 @@ export const stanmoreClinic: ClinicConfig = {
   hours: ["Mon-Sat: 9am-7pm", "Sun: 12pm-8pm"],
   showParking: true,
   showMap: true,
+  mapEmbedUrl:
+    "https://maps.google.com/maps?q=HEAL+Wellness+15+Church+Road+Stanmore+HA7+4AR&output=embed",
 
   transport: [
     {
