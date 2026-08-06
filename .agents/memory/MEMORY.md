@@ -1,0 +1,1 @@
+- [GitHub deploy pipeline](github-deploy-pipeline.md) — agilityphysio.net deploys via GitHub Actions→Hostinger, NOT Replit publish; push-triggered runs may not fire, use manual workflow dispatch via API.
