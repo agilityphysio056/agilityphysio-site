@@ -42,6 +42,7 @@ import {
 import stanmoreHero from "@/assets/images/stanmore-clinic.png";
 import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
 import wirralHero from "@/assets/images/wirral-clinic.png";
+import homeVisitHero from "@/assets/images/stanmore-hero.png";
 import {
   listClinics,
   listServices,
@@ -66,6 +67,7 @@ function clinicImage(name: string): string {
   const n = name.toLowerCase();
   if (n.includes("stockwell")) return stockwellHero;
   if (n.includes("wirral")) return wirralHero;
+  if (n.includes("home visit") || n.includes("home physio") || n.includes("home-visit")) return homeVisitHero;
   return stanmoreHero;
 }
 
