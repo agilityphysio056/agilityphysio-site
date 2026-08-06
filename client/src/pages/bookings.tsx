@@ -27,7 +27,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -71,6 +71,186 @@ function clinicImage(name: string): string {
   return stanmoreHero;
 }
 
+const IDEAL_POSTCODES_KEY = "uk_msi08lteKy90I3QE0Xq3ZO99PXxpd";
+
+type PostcodeAddress = {
+  line_1: string;
+  line_2: string;
+  line_3: string;
+  post_town: string;
+};
+
+async function lookupPostcode(postcode: string): Promise<PostcodeAddress[]> {
+  const cleaned = postcode.trim().replace(/\s+/g, "");
+  const res = await fetch(
+    `https://api.ideal-postcodes.co.uk/v1/postcodes/${encodeURIComponent(cleaned)}?api_key=${IDEAL_POSTCODES_KEY}`,
+  );
+  const json = await res.json();
+  if (!res.ok || json.code !== 2000) {
+    throw new Error(
+      json.code === 4040
+        ? "Postcode not found. Please check and try again."
+        : "Address lookup failed. Please enter your address manually.",
+    );
+  }
+  return json.result as PostcodeAddress[];
+}
+
+function AddressFields({ form }: { form: UseFormReturn<PatientForm> }) {
+  const [results, setResults] = useState<PostcodeAddress[]>([]);
+  const [looking, setLooking] = useState(false);
+  const [lookupError, setLookupError] = useState<string | null>(null);
+  const [showFields, setShowFields] = useState(false);
+
+  const doLookup = async () => {
+    const pc = form.getValues("addressPostcode")?.trim();
+    if (!pc) {
+      setLookupError("Please enter a postcode first.");
+      return;
+    }
+    setLooking(true);
+    setLookupError(null);
+    setResults([]);
+    try {
+      const found = await lookupPostcode(pc);
+      if (found.length === 0) {
+        setLookupError("No addresses found for that postcode.");
+      } else {
+        setResults(found);
+      }
+    } catch (e) {
+      setLookupError(
+        e instanceof Error ? e.message : "Lookup failed. Enter your address manually.",
+      );
+    } finally {
+      setLooking(false);
+    }
+  };
+
+  const selectAddress = (idx: number) => {
+    const a = results[idx];
+    if (!a) return;
+    const line2 = [a.line_2, a.line_3].filter(Boolean).join(", ");
+    form.setValue("addressLine1", a.line_1);
+    form.setValue("addressLine2", line2);
+    form.setValue("addressCity", a.post_town);
+    setShowFields(true);
+    setResults([]);
+  };
+
+  return (
+    <div className="space-y-3">
+      <div>
+        <p className="text-sm font-medium text-foreground">Home address (optional)</p>
+        <p className="text-xs text-muted-foreground">
+          Needed if you'd like a home visit appointment.
+        </p>
+      </div>
+      <div className="flex gap-2 items-end">
+        <FormField
+          control={form.control}
+          name="addressPostcode"
+          render={({ field }) => (
+            <FormItem className="flex-1">
+              <FormLabel>Postcode</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="e.g. HA7 4AR"
+                  autoComplete="postal-code"
+                  {...field}
+                  data-testid="input-postcode"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={doLookup}
+          disabled={looking}
+          data-testid="button-find-address"
+        >
+          {looking ? "Searching…" : "Find address"}
+        </Button>
+      </div>
+      {lookupError && (
+        <p className="text-sm text-destructive" data-testid="text-lookup-error">
+          {lookupError}
+        </p>
+      )}
+      {results.length > 0 && (
+        <Select onValueChange={(v) => selectAddress(Number(v))}>
+          <SelectTrigger data-testid="select-address">
+            <SelectValue placeholder={`Select your address (${results.length} found)`} />
+          </SelectTrigger>
+          <SelectContent>
+            {results.map((a, i) => (
+              <SelectItem key={i} value={String(i)}>
+                {[a.line_1, a.line_2, a.post_town].filter(Boolean).join(", ")}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      )}
+      {!showFields && (
+        <button
+          type="button"
+          className="text-sm text-primary underline"
+          onClick={() => setShowFields(true)}
+          data-testid="link-manual-address"
+        >
+          Enter address manually
+        </button>
+      )}
+      {showFields && (
+        <div className="space-y-3">
+          <FormField
+            control={form.control}
+            name="addressLine1"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Address line 1</FormLabel>
+                <FormControl>
+                  <Input autoComplete="address-line1" {...field} data-testid="input-address-line1" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="addressLine2"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Address line 2 (optional)</FormLabel>
+                <FormControl>
+                  <Input autoComplete="address-line2" {...field} data-testid="input-address-line2" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="addressCity"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Town / City</FormLabel>
+                <FormControl>
+                  <Input autoComplete="address-level2" {...field} data-testid="input-address-city" />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function displayServiceName(name: string): string {
   return name
     .replace(/^pay as you go\s*[-–]\s*/i, "")
@@ -104,6 +284,10 @@ const patientSchema = z.object({
   dob: z.string().min(1, "Required"),
   email: z.string().email("Enter a valid email"),
   phone: z.string().min(7, "Enter a valid mobile number"),
+  addressPostcode: z.string().optional(),
+  addressLine1: z.string().optional(),
+  addressLine2: z.string().optional(),
+  addressCity: z.string().optional(),
   firstVisit: z.enum(["yes", "no"], { required_error: "Please choose one" }),
   reason: z.string().min(1, "Please choose a reason"),
   notes: z.string().optional(),
@@ -368,6 +552,10 @@ export default function BookingsPage() {
       dob: "",
       email: "",
       phone: "",
+      addressPostcode: "",
+      addressLine1: "",
+      addressLine2: "",
+      addressCity: "",
       firstVisit: undefined as unknown as "yes",
       reason: "",
       notes: "",
@@ -386,6 +574,14 @@ export default function BookingsPage() {
         `Reason: ${data.reason}`,
         `DOB: ${data.dob}`,
       ];
+      const addressParts = [
+        data.addressLine1?.trim(),
+        data.addressLine2?.trim(),
+        data.addressCity?.trim(),
+        data.addressPostcode?.trim(),
+      ].filter(Boolean);
+      if (addressParts.length > 0)
+        noteParts.push(`Address: ${addressParts.join(", ")}`);
       if (data.notes && data.notes.trim())
         noteParts.push(`Notes: ${data.notes.trim()}`);
       return createBooking({
@@ -1072,6 +1268,7 @@ export default function BookingsPage() {
                               )}
                             />
                           </div>
+                          <AddressFields form={form} />
                           <FormField
                             control={form.control}
                             name="firstVisit"
