@@ -141,10 +141,7 @@ function AddressFields({ form }: { form: UseFormReturn<PatientForm> }) {
   return (
     <div className="space-y-3">
       <div>
-        <p className="text-sm font-medium text-foreground">Home address (optional)</p>
-        <p className="text-xs text-muted-foreground">
-          Needed if you'd like a home visit appointment.
-        </p>
+        <p className="text-sm font-medium text-foreground">Home address</p>
       </div>
       <div className="flex gap-2 items-end">
         <FormField
