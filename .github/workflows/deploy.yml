@@ -29,3 +29,6 @@ jobs:
             -e "ssh -p ${{ secrets.SSH_PORT }} -o StrictHostKeyChecking=no" \
             dist/public/ \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/u107640454/domains/agilityphysio.net/public_html/
+
+      - name: Done
+        run: echo "Deployed successfully at $(date)"
