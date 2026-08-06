@@ -71,7 +71,7 @@ function clinicImage(name: string): string {
   return stanmoreHero;
 }
 
-const IDEAL_POSTCODES_KEY = "uk_msi08lteKy90I3QE0Xq3ZO99PXxpd";
+const IDEAL_POSTCODES_KEY = "ak_msi08lvcyGrINuD4XalKPfXFF3P4q";
 
 type PostcodeAddress = {
   line_1: string;
