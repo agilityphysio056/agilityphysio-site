@@ -117,6 +117,12 @@ export function Footer() {
                 </Link>
               </div>
               <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 opacity-70" />
+                <Link href="/clinics/wirral">
+                  <span className="text-sm opacity-80 hover:opacity-100 cursor-pointer">Wirral</span>
+                </Link>
+              </div>
+              <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 opacity-70" />
                 <span className="text-sm opacity-80">Mon-Fri 8am-8pm, Sat 9am-2pm</span>
               </div>
