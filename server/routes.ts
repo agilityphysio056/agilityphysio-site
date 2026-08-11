@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { contactMessageSchema } from "@shared/schema";
 import { fromZodError } from "zod-validation-error";
+import Stripe from "stripe";
 
 const CMS_BASE = "https://cms.agilityphysio.net";
 
@@ -201,6 +202,22 @@ export async function registerRoutes(
       }
     } catch (e) {
       passThroughError(res, e);
+    }
+  });
+
+  // ---------- Stripe setup intent ----------
+  app.post("/api/stripe/create-setup-intent", async (req, res) => {
+    const key = process.env.STRIPE_SECRET_KEY;
+    if (!key) {
+      return res.status(503).json({ error: "Payment processing is not configured." });
+    }
+    try {
+      const stripe = new Stripe(key);
+      const intent = await stripe.setupIntents.create({ usage: "off_session" });
+      res.json({ clientSecret: intent.client_secret });
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Payment setup failed";
+      res.status(500).json({ error: msg });
     }
   });
 

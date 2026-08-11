@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useLocation } from "wouter";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Layout } from "@/components/layout/layout";
@@ -28,6 +28,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useForm, type UseFormReturn } from "react-hook-form";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import {
@@ -38,6 +40,9 @@ import {
   MapPin,
   AlertCircle,
   Loader2,
+  Shield,
+  CreditCard,
+  Lock,
 } from "lucide-react";
 import stanmoreHero from "@/assets/images/stanmore-clinic.png";
 import stockwellHero from "@assets/front_elevation_1768163052162.jpg";
@@ -72,6 +77,10 @@ function clinicImage(name: string): string {
 }
 
 const IDEAL_POSTCODES_KEY = "ak_msi08lvcyGrINuD4XalKPfXFF3P4q";
+
+const STRIPE_PK = (import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY as string) || "";
+const stripePromise = STRIPE_PK ? loadStripe(STRIPE_PK) : null;
+const API_BASE = (import.meta.env.VITE_API_BASE_URL as string) || "";
 
 type PostcodeAddress = {
   line_1: string;
@@ -248,6 +257,105 @@ function AddressFields({ form }: { form: UseFormReturn<PatientForm> }) {
   );
 }
 
+function StripeCardStep({
+  clientSecret,
+  onSuccess,
+  onBack,
+}: {
+  clientSecret: string;
+  onSuccess: (paymentMethodId: string) => void;
+  onBack: () => void;
+}) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [cardError, setCardError] = useState<string | null>(null);
+  const [processing, setProcessing] = useState(false);
+
+  const handleConfirm = async () => {
+    if (!stripe || !elements) return;
+    setProcessing(true);
+    setCardError(null);
+    const cardElement = elements.getElement(CardElement);
+    if (!cardElement) { setProcessing(false); return; }
+    const { error, setupIntent } = await stripe.confirmCardSetup(clientSecret, {
+      payment_method: { card: cardElement },
+    });
+    setProcessing(false);
+    if (error) {
+      setCardError(error.message ?? "Card confirmation failed. Please try again.");
+      return;
+    }
+    if (setupIntent?.payment_method) {
+      onSuccess(setupIntent.payment_method as string);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="rounded-lg border border-primary/30 bg-primary/5 p-5 space-y-3">
+        <div className="flex items-center gap-2">
+          <Lock className="w-4 h-4 text-primary" />
+          <p className="text-sm font-semibold">Why we take your card details</p>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Most insurers cover the full cost of physiotherapy. However, some policies have an excess or only
+          partially cover treatment fees. For example, if your appointment costs £150 and your insurer pays £100,
+          we would only charge the £50 difference to your card.
+        </p>
+        <div className="flex items-start gap-2 text-sm font-medium text-foreground">
+          <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+          <span>There will be no charge if your policy covers the full fee.</span>
+        </div>
+        <div className="flex items-start gap-2 text-sm font-medium text-foreground">
+          <Check className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+          <span>Your card is stored securely and will only be charged after your appointment, and only for any confirmed shortfall.</span>
+        </div>
+      </div>
+      <div>
+        <p className="text-sm font-medium mb-2 text-foreground">Card details</p>
+        <div className="border border-border rounded-lg px-4 py-3.5 bg-background focus-within:border-primary transition-colors">
+          <CardElement
+            options={{
+              style: {
+                base: { fontSize: "16px", color: "#374151", "::placeholder": { color: "#9ca3af" } },
+                invalid: { color: "#dc2626" },
+              },
+            }}
+          />
+        </div>
+        <p className="mt-1.5 text-xs text-muted-foreground flex items-center gap-1">
+          <Lock className="w-3 h-3" /> Secured by Stripe — we never see your full card number.
+        </p>
+      </div>
+      {cardError && (
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{cardError}</AlertDescription>
+        </Alert>
+      )}
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-3">
+        <Button type="button" variant="outline" size="lg" onClick={onBack} disabled={processing}>
+          <ArrowLeft className="w-4 h-4 mr-1" /> Back
+        </Button>
+        <Button
+          type="button"
+          size="lg"
+          className="font-bold"
+          onClick={handleConfirm}
+          disabled={!stripe || processing}
+          data-testid="button-confirm-card"
+        >
+          {processing ? (
+            <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Confirming card…</>
+          ) : (
+            <><CreditCard className="w-4 h-4 mr-2" /> Confirm &amp; Complete Booking</>
+          )}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function displayServiceName(name: string): string {
   return name
     .replace(/^pay as you go\s*[-–]\s*/i, "")
@@ -273,7 +381,8 @@ const REASONS = [
   "Other",
 ];
 
-const STEPS = ["Clinic", "Service", "Clinician", "Date & Time", "Your details"];
+const SELF_PAY_STEPS = ["Clinic", "Service", "Clinician", "Date & Time", "Your details"];
+const INSURANCE_STEPS = ["Clinic", "Service", "Clinician", "Date & Time", "Your details", "Card details"];
 
 const patientSchema = z.object({
   firstName: z.string().min(1, "Required"),
@@ -285,6 +394,9 @@ const patientSchema = z.object({
   addressLine1: z.string().optional(),
   addressLine2: z.string().optional(),
   addressCity: z.string().optional(),
+  insuranceProvider: z.string().optional(),
+  insuranceMembership: z.string().optional(),
+  insurancePreAuth: z.string().optional(),
   firstVisit: z.enum(["yes", "no"], { required_error: "Please choose one" }),
   reason: z.string().min(1, "Please choose a reason"),
   notes: z.string().optional(),
@@ -300,11 +412,11 @@ const patientSchema = z.object({
 });
 type PatientForm = z.infer<typeof patientSchema>;
 
-function StepIndicator({ step }: { step: number }) {
+function StepIndicator({ step, steps }: { step: number; steps: string[] }) {
   return (
     <div className="w-full" aria-label="Booking progress">
       <div className="flex items-center gap-1.5 sm:gap-3">
-        {STEPS.map((label, i) => {
+        {steps.map((label, i) => {
           const n = i + 1;
           const completed = step > n;
           const active = step === n;
@@ -333,7 +445,7 @@ function StepIndicator({ step }: { step: number }) {
                   {label}
                 </span>
               </div>
-              {i < STEPS.length - 1 && (
+              {i < steps.length - 1 && (
                 <div className="h-1 flex-1 rounded-full bg-muted overflow-hidden -mt-4">
                   <div
                     className={`h-full bg-primary transition-all duration-500 ${
@@ -450,6 +562,14 @@ export default function BookingsPage() {
   const [clinicianId, setClinicianId] = useState<string | undefined>();
   const [date, setDate] = useState<Date | undefined>();
   const [time, setTime] = useState<string | undefined>();
+  const [isInsurance, setIsInsurance] = useState(false);
+  const [insuranceClientSecret, setInsuranceClientSecret] = useState<string | null>(null);
+  const [insuranceError, setInsuranceError] = useState<string | null>(null);
+  const [insuranceLoading, setInsuranceLoading] = useState(false);
+  const [savedFormData, setSavedFormData] = useState<PatientForm | null>(null);
+  const insurancePaymentMethodRef = useRef<string | null>(null);
+
+  const STEPS = isInsurance ? INSURANCE_STEPS : SELF_PAY_STEPS;
 
   const clinicsQ = useQuery<Clinic[]>({
     queryKey: ["/api/cms/clinics"],
@@ -531,6 +651,7 @@ export default function BookingsPage() {
   const goNext = () => {
     setDirection(1);
     setStep((s) => Math.min(STEPS.length, s + 1));
+
     if (typeof window !== "undefined")
       window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -553,6 +674,9 @@ export default function BookingsPage() {
       addressLine1: "",
       addressLine2: "",
       addressCity: "",
+      insuranceProvider: "",
+      insuranceMembership: "",
+      insurancePreAuth: "",
       firstVisit: undefined as unknown as "yes",
       reason: "",
       notes: "",
@@ -579,6 +703,15 @@ export default function BookingsPage() {
       ].filter(Boolean);
       if (addressParts.length > 0)
         noteParts.push(`Address: ${addressParts.join(", ")}`);
+      if (isInsurance) {
+        const ins = [
+          data.insuranceProvider?.trim() && `Provider: ${data.insuranceProvider.trim()}`,
+          data.insuranceMembership?.trim() && `Membership: ${data.insuranceMembership.trim()}`,
+          data.insurancePreAuth?.trim() && `Pre-auth: ${data.insurancePreAuth.trim()}`,
+          insurancePaymentMethodRef.current && `Card ref: ${insurancePaymentMethodRef.current}`,
+        ].filter(Boolean);
+        if (ins.length > 0) noteParts.push(`Insurance — ${ins.join(" | ")}`);
+      }
       if (data.notes && data.notes.trim())
         noteParts.push(`Notes: ${data.notes.trim()}`);
       return createBooking({
@@ -635,7 +768,32 @@ export default function BookingsPage() {
     },
   });
 
-  const onSubmit = (data: PatientForm) => bookingMutation.mutate(data);
+  const onSubmit = async (data: PatientForm) => {
+    if (isInsurance) {
+      // For insurance patients: create a SetupIntent and go to step 6 for card capture
+      setInsuranceLoading(true);
+      setInsuranceError(null);
+      try {
+        const resp = await fetch(`${API_BASE}/api/stripe/create-setup-intent`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+        const json = await resp.json();
+        if (!resp.ok) throw new Error(json.error || "Failed to set up payment");
+        setInsuranceClientSecret(json.clientSecret);
+        setSavedFormData(data);
+        setDirection(1);
+        setStep(6);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } catch (e) {
+        setInsuranceError(e instanceof Error ? e.message : "Failed to set up payment. Please try again.");
+      } finally {
+        setInsuranceLoading(false);
+      }
+    } else {
+      bookingMutation.mutate(data);
+    }
+  };
 
   return (
     <Layout
@@ -662,7 +820,7 @@ export default function BookingsPage() {
 
       <section className="py-10 lg:py-14 bg-background">
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <StepIndicator step={step} />
+          <StepIndicator step={step} steps={STEPS} />
 
           <div className="mt-10">
             {step === 1 && (
@@ -816,6 +974,7 @@ export default function BookingsPage() {
                               setDate(undefined);
                               setTime(undefined);
                             }
+                            setIsInsurance(false);
                             setServiceId(s.serviceId);
                             setDirection(1);
                             setStep(3);
@@ -849,6 +1008,50 @@ export default function BookingsPage() {
                         </button>
                       );
                     })}
+
+                    {/* Insurance tile */}
+                    <button
+                      type="button"
+                      aria-pressed={isInsurance}
+                      onClick={() => {
+                        const firstService = sortedServices[0];
+                        if (!firstService) return;
+                        if (!isInsurance || serviceId !== firstService.serviceId) {
+                          setClinicianId(undefined);
+                          setDate(undefined);
+                          setTime(undefined);
+                        }
+                        setIsInsurance(true);
+                        setServiceId(firstService.serviceId);
+                        setDirection(1);
+                        setStep(3);
+                        if (typeof window !== "undefined")
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                      }}
+                      disabled={!sortedServices.length}
+                      className={`text-left rounded-2xl bg-card p-6 border-2 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg ${
+                        isInsurance
+                          ? "border-primary shadow-lg"
+                          : "border-border"
+                      }`}
+                      data-testid="card-service-insurance"
+                    >
+                      <div className="flex items-start justify-between gap-2 mb-3">
+                        <h3 className="font-bold text-lg leading-tight">Insurance</h3>
+                        {isInsurance && (
+                          <Badge className="bg-primary text-primary-foreground gap-1 flex-shrink-0">
+                            <Check className="w-3 h-3" />
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Shield className="w-7 h-7 text-primary" />
+                        <span className="text-sm text-muted-foreground">Covered by your insurer</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Your card is taken in case of any excess or shortfall — no charge if your policy covers the full fee.
+                      </p>
+                    </button>
                   </div>
                 )}
                 <div className="mt-8 flex justify-between">
@@ -1266,6 +1469,59 @@ export default function BookingsPage() {
                             />
                           </div>
                           <AddressFields form={form} />
+                          {isInsurance && (
+                            <div className="space-y-4 rounded-lg border border-primary/30 bg-primary/5 p-4">
+                              <p className="text-sm font-semibold text-foreground">Insurance details</p>
+                              <FormField
+                                control={form.control}
+                                name="insuranceProvider"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel>Insurance provider</FormLabel>
+                                    <Select value={field.value} onValueChange={field.onChange}>
+                                      <FormControl>
+                                        <SelectTrigger data-testid="select-insurance-provider">
+                                          <SelectValue placeholder="Select provider" />
+                                        </SelectTrigger>
+                                      </FormControl>
+                                      <SelectContent>
+                                        {["BUPA","AXA Health","Aviva","Vitality","WPA","Cigna","Allianz","Simply Health","Other"].map((p) => (
+                                          <SelectItem key={p} value={p}>{p}</SelectItem>
+                                        ))}
+                                      </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control}
+                                name="insuranceMembership"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel>Membership number</FormLabel>
+                                    <FormControl>
+                                      <Input placeholder="e.g. 12345678" {...field} data-testid="input-insurance-membership" />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control}
+                                name="insurancePreAuth"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel>Pre-authorisation number (optional)</FormLabel>
+                                    <FormControl>
+                                      <Input placeholder="e.g. PA-9876543" {...field} data-testid="input-insurance-preauth" />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                            </div>
+                          )}
                           <FormField
                             control={form.control}
                             name="firstVisit"
@@ -1423,18 +1679,22 @@ export default function BookingsPage() {
                               </FormItem>
                             )}
                           />
-                          {bookingMutation.isError && (
+                          {(bookingMutation.isError || insuranceError) && (
                             <Alert
                               variant="destructive"
                               data-testid="alert-booking-error"
                             >
                               <AlertCircle className="h-4 w-4" />
                               <AlertDescription>
-                                We couldn't confirm your booking.{" "}
-                                {bookingMutation.error instanceof Error
-                                  ? bookingMutation.error.message
-                                  : ""}{" "}
-                                Please try again, or call 0203 092 9976.
+                                {insuranceError || (
+                                  <>
+                                    We couldn't confirm your booking.{" "}
+                                    {bookingMutation.error instanceof Error
+                                      ? bookingMutation.error.message
+                                      : ""}{" "}
+                                    Please try again, or call 0203 092 9976.
+                                  </>
+                                )}
                               </AlertDescription>
                             </Alert>
                           )}
@@ -1444,7 +1704,7 @@ export default function BookingsPage() {
                               variant="outline"
                               size="lg"
                               onClick={goBack}
-                              disabled={bookingMutation.isPending}
+                              disabled={bookingMutation.isPending || insuranceLoading}
                               data-testid="button-step5-back"
                             >
                               <ArrowLeft className="w-4 h-4 mr-1" /> Back
@@ -1453,13 +1713,17 @@ export default function BookingsPage() {
                               type="submit"
                               size="lg"
                               className="font-bold"
-                              disabled={bookingMutation.isPending}
+                              disabled={bookingMutation.isPending || insuranceLoading}
                               data-testid="button-confirm-booking"
                             >
-                              {bookingMutation.isPending ? (
+                              {(bookingMutation.isPending || insuranceLoading) ? (
                                 <>
                                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                                  Confirming…
+                                  {isInsurance ? "Setting up payment…" : "Confirming…"}
+                                </>
+                              ) : isInsurance ? (
+                                <>
+                                  Continue to payment <ArrowRight className="w-4 h-4 ml-1" />
                                 </>
                               ) : (
                                 <>
@@ -1471,6 +1735,80 @@ export default function BookingsPage() {
                           </div>
                         </form>
                       </Form>
+                    </Card>
+                  </div>
+                  <div className="lg:col-span-4">
+                    <SummaryCard
+                      clinic={clinic}
+                      service={service}
+                      clinician={clinician}
+                      date={date}
+                      time={time}
+                    />
+                  </div>
+                </div>
+              </StepShell>
+            )}
+
+            {step === 6 && (
+              <StepShell direction={direction} step={6}>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                  <div className="lg:col-span-8">
+                    <Card className="p-6 sm:p-8">
+                      <h2 className="text-2xl font-bold mb-6">Secure your appointment</h2>
+                      {stripePromise && insuranceClientSecret ? (
+                        <Elements stripe={stripePromise} options={{ clientSecret: insuranceClientSecret }}>
+                          <StripeCardStep
+                            clientSecret={insuranceClientSecret}
+                            onSuccess={(paymentMethodId) => {
+                              insurancePaymentMethodRef.current = paymentMethodId;
+                              if (savedFormData) bookingMutation.mutate(savedFormData);
+                            }}
+                            onBack={goBack}
+                          />
+                        </Elements>
+                      ) : !STRIPE_PK ? (
+                        <div className="space-y-5">
+                          <Alert>
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertDescription>
+                              Online card capture is not yet configured. Our team will contact you before your
+                              appointment to arrange payment if there is any shortfall on your policy.
+                            </AlertDescription>
+                          </Alert>
+                          <div className="flex gap-3">
+                            <Button type="button" variant="outline" size="lg" onClick={goBack}>
+                              <ArrowLeft className="w-4 h-4 mr-1" /> Back
+                            </Button>
+                            <Button
+                              type="button"
+                              size="lg"
+                              className="font-bold"
+                              disabled={bookingMutation.isPending}
+                              onClick={() => savedFormData && bookingMutation.mutate(savedFormData)}
+                              data-testid="button-confirm-booking-no-stripe"
+                            >
+                              {bookingMutation.isPending ? (
+                                <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Confirming…</>
+                              ) : (
+                                <>Complete Booking <ArrowRight className="w-4 h-4 ml-1" /></>
+                              )}
+                            </Button>
+                          </div>
+                          {bookingMutation.isError && (
+                            <Alert variant="destructive">
+                              <AlertCircle className="h-4 w-4" />
+                              <AlertDescription>
+                                We couldn't confirm your booking. Please try again, or call 0203 092 9976.
+                              </AlertDescription>
+                            </Alert>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-2 text-muted-foreground py-4">
+                          <Loader2 className="w-5 h-5 animate-spin" /> Preparing secure payment…
+                        </div>
+                      )}
                     </Card>
                   </div>
                   <div className="lg:col-span-4">
