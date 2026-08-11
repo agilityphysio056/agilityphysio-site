@@ -1512,7 +1512,7 @@ export default function BookingsPage() {
                                 name="insurancePreAuth"
                                 render={({ field }) => (
                                   <FormItem>
-                                    <FormLabel>Pre-authorisation number (optional)</FormLabel>
+                                    <FormLabel>Pre-authorisation number</FormLabel>
                                     <FormControl>
                                       <Input placeholder="e.g. PA-9876543" {...field} data-testid="input-insurance-preauth" />
                                     </FormControl>
