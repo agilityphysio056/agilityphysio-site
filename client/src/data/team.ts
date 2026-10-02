@@ -2,6 +2,7 @@ import abdulWahabImg from "@/assets/images/abdul-wahab.png";
 import uzmaAnwarImg from "@/assets/images/uzma-anwar.png";
 import drFayazHashamImg from "@/assets/images/dr-fayaz-hasham.png";
 import muhammadUmarAshrafImg from "@/assets/images/muhammad-umar-ashraf.png";
+import muhammadAwaisRafiqImg from "@/assets/images/muhammad-awais-rafiq.jpeg";
 
 export interface TeamMember {
   slug: string;
@@ -45,6 +46,39 @@ export const director: TeamMember = {
 };
 
 export const clinicians: TeamMember[] = [
+  {
+    slug: "muhammad-awais-rafiq",
+    name: "Muhammad Awais Rafiq",
+    role: "MSK Physiotherapist",
+    photo: muhammadAwaisRafiqImg,
+    photoAlt: "Muhammad Awais Rafiq, MSK Physiotherapist at Agility Physio",
+    imageObjectFit: "cover",
+    qualifications: [
+      "DPT Physiotherapy",
+      "MSc Advanced Physiotherapy",
+      "HCPC Registered",
+      "Member of the Chartered Society of Physiotherapy (CSP)",
+    ],
+    intro:
+      "Muhammad Awais is an HCPC and CSP registered physiotherapist with experience in the assessment and rehabilitation of a wide range of musculoskeletal, orthopaedic and neurological conditions. He takes a patient-centred approach, combining thorough clinical assessment with evidence-based treatment and individualised rehabilitation programmes.",
+    bio: [
+      "Awais holds a Doctor of Physical Therapy degree and has undertaken postgraduate study in Advanced Physiotherapy at the University of Salford. His training has further developed his skills in neuromusculoskeletal assessment, clinical reasoning, rehabilitation and contemporary physiotherapy practice.",
+      "His treatment approach combines progressive exercise rehabilitation, patient education and appropriate manual therapy techniques. He places particular emphasis on understanding each patient's goals, lifestyle and concerns, helping patients take an active role in their recovery and long-term management.",
+      "Awais is committed to evidence-based practice and continuing professional development, with a strong focus on clear communication, shared decision-making and helping patients safely return to their usual activities, work and exercise.",
+    ],
+    specialities: [
+      "Musculoskeletal Assessment & Rehabilitation",
+      "Back & Neck Pain",
+      "Joint & Muscle Pain",
+      "Post-Operative Orthopaedic Rehabilitation",
+      "Exercise-Based Rehabilitation",
+      "Manual Therapy",
+      "Patient Education & Self-Management",
+    ],
+    metaTitle: "Muhammad Awais Rafiq, MSK Physiotherapist | Agility Physio",
+    metaDescription:
+      "Meet Muhammad Awais Rafiq, HCPC and CSP registered MSK Physiotherapist at Agility Physio, specialising in musculoskeletal assessment and evidence-based rehabilitation.",
+  },
   {
     slug: "uzma-anwar",
     name: "Uzma Anwar",

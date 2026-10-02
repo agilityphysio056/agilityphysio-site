@@ -158,6 +158,12 @@ export const routeMeta: RouteMeta[] = [
       "Uzma Anwar is a highly regarded senior physiotherapist at Agility Physio specialising in shoulder pathologies, cervical spine conditions, and musculoskeletal rehabilitation.",
   },
   {
+    path: "/meet-the-team/muhammad-awais-rafiq",
+    title: "Muhammad Awais Rafiq, MSK Physiotherapist | Agility Physio",
+    description:
+      "Meet Muhammad Awais Rafiq, HCPC and CSP registered MSK Physiotherapist at Agility Physio, specialising in musculoskeletal assessment and evidence-based rehabilitation.",
+  },
+  {
     path: "/meet-the-team/muhammad-umar-ashraf",
     title: "Muhammad Umar Ashraf, MSK Physiotherapist | Agility Physio",
     description:
