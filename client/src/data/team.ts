@@ -47,39 +47,6 @@ export const director: TeamMember = {
 
 export const clinicians: TeamMember[] = [
   {
-    slug: "muhammad-awais-rafiq",
-    name: "Muhammad Awais Rafiq",
-    role: "MSK Physiotherapist",
-    photo: muhammadAwaisRafiqImg,
-    photoAlt: "Muhammad Awais Rafiq, MSK Physiotherapist at Agility Physio",
-    imageObjectFit: "cover",
-    qualifications: [
-      "DPT Physiotherapy",
-      "MSc Advanced Physiotherapy",
-      "HCPC Registered",
-      "Member of the Chartered Society of Physiotherapy (CSP)",
-    ],
-    intro:
-      "Muhammad Awais is an HCPC and CSP registered physiotherapist with experience in the assessment and rehabilitation of a wide range of musculoskeletal, orthopaedic and neurological conditions. He takes a patient-centred approach, combining thorough clinical assessment with evidence-based treatment and individualised rehabilitation programmes.",
-    bio: [
-      "Awais holds a Doctor of Physical Therapy degree and has undertaken postgraduate study in Advanced Physiotherapy at the University of Salford. His training has further developed his skills in neuromusculoskeletal assessment, clinical reasoning, rehabilitation and contemporary physiotherapy practice.",
-      "His treatment approach combines progressive exercise rehabilitation, patient education and appropriate manual therapy techniques. He places particular emphasis on understanding each patient's goals, lifestyle and concerns, helping patients take an active role in their recovery and long-term management.",
-      "Awais is committed to evidence-based practice and continuing professional development, with a strong focus on clear communication, shared decision-making and helping patients safely return to their usual activities, work and exercise.",
-    ],
-    specialities: [
-      "Musculoskeletal Assessment & Rehabilitation",
-      "Back & Neck Pain",
-      "Joint & Muscle Pain",
-      "Post-Operative Orthopaedic Rehabilitation",
-      "Exercise-Based Rehabilitation",
-      "Manual Therapy",
-      "Patient Education & Self-Management",
-    ],
-    metaTitle: "Muhammad Awais Rafiq, MSK Physiotherapist | Agility Physio",
-    metaDescription:
-      "Meet Muhammad Awais Rafiq, HCPC and CSP registered MSK Physiotherapist at Agility Physio, specialising in musculoskeletal assessment and evidence-based rehabilitation.",
-  },
-  {
     slug: "uzma-anwar",
     name: "Uzma Anwar",
     role: "Senior Physiotherapist",
@@ -104,6 +71,33 @@ export const clinicians: TeamMember[] = [
       "Musculoskeletal Assessment",
       "Post-Injury Rehabilitation",
       "Patient Education & Self-Management",
+    ],
+  },
+  {
+    slug: "abdul-wahab",
+    name: "Abdul Wahab",
+    role: "Senior Physiotherapist",
+    photo: abdulWahabImg,
+    photoAlt: "Abdul Wahab, Senior Physiotherapist at Agility Physio",
+    imageObjectFit: "cover",
+    qualifications: [
+      "BSc (Hons) Physiotherapy",
+      "HCPC Registered",
+      "Member of the Chartered Society of Physiotherapy (CSP)",
+    ],
+    intro:
+      "Abdul is a senior physiotherapist with extensive experience in musculoskeletal assessment and rehabilitation. He takes a thorough, patient-centred approach — combining detailed clinical assessment with hands-on treatment and progressive exercise programmes.",
+    bio: [
+      "Abdul has worked across a range of clinical settings, developing particular expertise in back and neck pain, sports injuries, and post-operative rehabilitation. He holds an honours degree in Physiotherapy and is registered with the Health and Care Professions Council (HCPC).",
+      "He takes time to understand each patient's goals and lifestyle before developing a personalised treatment plan. His sessions combine manual therapy with targeted exercise rehabilitation, with a focus on long-term recovery rather than short-term symptom relief.",
+      "Abdul sees patients at our Stanmore clinic and also conducts home visits across North London.",
+    ],
+    specialities: [
+      "Back & Neck Pain",
+      "Sports Injury Rehabilitation",
+      "Post-Operative Rehabilitation",
+      "Joint & Muscle Pain",
+      "Exercise-Based Rehabilitation",
     ],
   },
   {
@@ -152,31 +146,37 @@ export const clinicians: TeamMember[] = [
       "Learn about Muhammad Umar Ashraf, an MSK Physiotherapist at Agility Physio with experience in musculoskeletal assessment, manual therapy, exercise rehabilitation and hospital-based physiotherapy.",
   },
   {
-    slug: "abdul-wahab",
-    name: "Abdul Wahab",
-    role: "Senior Physiotherapist",
-    photo: abdulWahabImg,
-    photoAlt: "Abdul Wahab, Senior Physiotherapist at Agility Physio",
+    slug: "muhammad-awais-rafiq",
+    name: "Muhammad Awais Rafiq",
+    role: "MSK Physiotherapist",
+    photo: muhammadAwaisRafiqImg,
+    photoAlt: "Muhammad Awais Rafiq, MSK Physiotherapist at Agility Physio",
     imageObjectFit: "cover",
     qualifications: [
-      "BSc (Hons) Physiotherapy",
+      "DPT Physiotherapy",
+      "MSc Advanced Physiotherapy",
       "HCPC Registered",
       "Member of the Chartered Society of Physiotherapy (CSP)",
     ],
     intro:
-      "Abdul is a senior physiotherapist with extensive experience in musculoskeletal assessment and rehabilitation. He takes a thorough, patient-centred approach — combining detailed clinical assessment with hands-on treatment and progressive exercise programmes.",
+      "Muhammad Awais is an HCPC and CSP registered physiotherapist with experience in the assessment and rehabilitation of a wide range of musculoskeletal, orthopaedic and neurological conditions. He takes a patient-centred approach, combining thorough clinical assessment with evidence-based treatment and individualised rehabilitation programmes.",
     bio: [
-      "Abdul has worked across a range of clinical settings, developing particular expertise in back and neck pain, sports injuries, and post-operative rehabilitation. He holds an honours degree in Physiotherapy and is registered with the Health and Care Professions Council (HCPC).",
-      "He takes time to understand each patient's goals and lifestyle before developing a personalised treatment plan. His sessions combine manual therapy with targeted exercise rehabilitation, with a focus on long-term recovery rather than short-term symptom relief.",
-      "Abdul sees patients at our Stanmore clinic and also conducts home visits across North London.",
+      "Awais holds a Doctor of Physical Therapy degree and has undertaken postgraduate study in Advanced Physiotherapy at the University of Salford. His training has further developed his skills in neuromusculoskeletal assessment, clinical reasoning, rehabilitation and contemporary physiotherapy practice.",
+      "His treatment approach combines progressive exercise rehabilitation, patient education and appropriate manual therapy techniques. He places particular emphasis on understanding each patient's goals, lifestyle and concerns, helping patients take an active role in their recovery and long-term management.",
+      "Awais is committed to evidence-based practice and continuing professional development, with a strong focus on clear communication, shared decision-making and helping patients safely return to their usual activities, work and exercise.",
     ],
     specialities: [
+      "Musculoskeletal Assessment & Rehabilitation",
       "Back & Neck Pain",
-      "Sports Injury Rehabilitation",
-      "Post-Operative Rehabilitation",
       "Joint & Muscle Pain",
+      "Post-Operative Orthopaedic Rehabilitation",
       "Exercise-Based Rehabilitation",
+      "Manual Therapy",
+      "Patient Education & Self-Management",
     ],
+    metaTitle: "Muhammad Awais Rafiq, MSK Physiotherapist | Agility Physio",
+    metaDescription:
+      "Meet Muhammad Awais Rafiq, HCPC and CSP registered MSK Physiotherapist at Agility Physio, specialising in musculoskeletal assessment and evidence-based rehabilitation.",
   },
 ];
 
