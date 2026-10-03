@@ -14,3 +14,9 @@ description: How production (agilityphysio.net) actually deploys and how to forc
 - **How to apply:** Force a deploy via manual dispatch — `POST /repos/agilityphysio056/agilityphysio-site/actions/workflows/255987540/dispatches` with `{"ref":"main"}` using `$GITHUB_PERSONAL_ACCESS_TOKEN_UPDATED`. Returns 204 and the run completes successfully.
 - Git remote `origin` previously had a stale hardcoded PAT; it now uses `$GITHUB_PERSONAL_ACCESS_TOKEN_UPDATED`.
 - Local `refs/remotes/origin/main.lock` error after every push is harmless (agent cannot delete it); the push itself succeeds.
+
+# Dependency download addresses
+
+- Keep committed dependency download URLs reachable from GitHub runners; Replit's internal package firewall hostname cannot resolve outside Replit.
+- **Why:** Package installs made in Replit can write internal download URLs into the lockfile, causing Hostinger deployment jobs to fail before the build.
+- **How to apply:** After dependency changes, check the lockfile for internal-only addresses before pushing. Preserve package versions and integrity hashes when replacing them with public registry URLs.
